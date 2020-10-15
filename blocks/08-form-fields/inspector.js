@@ -41,7 +41,7 @@ export default class Inspector extends Component {
 
     return (
       <InspectorControls>
-        <PanelBody
+        {/* <PanelBody
           title={__("Panel Body Title", "jsforwpblocks")}
           initialOpen={false}
         >
@@ -121,7 +121,7 @@ export default class Inspector extends Component {
             checked={toggleControl}
             onChange={toggleControl => setAttributes({ toggleControl })}
           />
-        </PanelBody>
+        </PanelBody> */}
 
         <PanelBody>
           <SelectControl
