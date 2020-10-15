@@ -31,25 +31,30 @@ function register_navigation_block() {
  * Server rendering for /blocks/examples/12-navigation
  */
 function render_navigation_block() {
-	$recent_posts = wp_get_recent_posts( [
-		'numberposts' => 3,
-		'post_status' => 'publish',
-	] );
+	// $recent_posts = wp_get_recent_posts( [
+	// 	'numberposts' => 3,
+	// 	'post_status' => 'publish',
+	// ] );
 
-	if ( empty( $recent_posts ) ) {
-		return '<p>No posts</p>';
-	}
+	// if ( empty( $recent_posts ) ) {
+	// 	return '<p>No posts</p>';
+	// }
 
-	$markup = '<ul>';
+	// $markup = '<ul>';
 
-	foreach ( $recent_posts as $post ) {
-		$post_id  = $post['ID'];
-		$markup  .= sprintf(
-			'<li><a href="%1$s">%2$s</a></li>',
-			esc_url( get_permalink( $post_id ) ),
-			esc_html( get_the_title( $post_id ) )
-		);
-	}
-	// print_r($markup);
-	return "{$markup}<ul>";
+	// foreach ( $recent_posts as $post ) {
+	// 	$post_id  = $post['ID'];
+	// 	$markup  .= sprintf(
+	// 		'<li><a href="%1$s">%2$s</a></li>',
+	// 		esc_url( get_permalink( $post_id ) ),
+	// 		esc_html( get_the_title( $post_id ) )
+	// 	);
+	// }
+	// // print_r($markup);
+	// return "{$markup}<ul>";
+	$menus = wp_get_nav_menus();
+	// wp_get_nav_menu_items()
+	// print_r(get_registered_nav_menus());
+	// print_r($menus); echo "ffff"; die;
 }
+

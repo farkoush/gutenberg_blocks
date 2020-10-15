@@ -111,3 +111,38 @@ function enqueue_block_editor_assets() {
 include __DIR__ . '/blocks/12-dynamic/index.php';
 include __DIR__ . '/blocks/13-navigation/index.php';
 
+register_nav_menus( array(
+	'primary' => __( 'Primary Menu' ),
+	'primary_mobile' => __( 'Primary Menu mobile' ),
+	'amp_menu' => __('AMP Menu'),
+) );
+
+// wp_nav_menu( array(
+// 	'theme_location' => 'primary_mobile',
+// 	'menu_class'     => 'animation main-menu-side',
+// ) );
+
+//WP-REST-API V2 Menus Plugin
+function wp_api_v2_menus_get_all_menus() {
+	$menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
+	// foreach ( $menus as $key => $menu ) {
+	// 	// check if there is acf installed
+	// 	if ( class_exists( 'acf' ) ) {
+	// 		$fields = get_fields( $menu );
+	// 		if ( ! empty( $fields ) ) {
+	// 			foreach ( $fields as $field_key => $item ) {
+	// 				// add all acf custom fields
+	// 				$menus[ $key ]->$field_key = $item;
+	// 			}
+	// 		}
+	// 	}
+	// }
+	return apply_filters('wp_api_v2_menus__menus', $menus);
+}
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'menus/v1', '/menus', array(
+		'methods'  => 'GET',
+		'callback' => 'wp_api_v2_menus_get_all_menus',
+		'permission_callback' => '__return_true'
+	) );
+} );

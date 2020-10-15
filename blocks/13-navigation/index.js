@@ -3,6 +3,8 @@
  */
 import icon from './icon';
 import './style.scss';
+import apiFetch from '@wordpress/api-fetch';
+
 
 /**
  * Internal block libraries
@@ -22,36 +24,17 @@ registerBlockType(
             src: icon,
         },         
         category: 'widgets',
-        edit: withSelect( select => {
-                return {
-                    posts: select( 'core' ).getEntityRecords( 'postType', 'post', { per_page: 3 } )
-                };
-            } )( ( { posts, className, isSelected, setAttributes } ) => {
-                if ( ! posts ) {
-                    return (
-                        <p className={className} >
-                            <Spinner />
-                            { __( 'Loading Posts', 'jsforwpblocks' ) }
-                        </p>
-                    );
-                }
-                if ( 0 === posts.length ) {
-                    return <p>{ __( 'No Posts', 'jsforwpblocks' ) }</p>;
-                }
-                return (
-                    <ul className={ className }>
-                        { posts.map( post => {
-                            return (
-                                <li>
-                                    <a className={ className } href={ post.link }>
-                                        { post.title.rendered }
-                                    </a>
-                                </li>
-                            );
-                        }) }
-                    </ul>
-                );
-            } ) // end withAPIData
+        edit(){
+            // return wp.apiFetch( { path: '/wp/v2/posts' } ).then( posts => { console.log( posts ); } )
+            return (
+                wp.apiFetch( { path: '/menus/v1/menus' } ).then( menus => { 
+                   menus.forEach(menu => {
+                        console.log(menu)
+                   }); 
+                } )
+            ) 
+        } 
+
         , // end edit
         save() {
             // Rendering in PHP
