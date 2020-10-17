@@ -63,9 +63,7 @@ export default registerBlockType(
         },
         save: props => {
             const { attributes } = props;
-
             const settings = getSettings(attributes);
-
             return (
                 <div>
                     <p>{__('Check the settings', 'jsforwpblocks')}</p>
