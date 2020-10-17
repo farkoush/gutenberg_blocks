@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import Inspector from './inspector';
 import Edit from './edit';
 import icon from './icon';
-import attributes from './attributes';
+// import attributes from './attributes';
 import './style.scss';
 
 const { __ } = wp.i18n;
@@ -16,6 +16,12 @@ const {
     RichText,
 } = wp.editor;
 
+
+const attributes = {
+    selectControl: {
+        type: 'string',
+    },
+};
 function getSettings(attributes) {
     let settings = [];
     for (let attribute in attributes) {
@@ -57,7 +63,7 @@ export default registerBlockType(
             const { setAttributes } = props;
 
             return [
-                <Inspector {...{ setAttributes, ...props }} />,
+                // <Inspector {...{ setAttributes, ...props }} />,
                 <Edit {...{ setAttributes, ...props }} />
             ];
         },
