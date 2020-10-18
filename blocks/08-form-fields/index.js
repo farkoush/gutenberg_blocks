@@ -1,12 +1,12 @@
 /**
  * Block dependencies
  */
-import classnames from 'classnames';
-import Inspector from './inspector';
 import Edit from './edit';
 import icon from './icon';
 // import attributes from './attributes';
 import './style.scss';
+import apiFetch from '@wordpress/api-fetch';
+
 
 const { __ } = wp.i18n;
 const {
@@ -22,17 +22,31 @@ const attributes = {
         type: 'string',
     },
 };
+// function getSettings(attributes) {
+//     let settings = [];
+//     for (let attribute in attributes) {
+//         let value = attributes[attribute];
+//         // console.log(value);
+//         if ('boolean' === typeof attributes[attribute]) {
+//             value = value.toString();
+//         }
+//         settings.push(<li>{attribute}: {value}</li>);
+//     }
+//     return settings;
+// }
+
 function getSettings(attributes) {
-    let settings = [];
+    let value;
     for (let attribute in attributes) {
-        let value = attributes[attribute];
+        value = attributes[attribute];
         if ('boolean' === typeof attributes[attribute]) {
             value = value.toString();
         }
-        settings.push(<li>{attribute}: {value}</li>);
     }
-    return settings;
+    console.log(value);
+    return value;
 }
+
 
 /**
  * Register static block example block
@@ -53,29 +67,24 @@ export default registerBlockType(
             __('Scheme', 'jsforwpblocks'),
         ],
         attributes,
-        getEditWrapperProps(attributes) {
-            const { blockAlignment } = attributes;
-            if ('left' === blockAlignment || 'right' === blockAlignment || 'full' === blockAlignment) {
-                return { 'data-align': blockAlignment };
-            }
-        },
         edit: props => {
             const { setAttributes } = props;
-
             return [
-                // <Inspector {...{ setAttributes, ...props }} />,
                 <Edit {...{ setAttributes, ...props }} />
             ];
         },
         save: props => {
             const { attributes } = props;
             const settings = getSettings(attributes);
+            //set condition for undefined
+            let path = '/menus/v1/menus/'+ settings;
+            wp.apiFetch( { path } ).then( menuItems => { console.log(menuItems);  console.log('tetettetet')}); 
             return (
                 <div>
-                    <p>{__('Check the settings', 'jsforwpblocks')}</p>
-                    <ul>
+                    {/* <p>{__('Check the settings', 'jsforwpblocks')}</p> */}
+                    <p>
                         {settings}
-                    </ul>
+                    </p>
                 </div>
             );
         },

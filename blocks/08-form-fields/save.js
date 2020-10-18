@@ -11,7 +11,7 @@ import apiFetch from '@wordpress/api-fetch';
 /**
  * Create an Inspector Controls wrapper Component
  */
-export default class Edit extends Component {
+export default class Save extends Component {
     constructor() {
         super( ...arguments );
         this.state = {
@@ -20,8 +20,8 @@ export default class Edit extends Component {
           };
     }
     componentDidMount() {
-        wp.apiFetch( { path: '/menus/v1/menus' } ).then( menus => { this.setState({data : menus});}); 
-        // wp.apiFetch( { path: '/menus/v1/menus/test-menu' } ).then( menuItems => { this.setState({items : menuItems});}); 
+        // wp.apiFetch( { path: '/menus/v1/menus' } ).then( menus => { this.setState({data : menus});}); 
+        wp.apiFetch( { path: '/menus/v1/menus/test-menu' } ).then( menuItems => { this.setState({items : menuItems});}); 
     }
     render() {
         const {
@@ -29,7 +29,7 @@ export default class Edit extends Component {
             className, setAttributes  } = this.props;
             const { data } = this.state;
             data.forEach(menu => {
-                // console.log(menu)
+                console.log(menu)
             });
             return (
                 <div className={ className }>
