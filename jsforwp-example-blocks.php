@@ -79,7 +79,7 @@ function enqueue_block_editor_assets() {
 }
 
 include __DIR__ . '/blocks/12-dynamic/index.php';
-include __DIR__ . '/blocks/08-form-fields/index.php';
+include __DIR__ . '/blocks/08-nav-menu/index.php';
 
 // include __DIR__ . '/blocks/13-navigation/index.php';
 
