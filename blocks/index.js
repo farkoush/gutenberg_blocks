@@ -10,9 +10,9 @@ import "./i18n.js";
 // import "./05-custom-toolbar";
 // import "./06-inspector-controls";
 // import "./07-inspector-control-fields";
+import "./hoora-swiper";
 import "./hoora-menu";
-// import "./10-media-upload";
-// import "./11-url-input";
+import "./10-media-upload";
 import "./12-dynamic";
-import "./13-navigation";
-// import "./14-meta-box";
+// import "./hoora-slider";
+
