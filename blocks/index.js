@@ -10,7 +10,7 @@ import "./i18n.js";
 // import "./05-custom-toolbar";
 // import "./06-inspector-controls";
 // import "./07-inspector-control-fields";
-import "./08-nav-menu";
+import "./hoora-menu";
 // import "./10-media-upload";
 // import "./11-url-input";
 import "./12-dynamic";
