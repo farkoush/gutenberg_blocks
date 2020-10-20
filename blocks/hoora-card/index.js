@@ -4,69 +4,32 @@ const { Button } = wp.components;
 
 // import './style.scss';
 import './editor.scss';
+import attributes from './attributes';
 
-registerBlockType('card-block/main', {   
+export default registerBlockType('hoora/card', {   
     title: 'Card',
     icon: 'heart',
     category: 'common',
-
-    attributes: {
-        title: {
-          source: 'text',
-          selector: '.card__title'
-        },
-        body: {
-          type: 'array',
-          source: 'children',
-          selector: '.card__body'
-        },
-        imageAlt: {
-          attribute: 'alt',
-          selector: '.card__image'
-        },
-        imageUrl: {
-          attribute: 'src',
-          selector: '.card__image'
-        },
-        imageAlt_2: {
-          attribute: 'alt',
-          selector: '.card__image_2'
-      },
-      imageUrl_2: {
-          attribute: 'src',
-          selector: '.card__image_2'
-      }
-      },
-      
-      edit: ( props ) => {
-        // const { attributes: { title, body, textAlignment, imageAlt, imageUrl, imageAlt_2, imageUrl_2 }, setAttributes, className } = props;
-        const { attributes, setAttributes, className } = props;
-        // const { attributes } = props;
-
-      // edit({ attributes, className, setAttributes }) {
-        // const getImageButton = (openEvent) => {
-        //     if(attributes.imageUrl) {
-        //       return (
-        //         <img 
-        //           src={ attributes.imageUrl }
-        //           onClick={ openEvent }
-        //           className="image"
-        //         />
-        //       );
-        //     }
-        //     else {
-        //       return (
-        //         <div className="button-container">
-        //           <Button 
-        //             onClick={ openEvent }
-        //             className="button button-large"
-        //           >
-        //             Pick an image
-        //           </Button>
-        //         </div>
-        //       );
-        //     }
-        //   };
+    attributes,
+      edit: props => {
+        const { attributes, setAttributes, className, isSelected } = props;
+        
+        const onSelectImage = img => {
+            setAttributes( {
+                imgID: img.id,
+                imageUrl: img.url,
+                imageAlt: img.alt,
+            } );
+        };
+        // media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }); } 
+        const onSelectImage_2 = img => {
+          setAttributes( {
+              imgID_2: img.id,
+              imageUrl_2: img.url,
+              imageAlt_2: img.alt,
+          } );
+      };
+        // media => { setAttributes({ imageAlt_2: media.alt, imageUrl_2: media.url }); }
         const getImageButton = (openEvent) => {
           if(attributes.imageUrl) {
               return (
@@ -116,20 +79,14 @@ registerBlockType('card-block/main', {
      };
         return (
             <div className="container">
-                {/* <MediaUpload
-                    onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }); } }
-                    type="image"
-                    value={ attributes.imageID }
-                    render={ ({ open }) => getImageButton(open) }
-                /> */}
                 <MediaUpload
-                    onSelect={ media => { setAttributes({ imageAlt: media.alt, imageUrl: media.url }); } }
+                    onSelect={ onSelectImage }
                     type="image"
                     value={ attributes.imageID }
                     render={ ({ open }) => getImageButton(open) }
                 />
                 <MediaUpload
-                    onSelect={ media => { setAttributes({ imageAlt_2: media.alt, imageUrl_2: media.url }); } }
+                    onSelect={ onSelectImage_2 }
                     type="image"
                     value={ attributes.imageID_2 }
                     render={ ({ open }) => getImageButton2(open) }
@@ -165,7 +122,6 @@ registerBlockType('card-block/main', {
             );
           }
           
-          // No alt set, so let's hide it from screen readers
           return (
             <img 
               className="card__image" 
@@ -213,4 +169,5 @@ registerBlockType('card-block/main', {
           </div>
         );
       }
-  });
+  }
+);

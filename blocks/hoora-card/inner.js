@@ -1,0 +1,1 @@
+const { InnerBlocks } = wp.editor;

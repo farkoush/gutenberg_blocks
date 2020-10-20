@@ -13,7 +13,8 @@ import "./i18n.js";
 import "./hoora-swiper";
 import "./hoora-menu";
 import "./hoora-card";
-import "./10-media-upload";
+// import "./10-media-upload";
 import "./12-dynamic";
 // import "./hoora-slider";
+import "./dos-and-donts";
 
