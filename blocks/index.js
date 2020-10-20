@@ -12,6 +12,7 @@ import "./i18n.js";
 // import "./07-inspector-control-fields";
 import "./hoora-swiper";
 import "./hoora-menu";
+import "./hoora-card";
 import "./10-media-upload";
 import "./12-dynamic";
 // import "./hoora-slider";

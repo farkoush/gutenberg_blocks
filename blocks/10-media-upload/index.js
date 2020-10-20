@@ -23,7 +23,7 @@ const {
  * Register example block
  */
 export default registerBlockType(
-    'jsforwpblocks/media-upload',
+    'jsforwpblocks/media-uploadd',
     {
         title: __( 'Example - Media Upload Button', 'jsforwpblocks' ),
         description: __( 'An example of how to use the MediaUpload component.', 'jsforwpblocks'),
@@ -52,11 +52,26 @@ export default registerBlockType(
                 source: 'attribute',
                 attribute: 'alt',
                 selector: 'img',
+            },
+            imgURL2: {
+                type: 'string',
+                source: 'attribute',
+                attribute: 'src',
+                selector: 'img',
+            },
+            imgID2: {
+                type: 'number',
+            },
+            imgAlt2: {
+                type: 'string',
+                source: 'attribute',
+                attribute: 'alt',
+                selector: 'img',
             }
         },
         edit: props => {
-            const { attributes: { imgID, imgURL, imgAlt },
-                className, setAttributes, isSelected } = props;
+            const { attributes: { imgID, imgURL, imgAlt, imgID2, imgURL2, imgAlt2 },
+                className, setAttributes, isSelected} = props;
             const onSelectImage = img => {
                 setAttributes( {
                     imgID: img.id,
@@ -71,61 +86,124 @@ export default registerBlockType(
                     imgAlt: null,
                 });
             }
+            const onSelectImage2 = img => {
+                setAttributes( {
+                    imgID2: img.id,
+                    imgURL2: img.url,
+                    imgAlt2: img.alt,
+                } );
+            };
+            const onRemoveImage2 = () => {
+                setAttributes({
+                    imgID2: null,
+                    imgURL2: null,
+                    imgAlt2: null,
+                });
+            }
             return (
                 <div className={ className }>
+                    <div>
+                        { ! imgID ? (
+                            <MediaUpload
+                                onSelect={ onSelectImage }
+                                type="image"
+                                value={ imgID }
+                                render={ ( { open } ) => (
+                                    <Button
+                                        className={ "button button-large" }
+                                        onClick={ open }
+                                    >
+                                        { icons.upload }
+                                        { __( ' Upload Image', 'jsforwpblocks' ) }
+                                    </Button>
+                                ) }
+                            >
+                            </MediaUpload>
 
-                    { ! imgID ? (
+                        ) : (
 
-                        <MediaUpload
-                            onSelect={ onSelectImage }
-                            type="image"
-                            value={ imgID }
-                            render={ ( { open } ) => (
-                                <Button
-                                    className={ "button button-large" }
-                                    onClick={ open }
-                                >
-                                    { icons.upload }
-                                    { __( ' Upload Image', 'jsforwpblocks' ) }
-                                </Button>
-                            ) }
-                        >
-                        </MediaUpload>
+                            <p class="image-wrapper">
+                                <img
+                                    src={ imgURL }
+                                    alt={ imgAlt }
+                                />
 
-                    ) : (
+                                { isSelected ? (
 
-                        <p class="image-wrapper">
-                            <img
-                                src={ imgURL }
-                                alt={ imgAlt }
-                            />
+                                    <Button
+                                        className="remove-image"
+                                        onClick={ onRemoveImage }
+                                    >
+                                        { icons.remove }
+                                    </Button>
 
-                            { isSelected ? (
+                                ) : null }
 
-                                <Button
-                                    className="remove-image"
-                                    onClick={ onRemoveImage }
-                                >
-                                    { icons.remove }
-                                </Button>
+                            </p>
+                        )}
+                    </div>
+                    <div>
+                        { ! imgID2 ? (
 
-                            ) : null }
+                            <MediaUpload
+                                onSelect={ onSelectImage2 }
+                                type="image"
+                                value={ imgID2 }
+                                render={ ( { open } ) => (
+                                    <Button
+                                        className={ "button button-large" }
+                                        onClick={ open }
+                                    >
+                                        { icons.upload }
+                                        { __( ' Upload Image', 'jsforwpblocks' ) }
+                                    </Button>
+                                ) }
+                            >
+                            </MediaUpload>
 
-                        </p>
-                    )}
+                        ) : (
+
+                            <p class="image-wrapper">
+                                <img
+                                    src={ imgURL2 }
+                                    alt={ imgAlt2 }
+                                />
+
+                                { isSelected ? (
+
+                                    <Button
+                                        className="remove-image"
+                                        onClick={ onRemoveImage2 }
+                                    >
+                                        { icons.remove }
+                                    </Button>
+
+                                ) : null }
+
+                            </p>
+                        )}
+                        </div>
 
                 </div>
             );
         },
         save: props => {
-            const { imgURL, imgAlt } = props.attributes;
+            const { imgURL, imgAlt, imgID, imgURL2, imgAlt2, imgID2 } = props.attributes;
+            console.log(props.attributes);
+            console.log(imgURL,imgURL2);
             return (
-                <p>
-                    <img
-                        src={ imgURL }
-                        alt={ imgAlt }
-                    />
-                </p>
+                <div>
+                    <p>
+                        <img
+                            src={ imgURL }
+                            alt={ imgAlt }
+                        />
+                        <img
+                            src={ imgURL2 }
+                            alt={ imgAlt2 }
+                        />
+                    </p>
+                </div>
             );
         },
     },
