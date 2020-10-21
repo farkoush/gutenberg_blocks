@@ -1,103 +1,67 @@
 /**
- * Internal block libraries
+ * WordPress Dependencies.
  */
-const { __ } = wp.i18n;
-const { Component } = wp.element;
+// import { InnerBlocks } from '@wordpress/block-editor';
 const {
-    ColorPalette,
+	InnerBlocks,
 } = wp.editor;
-const {
-    CheckboxControl,
-    RadioControl,
-    RangeControl,
-    TextControl,
-    TextareaControl,
-    ToggleControl,
-    SelectControl
-} = wp.components;
+import { blockColumns } from './templates';
+const {  TabPanel } = wp.components;
+
+const INNER_BLOCKS_TEMPLATE = [
+	[
+		'core/group',
+		{
+			className: 'hoora-swiper__group',
+			backgroundColor: 'pale-cyan-blue',
+		},
+		blockColumns,
+	],
+];
+
+const ALLOWED_BLOCKS = [ 'core/group' ];
 
 /**
- * Create an Inspector Controls wrapper Component
+ * Edit function.
+ *
+ * @return {Object} Content.
  */
-export default class Edit extends Component {
+const Edit = () => {
+	const onSelect = ( tabName ) => {
+		console.log( 'Selecting tab', tabName );
+	};
+	return (
+		<div>
+			<TabPanel className="my-tab-panel"
+					activeClass="active-tab"
+					onSelect={ onSelect }
+					tabs={ [
+						{
+							name: 'tab1',
+							title: 'Tab 1',
+							className: 'tab-one',
+						},
+						{
+							name: 'tab2',
+							title: 'Tab 2',
+							className: 'tab-two',
+						},
+					] }>
+					{
+						// ( tab ) => <p>{ tab.title }</p>
+						(tab) => 
+						<div>
+							<p>{ tab.title }</p>
+							<InnerBlocks
+								template={ INNER_BLOCKS_TEMPLATE }
+								allowedBlocks={ ALLOWED_BLOCKS }
+								templateLock={ true }
+							/>
+						</div>			
+					}
+				</TabPanel>
+		</div>
+	);
+};
 
-    constructor() {
-        super( ...arguments );
-    }
-
-    render() {
-        const {
-            attributes: { checkboxControl, colorPaletteControl, radioControl, rangeControl, textControl, textareaControl, toggleControl, selectControl },
-            className, setAttributes  } = this.props;
-
-        return (
-            <div className={ className }>
-
-                <CheckboxControl
-                    heading={ __( 'Checkbox Control', 'jsforwpblocks' ) }
-                    label={ __( 'Check here', 'jsforwpblocks' ) }
-                    help={ __( 'Checkbox control help text', 'jsforwpblocks' ) }
-                    checked={ checkboxControl }
-                    onChange={ checkboxControl => setAttributes( { checkboxControl } ) }
-                />
-
-                <ColorPalette
-                    value={ colorPaletteControl }
-                    onChange={ colorPaletteControl => setAttributes( { colorPaletteControl } ) }
-                />
-
-                <RadioControl
-                    label={ __( 'Radio Control', 'jsforwpblocks' ) }
-                    selected={ radioControl }
-                    options={ [
-                        { label: 'Author', value: 'a' },
-                        { label: 'Editor', value: 'e' },
-                    ]}
-                    onChange={ radioControl => setAttributes( { radioControl } ) }
-                />
-
-                <RangeControl
-                    beforeIcon="arrow-left-alt2"
-                    afterIcon="arrow-right-alt2"
-                    label={ __( 'Range Control', 'jsforwpblocks' ) }
-                    value={ rangeControl }
-                    onChange={ rangeControl => setAttributes( { rangeControl } ) }
-                    min={ 1 }
-                    max={ 10 }
-                />
-
-                <TextControl
-                    label={ __( 'Text Control', 'jsforwpblocks' ) }
-                    help={ __( 'Text control help text', 'jsforwpblocks' ) }
-                    value={ textControl }
-                    onChange={ textControl => setAttributes( { textControl } ) }
-                />
-
-                <TextareaControl
-                    label={ __( 'Text Area Control', 'jsforwpblocks' ) }
-                    help={ __( 'Text area control help text', 'jsforwpblocks' ) }
-                    value={ textareaControl }
-                    onChange={ textareaControl => setAttributes( { textareaControl } ) }
-                />
-
-                <ToggleControl
-                    label={ __( 'Toggle Control', 'jsforwpblocks' ) }
-                    checked={ toggleControl }
-                    onChange={ toggleControl => setAttributes( { toggleControl } ) }
-                />
-
-                <SelectControl
-                    label={ __( 'Select Control', 'jsforwpblocks' ) }
-                    value={ selectControl }
-                    options={ [
-                        { value: 'a', label: 'Option A' },
-                        { value: 'b', label: 'Option B' },
-                        { value: 'c', label: 'Option C' },
-                    ]}
-                    onChange={ selectControl => setAttributes( { selectControl } ) }
-                />
-
-            </div>
-        );
-    }
-}
+export default Edit;

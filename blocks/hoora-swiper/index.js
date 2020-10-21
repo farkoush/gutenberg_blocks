@@ -1,79 +1,65 @@
 /**
- * Block dependencies
+ * Do's and don'ts block.
+ *
+ * @package
  */
-import classnames from 'classnames';
-import Inspector from './inspector';
-import Edit from './edit';
-import icon from './icon';
-import attributes from './attributes';
-import './style.scss';
-
-const { __ } = wp.i18n;
-const {
-    registerBlockType,
-} = wp.blocks;
-const {
-    RichText,
-} = wp.editor;
-
-function getSettings(attributes) {
-    let settings = [];
-    for (let attribute in attributes) {
-        let value = attributes[attribute];
-        if ('boolean' === typeof attributes[attribute]) {
-            value = value.toString();
-        }
-        settings.push(<li>{attribute}: {value}</li>);
-    }
-    return settings;
-}
 
 /**
- * Register static block example block
+ * Internal dependencies.
  */
-export default registerBlockType(
-    'jsforwpblocks/form-fields',
-    {
-        title: __('Example - Form Fields', 'jsforwpblocks'),
-        description: __('An example of how to use form component in a block.', 'jsforwpblocks'),
-        category: 'common',
-        icon: {
-            background: 'rgba(254, 243, 224, 0.52)',
-            src: icon,
-        },
-        keywords: [
-            __('Palette', 'jsforwpblocks'),
-            __('Settings', 'jsforwpblocks'),
-            __('Scheme', 'jsforwpblocks'),
-        ],
-        attributes,
-        getEditWrapperProps(attributes) {
-            const { blockAlignment } = attributes;
-            if ('left' === blockAlignment || 'right' === blockAlignment || 'full' === blockAlignment) {
-                return { 'data-align': blockAlignment };
-            }
-        },
-        edit: props => {
-            const { setAttributes } = props;
+import Edit from './edit';
 
-            return [
-                <Inspector {...{ setAttributes, ...props }} />,
-                <Edit {...{ setAttributes, ...props }} />
-            ];
-        },
-        save: props => {
-            const { attributes } = props;
+/**
+ * WordPress Dependencies.
+ */
+import { __ } from '@wordpress/i18n';
+// import { registerBlockType } from '@wordpress/blocks';
+const { registerBlockType } = wp.blocks;
+const { InnerBlocks } = wp.editor;
+/**
+ * Register block type.
+ */
+registerBlockType( 'hoora/swiper', {
+	/**
+	 * Block title.
+	 *
+	 * @type {string}
+	 */
+	title: "hoora Swiper",
 
-            const settings = getSettings(attributes);
+	/**
+	 * Block icon.
+	 *
+	 * @type {string}
+	 */
+	icon: 'editor-table',
 
-            return (
-                <div>
-                    <p>{__('Check the settings', 'jsforwpblocks')}</p>
-                    <ul>
-                        {settings}
-                    </ul>
-                </div>
-            );
-        },
-    },
-);
+	/**
+	 * Block description.
+	 *
+	 * @type {string}
+	 */
+	description: __( 'Add headings and text', 'aquila' ),
+
+	/**
+	 * Block category.
+	 *
+	 * @type {string}
+	 */
+	category: 'aquila',
+
+	edit: Edit,
+
+	/**
+	 * Save
+	 *
+	 * @return {Object} Save content.
+	 */
+	save() {
+		return (
+			<div className="hoora-swiper">
+				<InnerBlocks.Content />
+			</div>
+		);
+	},
+} );
