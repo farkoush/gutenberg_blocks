@@ -17,4 +17,6 @@ import "./hoora-card";
 import "./12-dynamic";
 // import "./hoora-slider";
 import "./dos-and-donts";
+import "./hoora-tabs";
+
 
