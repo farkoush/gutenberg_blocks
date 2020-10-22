@@ -16,6 +16,19 @@ import { __ } from '@wordpress/i18n';
 // import { registerBlockType } from '@wordpress/blocks';
 const { registerBlockType } = wp.blocks;
 const { InnerBlocks } = wp.editor;
+const attributes = {
+	imgID: {
+		type: 'number',
+	},
+	  imageAlt: {
+		attribute: 'alt',
+		selector: '.card__image'
+	  },
+	  imageUrl: {
+		attribute: 'src',
+		selector: '.card__image'
+	  }
+}     
 /**
  * Register block type.
  */
@@ -46,8 +59,8 @@ registerBlockType( 'hoora/swiper', {
 	 *
 	 * @type {string}
 	 */
-	category: 'aquila',
-
+	category: 'hoora',
+	attributes,
 	edit: Edit,
 
 	/**

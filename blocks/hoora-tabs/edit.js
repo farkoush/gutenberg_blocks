@@ -3,8 +3,8 @@
  */
 const { __ } = wp.i18n;
 const { Component } = wp.element;
-const { SelectControl, TabPanel } = wp.components;
- 
+const { SelectControl, TabPanel, NavigableMenu, TabbableContainer, Button } = wp.components;
+
 
 export default class Edit extends Component {
     constructor() {
@@ -46,5 +46,30 @@ export default class Edit extends Component {
                         </TabPanel>
             </div>
         );
+
+        // function onNavigate( index, target ) {
+        //     console.log( `Navigates to ${ index }`, target );
+        // }
+        // return(
+
+        //     // const MyNavigableContainer = () => (
+        //         <div>
+        //             <span>Navigable Menu:</span>
+        //             <NavigableMenu onNavigate={ onNavigate } orientation="horizontal">
+        //                 <Button isSecondary>Item 1</Button>
+        //                 <Button isSecondary>Item 2</Button>
+        //                 <Button isSecondary>Item 3</Button>
+        //             </NavigableMenu>
+                    
+        //             <span>Tabbable Container:</span>
+        //             <TabbableContainer onNavigate={ onNavigate }>
+        //                 <Button isSecondary tabIndex="0">Section 1</Button>
+        //                 <Button isSecondary tabIndex="0">Section 2</Button>
+        //                 <Button isSecondary tabIndex="0">Section 3</Button>
+        //                 <Button isSecondary tabIndex="0">Section 4</Button>
+        //             </TabbableContainer>
+        //         </div>
+        //     // );
+        // );
     }
 }
