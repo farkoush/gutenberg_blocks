@@ -7,6 +7,9 @@
 /**
  * Internal dependencies.
  */
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Virtual } from 'swiper';
+// import 'swiper/swiper.scss';
 import Edit from './edit';
 
 /**
@@ -33,45 +36,26 @@ const attributes = {
  * Register block type.
  */
 registerBlockType( 'hoora/swiper', {
-	/**
-	 * Block title.
-	 *
-	 * @type {string}
-	 */
 	title: "hoora Swiper",
-
-	/**
-	 * Block icon.
-	 *
-	 * @type {string}
-	 */
 	icon: 'editor-table',
-
-	/**
-	 * Block description.
-	 *
-	 * @type {string}
-	 */
-	description: __( 'Add headings and text', 'aquila' ),
-
-	/**
-	 * Block category.
-	 *
-	 * @type {string}
-	 */
+	description: 'swiper idangerous',
 	category: 'hoora',
 	attributes,
 	edit: Edit,
-
-	/**
-	 * Save
-	 *
-	 * @return {Object} Save content.
-	 */
 	save() {
 		return (
 			<div className="hoora-swiper">
-				<InnerBlocks.Content />
+				    {/* <Swiper
+						spaceBetween={50}
+						slidesPerView={3}
+						onSlideChange={() => console.log('slide change')}
+						onSwiper={(swiper) => console.log(swiper, "jjjjjjjjjj")}
+						>
+						<SwiperSlide>Slide 1</SwiperSlide>
+						<SwiperSlide>Slide 2</SwiperSlide>
+						<SwiperSlide>Slide 3</SwiperSlide>
+						<SwiperSlide>Slide 4</SwiperSlide>
+					</Swiper> */}
 			</div>
 		);
 	},

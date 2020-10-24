@@ -22,11 +22,13 @@
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.19.1",
+    "swiper": "^6.3.4",
     "webpack": "^3.11.0"
   },
   "dependencies": {
     "@wordpress/api-fetch": "^3.20.0",
     "@wordpress/blocks": "^6.24.0",
-    "@wordpress/server-side-render": "^1.18.1"
+    "@wordpress/server-side-render": "^1.18.1",
+    "lodash": "^4.17.20"
   }
 }
