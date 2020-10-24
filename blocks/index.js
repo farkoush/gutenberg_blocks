@@ -18,6 +18,6 @@ import "./12-dynamic";
 // import "./hoora-slider";
 import "./dos-and-donts";
 import "./hoora-tabs";
-import "./block";
+import "./block/block.js";
 
 
