@@ -6,16 +6,16 @@ if (window.Swiper === undefined) {
 } else {
 	var swiper = (function() {
 		var swiperSliders = document.getElementsByClassName(
-			"js-mcr-swiper-container"
+			"hoora-swiper-container"
 		);
 		for (i = 0; i < swiperSliders.length; i++) {
 			var swiperOptions = {
 				navigation: {
-					nextEl: ".js-mcr-swiper-button-next",
-					prevEl: ".js-mcr-swiper-button-prev"
+					nextEl: ".hoora-swiper-button-next",
+					prevEl: ".hoora-swiper-button-prev"
 				},
 				pagination: {
-					el: ".js-mcr-swiper-pagination"
+					el: ".hoora-swiper-pagination"
 				},
 				speed: 500,
 				slidesPerView: 1,
@@ -29,17 +29,17 @@ if (window.Swiper === undefined) {
 			if (spaceBetween != null) {
 				swiperOptions["spaceBetween"] = parseFloat(spaceBetween);
 			}
-			var speed = swiperSliders[i].getAttribute("data-mcr-carousel-speed");
+			var speed = swiperSliders[i].getAttribute("data-speed");
 			if (speed != null) {
 				swiperOptions["speed"] = parseFloat(speed);
 			}
 			var autoplay = swiperSliders[i].getAttribute(
-				"data-mcr-carousel-autoplay"
+				"data-autoplay"
 			);
 			if (autoplay != null) {
 				var autoplayValue = autoplay === "true" ? true : false;
-				var delay = swiperSliders[i].getAttribute("data-mcr-carousel-delay")
-					? parseFloat(swiperSliders[i].getAttribute("data-mcr-carousel-delay"))
+				var delay = swiperSliders[i].getAttribute("data-delay")
+					? parseFloat(swiperSliders[i].getAttribute("data-delay"))
 					: "4000";
 				if (autoplayValue) {
 					swiperOptions["autoplay"] = {
@@ -49,11 +49,11 @@ if (window.Swiper === undefined) {
 					swiperOptions["autoplay"] = false;
 				}
 			}
-			var loop = swiperSliders[i].getAttribute("data-mcr-carousel-loop");
+			var loop = swiperSliders[i].getAttribute("data-loop");
 			if (loop != null) {
 				swiperOptions["loop"] = loop === "true" ? true : false;
 			}
-			var effect = swiperSliders[i].getAttribute("data-mcr-carousel-effect");
+			var effect = swiperSliders[i].getAttribute("data-effect");
 			if (effect != null) {
 				if (effect === "fade") {
 					swiperOptions["fadeEffect"] = {

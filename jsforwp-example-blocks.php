@@ -83,8 +83,11 @@ include __DIR__ . '/blocks/12-dynamic/index.php';
 include __DIR__ . '/blocks/hoora-menu/index.php';
 // include __DIR__ . '/blocks/block/index.php';
 
+// include __DIR__ . 'blocks/hoora-swiper/init.php';
 
-require_once plugin_dir_path( __FILE__ ) . 'blocks/init.php';
+
+// require_once plugin_dir_path( __FILE__ ) . 'blocks/init.php';
+require_once plugin_dir_path( __FILE__ ) . 'blocks/hoora-swiper/index.php';
 
 // include __DIR__ . '/blocks/hoora-slider/index.php';
 
