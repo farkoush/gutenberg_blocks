@@ -167,70 +167,70 @@ export default class Edit extends Component {
 
 		if (images.length > 0) {
 			return [
-				<InspectorControls>
-					<PanelBody title={__("Carousel Settings")}>
-						<PanelRow>
-							<RadioControl
-								label="Auto Play"
-								selected={autoplay}
-								options={[
-									{ label: "True", value: "true" },
-									{ label: "False", value: "false" }
-								]}
-								onChange={option => {
-									updateSliderSetting({ autoplay: option });
-								}}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<TextControl
-								label="Delay"
-								value={delay}
-								onChange={option => {
-									updateSliderSetting({ delay: option });
-								}}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<TextControl
-								label="Speed"
-								value={speed}
-								onChange={option => {
-									updateSliderSetting({ speed: option });
-								}}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<RadioControl
-								label="Loop"
-								selected={loop}
-								options={[
-									{ label: "True", value: "true" },
-									{ label: "False", value: "false" }
-								]}
-								onChange={option => {
-									updateSliderSetting({ loop: option });
-								}}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<SelectControl
-								label="Effect"
-								selected={effect}
-								options={[
-									{ label: "Slide", value: "slide" },
-									{ label: "Fade", value: "fade" },
-									{ label: "Cube", value: "cube" },
-									{ label: "Coverflow", value: "coverflow" },
-									{ label: "Flip", value: "flip" }
-								]}
-								onChange={option => {
-									updateSliderSetting({ effect: option });
-								}}
-							/>
-						</PanelRow>
-					</PanelBody>
-				</InspectorControls>,
+				// <InspectorControls>
+				// 	<PanelBody title={__("Carousel Settings")}>
+				// 		<PanelRow>
+				// 			<RadioControl
+				// 				label="Auto Play"
+				// 				selected={autoplay}
+				// 				options={[
+				// 					{ label: "True", value: "true" },
+				// 					{ label: "False", value: "false" }
+				// 				]}
+				// 				onChange={option => {
+				// 					updateSliderSetting({ autoplay: option });
+				// 				}}
+				// 			/>
+				// 		</PanelRow>
+				// 		<PanelRow>
+				// 			<TextControl
+				// 				label="Delay"
+				// 				value={delay}
+				// 				onChange={option => {
+				// 					updateSliderSetting({ delay: option });
+				// 				}}
+				// 			/>
+				// 		</PanelRow>
+				// 		<PanelRow>
+				// 			<TextControl
+				// 				label="Speed"
+				// 				value={speed}
+				// 				onChange={option => {
+				// 					updateSliderSetting({ speed: option });
+				// 				}}
+				// 			/>
+				// 		</PanelRow>
+				// 		<PanelRow>
+				// 			<RadioControl
+				// 				label="Loop"
+				// 				selected={loop}
+				// 				options={[
+				// 					{ label: "True", value: "true" },
+				// 					{ label: "False", value: "false" }
+				// 				]}
+				// 				onChange={option => {
+				// 					updateSliderSetting({ loop: option });
+				// 				}}
+				// 			/>
+				// 		</PanelRow>
+				// 		<PanelRow>
+				// 			<SelectControl
+				// 				label="Effect"
+				// 				selected={effect}
+				// 				options={[
+				// 					{ label: "Slide", value: "slide" },
+				// 					{ label: "Fade", value: "fade" },
+				// 					{ label: "Cube", value: "cube" },
+				// 					{ label: "Coverflow", value: "coverflow" },
+				// 					{ label: "Flip", value: "flip" }
+				// 				]}
+				// 				onChange={option => {
+				// 					updateSliderSetting({ effect: option });
+				// 				}}
+				// 			/>
+				// 		</PanelRow>
+				// 	</PanelBody>
+				// </InspectorControls>,
 				<Fragment>
 					{images.map((img, imgMapIndex) => {
 						return [
@@ -251,7 +251,7 @@ export default class Edit extends Component {
 											</Button>
 										)}
 									/>
-									<div className="hoora-media-row--delete-button">
+									{/* <div className="hoora-media-row--delete-button">
 										<Button
 											className={"button button-large"}
 											onClick={() => {
@@ -260,8 +260,8 @@ export default class Edit extends Component {
 										>
 											X
 										</Button>
-									</div>
-									<div className="hoora-media-row--add-button">
+									</div> */}
+									{/* <div className="hoora-media-row--add-button">
 										<MediaUpload
 											onSelect={selectedImage =>
 												addImage(selectedImage, images, imgMapIndex)
@@ -278,7 +278,7 @@ export default class Edit extends Component {
 												</Button>
 											)}
 										/>
-									</div>
+									</div> */}
 								</MediaUploadCheck>
                                 <PlainText
                                     onChange={ content => setAttributes({ titles : content }) }
@@ -286,12 +286,6 @@ export default class Edit extends Component {
                                     placeholder="Your card title"
                                     className="heading"
                                 />
-                                {/* <RichText
-                                    onChange={ content => setAttributes({ body: content }) }
-                                    value={ body }
-                                    multiline="p"
-                                    placeholder="Your card text"
-                                /> */}
 							</div>
 						];
 					})}
@@ -328,6 +322,12 @@ export default class Edit extends Component {
 								// )}
                             />
                         </MediaUploadCheck>
+						<PlainText
+							onChange={ content => setAttributes({ titles : content }) }
+							value={ titles }
+							placeholder="Your card title"
+							className="heading"
+						/>
 					</div>
 				</Fragment>
 			);
