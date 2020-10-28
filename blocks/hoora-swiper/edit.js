@@ -28,7 +28,7 @@ export default class Edit extends Component {
     }
     
     render() {
-        const { attributes : {imageID, imageAlt, imageUrl,images, autoplay, loop, speed, delay, effect,titles, body}, setAttributes, className } = this.props;
+        const { attributes : {image,images, autoplay, loop, speed, delay, effect,titles, body}, setAttributes, className } = this.props;
 
 		// function updateSliderSetting(event) {
 		// 	const selected = event.target.querySelector(
@@ -39,17 +39,30 @@ export default class Edit extends Component {
 		// }
 
 		const onSelectImage1 = img => {
-			setAttributes( {
-				imageID: img.id,
-				imageUrl: img.url,
-				imageAlt: img.alt,
-			} );
+			console.log(img.id);
+			var selectImages = [];
+			var selectedImage = img;
+			selectImages.push(img);
+			const updatedImages = selectImages.map(img => {
+				return {
+				// id: selectedImageIndex,
+				id: img.id,
+				imgid: selectedImage.id,
+				url: selectedImage.sizes.full.url,
+				thumbnailUrl: selectedImage.sizes.thumbnail.url,
+				alt: selectedImage.alt,
+				caption: selectedImage.caption
+			};
+		});
+			setAttributes({
+				images: updatedImages
+			});
 		};
 		const getImageButton = (openEvent) => {
-			if(imageUrl) {
+			if(image.url) {
 				return (
 					<img
-						src={ imageUrl }
+						src={ image.url }
 						onClick={ openEvent }
 						className="image"
 					/>
@@ -120,9 +133,6 @@ export default class Edit extends Component {
 				images: updatedImages
 			});
 		}
-
-		// Replace the image with the new selected one
-		// need to update the specific attribute image with this image
 		const onSelectImage = function(
 			selectedImage,
 			selectedImages,
@@ -147,90 +157,8 @@ export default class Edit extends Component {
 			});
 		};
 
-		// Add an id to the array of selected images and update the img attribute
-		const onSelectImages = function(selectedImages) {
-			const updatedImages = selectedImages.map((img, index) => {
-				// console.log(selectedImages);
-				return {
-					id: index,
-					imgid: img.id,
-					url: img.sizes.full.url,
-					thumbnailUrl: img.sizes.thumbnail.url,
-					alt: img.alt,
-					caption: img.caption
-				};
-			});
-			setAttributes({
-				images: updatedImages
-			});
-		};
-
 		if (images.length > 0) {
 			return [
-				// <InspectorControls>
-				// 	<PanelBody title={__("Carousel Settings")}>
-				// 		<PanelRow>
-				// 			<RadioControl
-				// 				label="Auto Play"
-				// 				selected={autoplay}
-				// 				options={[
-				// 					{ label: "True", value: "true" },
-				// 					{ label: "False", value: "false" }
-				// 				]}
-				// 				onChange={option => {
-				// 					updateSliderSetting({ autoplay: option });
-				// 				}}
-				// 			/>
-				// 		</PanelRow>
-				// 		<PanelRow>
-				// 			<TextControl
-				// 				label="Delay"
-				// 				value={delay}
-				// 				onChange={option => {
-				// 					updateSliderSetting({ delay: option });
-				// 				}}
-				// 			/>
-				// 		</PanelRow>
-				// 		<PanelRow>
-				// 			<TextControl
-				// 				label="Speed"
-				// 				value={speed}
-				// 				onChange={option => {
-				// 					updateSliderSetting({ speed: option });
-				// 				}}
-				// 			/>
-				// 		</PanelRow>
-				// 		<PanelRow>
-				// 			<RadioControl
-				// 				label="Loop"
-				// 				selected={loop}
-				// 				options={[
-				// 					{ label: "True", value: "true" },
-				// 					{ label: "False", value: "false" }
-				// 				]}
-				// 				onChange={option => {
-				// 					updateSliderSetting({ loop: option });
-				// 				}}
-				// 			/>
-				// 		</PanelRow>
-				// 		<PanelRow>
-				// 			<SelectControl
-				// 				label="Effect"
-				// 				selected={effect}
-				// 				options={[
-				// 					{ label: "Slide", value: "slide" },
-				// 					{ label: "Fade", value: "fade" },
-				// 					{ label: "Cube", value: "cube" },
-				// 					{ label: "Coverflow", value: "coverflow" },
-				// 					{ label: "Flip", value: "flip" }
-				// 				]}
-				// 				onChange={option => {
-				// 					updateSliderSetting({ effect: option });
-				// 				}}
-				// 			/>
-				// 		</PanelRow>
-				// 	</PanelBody>
-				// </InspectorControls>,
 				<Fragment>
 					{images.map((img, imgMapIndex) => {
 						return [
@@ -248,10 +176,11 @@ export default class Edit extends Component {
 										render={({ open }) => (
 											<Button className={"image-button"} onClick={open}>
 												<img src={img.url} />
+												{/* test */}
 											</Button>
 										)}
 									/>
-									{/* <div className="hoora-media-row--delete-button">
+									<div className="hoora-media-row--delete-button">
 										<Button
 											className={"button button-large"}
 											onClick={() => {
@@ -260,8 +189,8 @@ export default class Edit extends Component {
 										>
 											X
 										</Button>
-									</div> */}
-									{/* <div className="hoora-media-row--add-button">
+									</div> 
+									<div className="hoora-media-row--add-button">
 										<MediaUpload
 											onSelect={selectedImage =>
 												addImage(selectedImage, images, imgMapIndex)
@@ -278,7 +207,7 @@ export default class Edit extends Component {
 												</Button>
 											)}
 										/>
-									</div> */}
+									</div>
 								</MediaUploadCheck>
                                 <PlainText
                                     onChange={ content => setAttributes({ titles : content }) }
@@ -295,24 +224,12 @@ export default class Edit extends Component {
 			return (
 				<Fragment>
 					<div className={className}>
-						{/* <MediaPlaceholder
-							icon="format-gallery"
-							className={className}
-							labels={{
-								title: __("Carousel"),
-								name: __("images")
-							}}
-							onSelect={onSelectImages}
-							accept="image/*"
-							type="image"
-							multiple
-						/> */}
 						<MediaUploadCheck>
                             <MediaUpload
                                 onSelect={ onSelectImage1 }
                                 allowedTypes={ ['image'] }
                                 // allowedTypes={ ALLOWED_MEDIA_TYPES }
-								value={ imageID }
+								value={ image.id }
 								render={({ open }) => getImageButton(open) }
 								// render={({ open }) => (
 								// 	<Button className={"image-button"} onClick={open}>

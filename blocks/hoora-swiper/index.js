@@ -5,17 +5,11 @@ import Edit from './edit';
 const { registerBlockType } = wp.blocks;
 
 const attributes = {
-	imageID: {
-		type: 'number',
+	image: {
+		type: 'object',
+	default: {}
 	},
-	imageAlt: {
-	attribute: 'alt',
-	selector: '.card__image'
-	},
-	imageUrl: {
-	attribute: 'src',
-	selector: '.card__image'
-	},
+
     images: {
 		type: "array",
 		default: []
@@ -63,7 +57,7 @@ registerBlockType("hoora/swiper", {
 	edit:Edit,
 
 	save: function(props) {
-		const { images, autoplay, loop, speed, delay, effect, titles, body } = props.attributes;
+		const { image,images, autoplay, loop, speed, delay, effect, titles, body } = props.attributes;
 		return (
 			<div
 				className={`swiper-container hoora-swiper-container hoora-swiper-container`}
