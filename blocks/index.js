@@ -10,6 +10,7 @@ import "./i18n.js";
 // import "./05-custom-toolbar";
 // import "./06-inspector-controls";
 // import "./07-inspector-control-fields";
+import "./08-form-fields";
 import "./hoora-swiper";
 import "./hoora-menu";
 import "./hoora-card";

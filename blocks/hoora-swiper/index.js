@@ -40,11 +40,10 @@ const attributes = {
 		default: []
         // selector: '.card__title'
 	},
-	body: {
-		type: 'array',
-		source: 'children',
+	title: {
+		type: 'string',
+		// source: 'children',
 		default: 'Description 1'
-		// selector: '.card__body'
 	},
 };
 
@@ -57,7 +56,7 @@ registerBlockType("hoora/swiper", {
 	edit:Edit,
 
 	save: function(props) {
-		const { image,images, autoplay, loop, speed, delay, effect, titles, body } = props.attributes;
+		const { image,images, autoplay, loop, speed, delay, effect, titles, title } = props.attributes;
 		return (
 			<div
 				className={`swiper-container hoora-swiper-container hoora-swiper-container`}
@@ -73,7 +72,7 @@ registerBlockType("hoora/swiper", {
 						return (
 							<div className="swiper-slide hoora-swiper-slide">
 								<img src={image.url} alt={image.alt} />
-								{/* <h3 className="card__title">{ titles[index] }</h3> */}
+								<h3 className="card__title">{ title }</h3>
 								{/* <div className="card__body">
 									{ body }
 								</div> */}

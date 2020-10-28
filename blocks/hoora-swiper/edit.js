@@ -28,7 +28,7 @@ export default class Edit extends Component {
     }
     
     render() {
-        const { attributes : {image,images, autoplay, loop, speed, delay, effect,titles, body}, setAttributes, className } = this.props;
+        const { attributes : {image,images, autoplay, loop, speed, delay, effect,titles,title}, setAttributes, className } = this.props;
 
 		// function updateSliderSetting(event) {
 		// 	const selected = event.target.querySelector(
@@ -210,8 +210,8 @@ export default class Edit extends Component {
 									</div>
 								</MediaUploadCheck>
                                 <PlainText
-                                    onChange={ content => setAttributes({ titles : content }) }
-                                    value={ titles }
+                                    onChange={ title => setAttributes({ title : title }) }
+                                    value={ title }
                                     placeholder="Your card title"
                                     className="heading"
                                 />
@@ -240,8 +240,10 @@ export default class Edit extends Component {
                             />
                         </MediaUploadCheck>
 						<PlainText
-							onChange={ content => setAttributes({ titles : content }) }
-							value={ titles }
+							onChange={ title => setAttributes({ title }) }
+							// onChange={ content => { var updateTitles = []; updateTitles.push(content);
+							// 	setAttributes({ titles : content }) } }
+							value={ title }
 							placeholder="Your card title"
 							className="heading"
 						/>
