@@ -161,8 +161,17 @@ export default class Edit extends Component {
 			return [
 				<Fragment>
 					{images.map((img, imgMapIndex) => {
+						console.log('titles' + title);
 						return [
-							<div class="media-row hoora-media-row">
+							<div class="media-row hoora-media-row pt-64">
+								<PlainText
+								    // onChange={ content => {var tt = []; tt.push(content); tt.map((t,index) => {return{id : index}}); setAttributes({title:content}); setAttributes({ titles : tt });  }}
+                                    onChange={ content => {  setAttributes({title:content});   }}
+									// onChange = {changedTitle => setAttributes({title:changedTitle})}
+									value = { title }
+                                    placeholder="Your card titleeeee"
+                                    className="heading pb-64"
+                                />
 								<MediaUploadCheck>
 									<MediaUpload
 										onSelect={selectedImg =>
@@ -175,7 +184,7 @@ export default class Edit extends Component {
 										className=""
 										render={({ open }) => (
 											<Button className={"image-button"} onClick={open}>
-												<img src={img.url} />
+												<img src={img.thumbnailUrl} />
 												{/* test */}
 											</Button>
 										)}
@@ -209,12 +218,7 @@ export default class Edit extends Component {
 										/>
 									</div>
 								</MediaUploadCheck>
-                                <PlainText
-                                    onChange={ title => setAttributes({ title : title }) }
-                                    value={ title }
-                                    placeholder="Your card title"
-                                    className="heading"
-                                />
+
 							</div>
 						];
 					})}
@@ -224,6 +228,12 @@ export default class Edit extends Component {
 			return (
 				<Fragment>
 					<div className={className}>
+						<PlainText
+							onChange={ content => {  setAttributes({title:content});   }}
+							value = { title }
+							placeholder = "Your card title"
+							className = "heading pb-64"
+						/>
 						<MediaUploadCheck>
                             <MediaUpload
                                 onSelect={ onSelectImage1 }
@@ -231,22 +241,8 @@ export default class Edit extends Component {
                                 // allowedTypes={ ALLOWED_MEDIA_TYPES }
 								value={ image.id }
 								render={({ open }) => getImageButton(open) }
-								// render={({ open }) => (
-								// 	<Button className={"image-button"} onClick={open}>
-								// 		<img src={imageUrl} />
-								// 		test
-								// 	</Button>
-								// )}
                             />
                         </MediaUploadCheck>
-						<PlainText
-							onChange={ title => setAttributes({ title }) }
-							// onChange={ content => { var updateTitles = []; updateTitles.push(content);
-							// 	setAttributes({ titles : content }) } }
-							value={ title }
-							placeholder="Your card title"
-							className="heading"
-						/>
 					</div>
 				</Fragment>
 			);

@@ -36,14 +36,14 @@ const attributes = {
 	},
 	titles: {
 		type: 'array',
-		source: 'text',
+		// source: 'text',
 		default: []
         // selector: '.card__title'
 	},
 	title: {
 		type: 'string',
 		// source: 'children',
-		default: 'Description 1'
+		default: ''
 	},
 };
 
@@ -72,7 +72,7 @@ registerBlockType("hoora/swiper", {
 						return (
 							<div className="swiper-slide hoora-swiper-slide">
 								<img src={image.url} alt={image.alt} />
-								<h3 className="card__title">{ title }</h3>
+								{/* <h3 className="card__title">{ title }</h3> */}
 								{/* <div className="card__body">
 									{ body }
 								</div> */}
