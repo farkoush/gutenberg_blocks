@@ -28,7 +28,7 @@ export default class Edit extends Component {
     }
     
     render() {
-        const { attributes : {list,lists,image,images, autoplay, loop, speed, delay, effect,titles,title}, setAttributes, className } = this.props;
+        const { attributes : {image,images, autoplay, loop, speed, delay, effect,titles,title}, setAttributes, className } = this.props;
 
 		// function updateSliderSetting(event) {
 		// 	const selected = event.target.querySelector(
@@ -38,50 +38,6 @@ export default class Edit extends Component {
 		// 	event.preventDefault();
 		// }
 
-		// const onSelectImage1 = img => {
-		// 	console.log(img.id);
-		// 	var selectImages = [];
-		// 	var selectedImage = img;
-		// 	selectImages.push(img);
-		// 	const updatedImages = selectImages.map(img => {
-		// 		return {
-		// 		// id: selectedImageIndex,
-		// 		id: img.id,
-		// 		imgid: selectedImage.id,
-		// 		url: selectedImage.sizes.full.url,
-		// 		thumbnailUrl: selectedImage.sizes.thumbnail.url,
-		// 		alt: selectedImage.alt,
-		// 		caption: selectedImage.caption
-		// 	};
-		// });
-		// 	setAttributes({
-		// 		images: updatedImages
-		// 	});
-		// };
-		// const getImageButton = (openEvent) => {
-		// 	if(image.url) {
-		// 		return (
-		// 			<img
-		// 				src={ image.url }
-		// 				onClick={ openEvent }
-		// 				className="image"
-		// 			/>
-		// 		);
-		// 	}
-		// 	else {
-		// 		return (
-		// 			<div className="button-container">
-		// 				<Button
-		// 					onClick={ openEvent }
-		// 					className="button button-large"
-		// 				>
-		// 					Pick an image
-		// 				</Button>
-		// 			</div>
-		// 		);
-		// 	}
-		// }; 
-		
 		const onSelectImage1 = img => {
 			console.log(img.id);
 			var selectImages = [];
@@ -130,76 +86,53 @@ export default class Edit extends Component {
 			setAttributes(value);
 		}
 
-		// function removeImage(removeImg, currentImages) {
-		// 	// Filter out the image we're deleting
-		// 	const filterImages = currentImages.filter(img => img.id != removeImg.id);
-		// 	// Reset the ID's to the new index
-		// 	const updatedImages = filterImages.map((img, index) => {
-		// 		if (img.id != removeImg.id) {
-		// 			return {
-		// 				id: index,
-		// 				imgid: img.imgid,
-		// 				url: img.url,
-		// 				thumbnailUrl: img.thumbnailUrl,
-		// 				alt: img.alt,
-		// 				caption: img.caption
-		// 			};
-		// 		}
-		// 	});
-		// 	setAttributes({
-		// 		images: updatedImages
-		// 	});
-		// }
+		function removeImage(removeImg, currentImages) {
+			// Filter out the image we're deleting
+			const filterImages = currentImages.filter(img => img.id != removeImg.id);
+			// Reset the ID's to the new index
+			const updatedImages = filterImages.map((img, index) => {
+				if (img.id != removeImg.id) {
+					return {
+						id: index,
+						imgid: img.imgid,
+						url: img.url,
+						thumbnailUrl: img.thumbnailUrl,
+						alt: img.alt,
+						caption: img.caption
+					};
+				}
+			});
+			setAttributes({
+				images: updatedImages
+			});
+		}
 
-		// function addImage(selectedImage, selectedImages, selectedImageIndex) {
-		// 	const updatedImage = {
-		// 		id: selectedImageIndex,
-		// 		imgid: selectedImage.id,
-		// 		url: selectedImage.sizes.full.url,
-		// 		thumbnailUrl: selectedImage.sizes.thumbnail.url,
-		// 		alt: selectedImage.alt,
-		// 		caption: selectedImage.caption
-		// 	};
-		// 	// Insert our new image into the array after the current index.
-		// 	selectedImages.splice(selectedImageIndex + 1, 0, updatedImage);
-		// 	const updatedImages = selectedImages.map((img, index) => {
-		// 		return {
-		// 			id: index,
-		// 			imgid: img.id,
-		// 			url: img.url,
-		// 			thumbnailUrl: img.thumbnailUrl,
-		// 			alt: img.alt,
-		// 			caption: img.caption
-		// 		};
-		// 	});
+		function addImage(selectedImage, selectedImages, selectedImageIndex) {
+			const updatedImage = {
+				id: selectedImageIndex,
+				imgid: selectedImage.id,
+				url: selectedImage.sizes.full.url,
+				thumbnailUrl: selectedImage.sizes.thumbnail.url,
+				alt: selectedImage.alt,
+				caption: selectedImage.caption
+			};
+			// Insert our new image into the array after the current index.
+			selectedImages.splice(selectedImageIndex + 1, 0, updatedImage);
+			const updatedImages = selectedImages.map((img, index) => {
+				return {
+					id: index,
+					imgid: img.id,
+					url: img.url,
+					thumbnailUrl: img.thumbnailUrl,
+					alt: img.alt,
+					caption: img.caption
+				};
+			});
 
-		// 	setAttributes({
-		// 		images: updatedImages
-		// 	});
-		// }
-		// const onSelectImage = function(
-		// 	selectedImage,
-		// 	selectedImages,
-		// 	selectedImageIndex
-		// ) {
-		// 	const updatedImages = selectedImages.map(img => {
-		// 		if (img.id === selectedImageIndex) {
-		// 			return {
-		// 				id: selectedImageIndex,
-		// 				imgid: selectedImage.id,
-		// 				url: selectedImage.sizes.full.url,
-		// 				thumbnailUrl: selectedImage.sizes.thumbnail.url,
-		// 				alt: selectedImage.alt,
-		// 				caption: selectedImage.caption
-		// 			};
-		// 		} else {
-		// 			return img;
-		// 		}
-		// 	});
-		// 	setAttributes({
-		// 		images: updatedImages
-		// 	});
-		// };
+			setAttributes({
+				images: updatedImages
+			});
+		}
 		const onSelectImage = function(
 			selectedImage,
 			selectedImages,
@@ -256,7 +189,7 @@ export default class Edit extends Component {
 											</Button>
 										)}
 									/>
-									{/* <div className="hoora-media-row--delete-button">
+									<div className="hoora-media-row--delete-button">
 										<Button
 											className={"button button-large"}
 											onClick={() => {
@@ -283,7 +216,7 @@ export default class Edit extends Component {
 												</Button>
 											)}
 										/>
-									</div> */}
+									</div>
 								</MediaUploadCheck>
 
 							</div>
