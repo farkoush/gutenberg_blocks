@@ -26,21 +26,27 @@ const {
 } = wp.components;
 
 const attributes = {
-	items: {        
+	items: {   
+		type: "array",     
 		source: 'query',
 		default: [],
 		selector: '.item',
 		query: {
-		title: {
-			type: 'string',
-			source: 'text',
-			selector: '.title'
-		},
-		index: {            
-			type: 'number',
-			source: 'attribute',
-			attribute: 'data-index'            
-		}           
+			title: {
+				type: 'string',
+				source: 'text',
+				selector: '.title'
+			},
+			description: {
+				type: "string",
+				// selector: ".card-content",
+				source: "text",
+			},
+			index: {            
+				type: 'number',
+				source: 'attribute',
+				attribute: 'data-index'            
+			}           
 		}
 	},
 	
@@ -84,44 +90,70 @@ registerBlockType("hoora/swiper", {
 
 	// edit:Edit,
 	edit:  props => {
-
+		
+		const onChangeContent = (value,changedIndex,itemList) => {   
+			const updatedImages = itemList.map(item => {
+				if (item.index === changedIndex) {
+					var newObject = Object.assign({}, item, {
+						title: value
+					});
+					return {
+						newObject
+					};
+				} else {
+					return item;
+				}
+			});
+			props.setAttributes({
+				items: updatedImages
+			});                             
+			// var newObject = Object.assign({}, item, {
+			// 	title: value
+			// });
+			// console.log('title' + newObject);
+			// return props.setAttributes({
+			// items: [].concat(_cloneArray(props.attributes.items.filter( itemFilter => {
+			// 	return itemFilter.index != item.index;
+			// })), [newObject])
+			// });
+		}
+		const onChangeContentDesc = (value,changedIndex,itemList) => {                                
+			const updatedImages = itemList.map(item => {
+				if (itemm.index === changedIndex) {
+					var newObject = Object.assign({}, item, {
+						description: value
+					});
+					return {
+						newObject
+					};
+				} else {
+					return item;
+				}
+			});
+			props.setAttributes({
+				items: updatedImages
+			});
+		}
 		var attributes = props.attributes;
 		var itemList = attributes.items.sort(  (a , b) => {
 		  return a.index - b.index;
-		}).map( item => {          
+		}).map( (item,index) => {          
 		  	return <div className = 'item'>  
 				<RichText             
 					tagName = 'h1'
 					placeholder= 'Here the title goes...'              
 					value = {item.title}
 					autoFocus = 'true'
-					onChange = { value  => {                                
-						var newObject = Object.assign({}, item, {
-						title: value
-						});
-						return props.setAttributes({
-						items: [].concat(_cloneArray(props.attributes.items.filter( itemFilter => {
-							return itemFilter.index != item.index;
-						})), [newObject])
-						});
-					}}
+					onChange = { value  => onChangeContent(value,index,itemList) 
+				}
 		  		/>
-				{/* <RichText             
+				<RichText             
 					tagName = 'p'
 					placeholder= 'Here the body goes...'              
-					value = {item.body}
+					value = {item.description}
 					autoFocus = 'true'
-					onChange = { value  => {                                
-						var newObject = Object.assign({}, item, {
-						body: value
-						});
-						return props.setAttributes({
-						items: [].concat(_cloneArray(props.attributes.items.filter( itemFilter => {
-							return itemFilter.index != item.index;
-						})), [newObject])
-						});
-					}}
-		  		/> */}
+					onChange = { value  => onChangeContentDesc(value,index,item,itemList) }
+		  		/>
 		  </div>
 		});
 		function _cloneArray(arr) { 
@@ -141,7 +173,8 @@ registerBlockType("hoora/swiper", {
 				  return props.setAttributes({
 					items: [].concat(_cloneArray(props.attributes.items), [{
 					  index: props.attributes.items.length,                  
-					  title: "" 
+					  title: "" ,
+					  description:""
 					}])
 				  });                            
 				}
@@ -189,15 +222,19 @@ registerBlockType("hoora/swiper", {
 		if (attributes.items.length > 0) {
 	  
 		  var itemList = attributes.items.map(function(item) {          
-		  
+		//   console.log('desc'+ item.description);
+		//   console.log('title'+item.title);
 			return el('div', { className: 'item', 'data-index': item.index },        
 			  el( 'h1', {              
 				className: 'title',                                 
-			  }, item.title)            
+			  }, item.title),
+			  el( 'p', {              
+				className: 'desc',                                 
+			  }, item.description)             
 			);
 	  
 		  });
-	  
+		//   console.log(itemList);
 		  return el(
 			'div',
 			{ className: props.className },
