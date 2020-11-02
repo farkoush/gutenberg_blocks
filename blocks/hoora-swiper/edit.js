@@ -1,318 +1,185 @@
-/**
- * Internal block libraries
- */
-const { __ } = wp.i18n; 
-const { Component, Fragment } = wp.element;
-
+// import produce from "immer";
+// import { __ } from "@wordpress/i18n";
+import "./editor.scss";
 const {
-	MediaUpload,
-	MediaPlaceholder,
-	MediaUploadCheck,
-    InspectorControls,
-    RichText,
-    PlainText
-} = wp.blockEditor;
+	__,
+} = wp.i18n;
 const {
 	Button,
-	PanelBody,
-	PanelRow,
+    PanelBody,
+    IconButton,
 	TextControl,
-	SelectControl,
-	RadioControl
 } = wp.components;
+// const {IconButton} = wp.components.Button
+const {
+    MediaUpload,
+	MediaPlaceholder,
+	MediaUploadCheck,
+	InspectorControls,
+} = wp.blockEditor;
+const {
+	Fragment,
+} = wp.element;
+
+// import { RichText, PlainText } from "@wordpress/block-editor";
+// import { useState } from "@wordpress/element";
+
+export default function Edit({ attributes, setAttributes, className }) {
+	const handleAddLocation = () => {
+        const locations = [ ...attributes.locations ];
+        locations.push( {
+            address: '', city:'',  image:{id:'', url:'' , thumbnailUrl:'', alt:'', caption:'' }
+            // image:{ id:'', imgid:'', url:'', thumbnailUrl:'', alt:'', caption:''}
+        } );
+        setAttributes( { locations } );
+
+        // const locations = [ ...attributes.locations, {address:"",index:attributes.locations.length} ];
+        // setAttributes( { locations } );
 
 
-export default class Edit extends Component {
-    constructor() {
-        super( ...arguments );
+        // setAttributes ({
+        // 	locations : [
+        // 		...attributes.locations,{address:"",index:attributes.locations.length}
+        // 	]
+        // })
+    };
+
+    const handleRemoveLocation = ( index ) => {
+    	const locations = [ ...attributes.locations ];
+    	locations.splice( index, 1 );
+    	setAttributes( { locations } );
+    };
+
+    const handleLocationChange = ( address, index ) => {
+        // const locations = [ ...attributes.locations, {address} ];
+        const locations = [ ...attributes.locations ];
+        locations[ index ].address = address;
+        setAttributes( { locations } );
+    };
+    const handleLocationChangeCity = ( city, index ) => {
+        // const locations = [ ...attributes.locations, {city} ];
+        const locations = [ ...attributes.locations ];
+        locations[ index ].city = city;
+        setAttributes( { locations } );
+    };
+    const onSelectImage1 = (selectedImage,index) => {
+    //     const updatedImages = selectImages.map(img => {
+    //         return {
+    //         // id: selectedImageIndex,
+    //         id: img.id,
+    //         imgid: selectedImage.id,
+    //         url: selectedImage.sizes.full.url,
+    //         thumbnailUrl: selectedImage.sizes.thumbnail.url,
+    //         alt: selectedImage.alt,
+    //         caption: selectedImage.caption
+    //     };
+    // });
+    const locations = [ ...attributes.locations ];
+    // image.thumbnailUrl = image.sizes.thumbnail.url
+    console.log(selectedImage.sizes.thumbnail.url)
+    locations[ index ].image = {
+        id: selectedImage.id,
+        url: selectedImage.sizes.full.url,
+        thumbnailUrl: selectedImage.sizes.thumbnail.url,
+        alt: selectedImage.alt,
+        caption: selectedImage.caption
     }
-    
-    render() {
-        const { attributes : {list,lists,image,images, autoplay, loop, speed, delay, effect,titles,title}, setAttributes, className } = this.props;
+    // locations[ index ].image = imagee;
+    setAttributes( { locations } );
+        // setAttributes({
+        //     images: updatedImages
+        // });
+    };
+    const getImageButton = (openEvent, image) => {
+        if(image.url) {
+            console.log('iiiii' + image.thumbnailUrl);
+            return (
+                <img
+                    src = { image.thumbnailUrl }
+                    // src={ image.sizes.thumbnail.url }
+                    onClick={ openEvent }
+                    className="image"
+                />
+            );
+        }
+        else {
+            return (
+                <div className="button-container">
+                    <Button
+                        onClick={ openEvent }
+                        className="button button-large"
+                    >
+                        Pick an image
+                    </Button>
+                </div>
+            );
+        }
+    }; 
 
-		// function updateSliderSetting(event) {
-		// 	const selected = event.target.querySelector(
-		// 		"#hoora-carousel-loop-setting option:checked"
-		// 	);
-		// 	setAttributes({ loop: selected.value });
-		// 	event.preventDefault();
-		// }
+    let locationFields,
+        locationDisplay;
 
-		// const onSelectImage1 = img => {
-		// 	console.log(img.id);
-		// 	var selectImages = [];
-		// 	var selectedImage = img;
-		// 	selectImages.push(img);
-		// 	const updatedImages = selectImages.map(img => {
-		// 		return {
-		// 		// id: selectedImageIndex,
-		// 		id: img.id,
-		// 		imgid: selectedImage.id,
-		// 		url: selectedImage.sizes.full.url,
-		// 		thumbnailUrl: selectedImage.sizes.thumbnail.url,
-		// 		alt: selectedImage.alt,
-		// 		caption: selectedImage.caption
-		// 	};
-		// });
-		// 	setAttributes({
-		// 		images: updatedImages
-		// 	});
-		// };
-		// const getImageButton = (openEvent) => {
-		// 	if(image.url) {
-		// 		return (
-		// 			<img
-		// 				src={ image.url }
-		// 				onClick={ openEvent }
-		// 				className="image"
-		// 			/>
-		// 		);
-		// 	}
-		// 	else {
-		// 		return (
-		// 			<div className="button-container">
-		// 				<Button
-		// 					onClick={ openEvent }
-		// 					className="button button-large"
-		// 				>
-		// 					Pick an image
-		// 				</Button>
-		// 			</div>
-		// 		);
-		// 	}
-		// }; 
-		
-		const onSelectImage1 = img => {
-			console.log(img.id);
-			var selectImages = [];
-			var selectedImage = img;
-			selectImages.push(img);
-			const updatedImages = selectImages.map(img => {
-				return {
-				// id: selectedImageIndex,
-				id: img.id,
-				imgid: selectedImage.id,
-				url: selectedImage.sizes.full.url,
-				thumbnailUrl: selectedImage.sizes.thumbnail.url,
-				alt: selectedImage.alt,
-				caption: selectedImage.caption
-			};
-		});
-			setAttributes({
-				images: updatedImages
-			});
-		};
-		const getImageButton = (openEvent) => {
-			if(image.url) {
-				return (
-					<img
-						src={ image.url }
-						onClick={ openEvent }
-						className="image"
-					/>
-				);
-			}
-			else {
-				return (
-					<div className="button-container">
-						<Button
-							onClick={ openEvent }
-							className="button button-large"
-						>
-							Pick an image
-						</Button>
-					</div>
-				);
-			}
-		}; 
+    if ( attributes.locations.length ) {
+        locationFields = attributes.locations.map( ( location, index ) => {
+            return <Fragment key={ index }>
+                <TextControl
+                    className="grf__location-address"
+                    placeholder="350 Fifth Avenue New York NY"
+                    // value = {location.address}
+                    value={ attributes.locations[ index ].address }
+                    onChange={ ( address ) => handleLocationChange( address, index ) }
+                />
+                <TextControl
+                    className="grf__location-address"
+                    placeholder="350 Fifth Avenue New York NY"
+                    // value = {location.address}
+                    value={ attributes.locations[ index ].city }
+                    onChange={ ( city ) => handleLocationChangeCity( city, index ) }
+                />
+                <MediaUploadCheck>
+                        <MediaUpload
+                            onSelect={ (image) => onSelectImage1(image,index) }
+                            allowedTypes={ ['image'] }
+                            // allowedTypes={ ALLOWED_MEDIA_TYPES }
+                            value={ attributes.locations[ index ].image.id }
+                            // render={({ open }) => (
+                            //     <Button className={"image-button"} onClick={open}>
+                            //     {console.log( attributes.locations[ index ])}
+                            //         {/* <img src={img.thumbnailUrl} /> */}
+                            //         test
+                            //     </Button>
+                            // )}
+                            render={({ open }) => getImageButton(open,attributes.locations[ index ].image) }
+                        />
+                </MediaUploadCheck>
+                <IconButton
+                    className="grf__remove-location-address"
+                    icon="no-alt"
+                    label="Delete location"
+                    onClick={ () => handleRemoveLocation( index ) }
+                />
+            </Fragment>;
+        } );
 
-		function updateSliderSetting(value) {
-			setAttributes(value);
-		}
-
-		// function removeImage(removeImg, currentImages) {
-		// 	// Filter out the image we're deleting
-		// 	const filterImages = currentImages.filter(img => img.id != removeImg.id);
-		// 	// Reset the ID's to the new index
-		// 	const updatedImages = filterImages.map((img, index) => {
-		// 		if (img.id != removeImg.id) {
-		// 			return {
-		// 				id: index,
-		// 				imgid: img.imgid,
-		// 				url: img.url,
-		// 				thumbnailUrl: img.thumbnailUrl,
-		// 				alt: img.alt,
-		// 				caption: img.caption
-		// 			};
-		// 		}
-		// 	});
-		// 	setAttributes({
-		// 		images: updatedImages
-		// 	});
-		// }
-
-		function addImage(selectedImage, selectedImages, selectedImageIndex) {
-			const updatedImage = {
-				id: selectedImageIndex,
-				imgid: selectedImage.id,
-				url: selectedImage.sizes.full.url,
-				thumbnailUrl: selectedImage.sizes.thumbnail.url,
-				alt: selectedImage.alt,
-				caption: selectedImage.caption
-			};
-			// Insert our new image into the array after the current index.
-			selectedImages.splice(selectedImageIndex + 1, 0, updatedImage);
-			const updatedImages = selectedImages.map((img, index) => {
-				return {
-					id: index,
-					imgid: img.id,
-					url: img.url,
-					thumbnailUrl: img.thumbnailUrl,
-					alt: img.alt,
-					caption: img.caption
-				};
-			});
-
-			setAttributes({
-				images: updatedImages
-			});
-		}
-		// const onSelectImage = function(
-		// 	selectedImage,
-		// 	selectedImages,
-		// 	selectedImageIndex
-		// ) {
-		// 	const updatedImages = selectedImages.map(img => {
-		// 		if (img.id === selectedImageIndex) {
-		// 			return {
-		// 				id: selectedImageIndex,
-		// 				imgid: selectedImage.id,
-		// 				url: selectedImage.sizes.full.url,
-		// 				thumbnailUrl: selectedImage.sizes.thumbnail.url,
-		// 				alt: selectedImage.alt,
-		// 				caption: selectedImage.caption
-		// 			};
-		// 		} else {
-		// 			return img;
-		// 		}
-		// 	});
-		// 	setAttributes({
-		// 		images: updatedImages
-		// 	});
-		// };
-		const onSelectImage = function(
-			selectedImage,
-			selectedImages,
-			selectedImageIndex
-		) {
-			const updatedImages = selectedImages.map(img => {
-				if (img.id === selectedImageIndex) {
-					return {
-						id: selectedImageIndex,
-						imgid: selectedImage.id,
-						url: selectedImage.sizes.full.url,
-						thumbnailUrl: selectedImage.sizes.thumbnail.url,
-						alt: selectedImage.alt,
-						caption: selectedImage.caption
-					};
-				} else {
-					return img;
-				}
-			});
-			setAttributes({
-				images: updatedImages
-			});
-		};
-
-		if (images.length > 0) {
-			return [
-				<Fragment>
-					{images.map((img, imgMapIndex) => {
-						console.log('titles' + title);
-						return [
-							<div class="media-row hoora-media-row pt-64">
-								<PlainText
-								    // onChange={ content => {var tt = []; tt.push(content); tt.map((t,index) => {return{id : index}}); setAttributes({title:content}); setAttributes({ titles : tt });  }}
-                                    onChange={ content => {  setAttributes({title:content});   }}
-									// onChange = {changedTitle => setAttributes({title:changedTitle})}
-									value = { title }
-                                    placeholder="Your card titleeeee"
-                                    className="heading pb-64"
-                                />
-								<MediaUploadCheck>
-									<MediaUpload
-										onSelect={selectedImg =>
-											onSelectImage(selectedImg, images, imgMapIndex)
-										}
-										type="image"
-										value={img.imgid}
-										accept="image/*"
-										type="image"
-										className=""
-										render={({ open }) => (
-											<Button className={"image-button"} onClick={open}>
-												<img src={img.thumbnailUrl} />
-												{/* test */}
-											</Button>
-										)}
-									/>
-									{/* <div className="hoora-media-row--delete-button">
-										<Button
-											className={"button button-large"}
-											onClick={() => {
-												removeImage(img, images);
-											}}
-										>
-											X
-										</Button>
-									</div> 
-									<div className="hoora-media-row--add-button">
-										<MediaUpload
-											onSelect={selectedImage =>
-												addImage(selectedImage, images, imgMapIndex)
-											}
-											type="image"
-											accept="image/*"
-											type="image"
-											render={({ open }) => (
-												<Button
-													className={"button button-large"}
-													onClick={open}
-												>
-													Add Image
-												</Button>
-											)}
-										/>
-									</div> */}
-								</MediaUploadCheck>
-
-							</div>
-						];
-					})}
-				</Fragment>
-			];
-		} else {
-			return (
-				<Fragment>
-					<div className={className}>
-						<PlainText
-							onChange={ content => {  setAttributes({title:content});   }}
-							value = { title }
-							placeholder = "Your card title"
-							className = "heading pb-64"
-						/>
-						<MediaUploadCheck>
-                            <MediaUpload
-                                onSelect={ onSelectImage1 }
-                                allowedTypes={ ['image'] }
-                                // allowedTypes={ ALLOWED_MEDIA_TYPES }
-								value={ image.id }
-								render={({ open }) => getImageButton(open) }
-                            />
-                        </MediaUploadCheck>
-					</div>
-				</Fragment>
-			);
-		}
+        locationDisplay = attributes.locations.map( ( location, index ) => {
+            return <div key={ index }><p>{ location.address }</p> <p>{ location.city }</p><img src={location.image.thumbnailUrl}/></div>;
+        } );
     }
+	return [
+        <InspectorControls key="1">
+            <PanelBody title={ __( 'Locations' ) }>
+                { locationFields }
+                <Button
+                    isDefault
+                    onClick={ handleAddLocation.bind( this ) }
+                >
+                    { __( 'Add Location' ) }
+                </Button>
+            </PanelBody>
+        </InspectorControls>,
+        <div key="2" className={ className }>
+            <h2>Block</h2>
+            { locationDisplay }
+        </div>,
+    ];
 }

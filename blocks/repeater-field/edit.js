@@ -5,17 +5,18 @@ const {
 	__,
 } = wp.i18n;
 const {
-	registerBlockType,
-} = wp.blocks;
-const {
 	Button,
-	IconButton,
-	PanelBody,
+    PanelBody,
+    IconButton,
 	TextControl,
 } = wp.components;
+// const {IconButton} = wp.components.Button
 const {
+    MediaUpload,
+	MediaPlaceholder,
+	MediaUploadCheck,
 	InspectorControls,
-} = wp.editor;
+} = wp.blockEditor;
 const {
 	Fragment,
 } = wp.element;
@@ -27,7 +28,8 @@ export default function Edit({ attributes, setAttributes, className }) {
 	const handleAddLocation = () => {
         const locations = [ ...attributes.locations ];
         locations.push( {
-            address: '', city:''
+            address: '', city:'',  image:{id:'', url:'' , thumbnailUrl:'', alt:'', caption:'' }
+            // image:{ id:'', imgid:'', url:'', thumbnailUrl:'', alt:'', caption:''}
         } );
         setAttributes( { locations } );
 
@@ -60,6 +62,59 @@ export default function Edit({ attributes, setAttributes, className }) {
         locations[ index ].city = city;
         setAttributes( { locations } );
     };
+    const onSelectImage1 = (selectedImage,index) => {
+    //     const updatedImages = selectImages.map(img => {
+    //         return {
+    //         // id: selectedImageIndex,
+    //         id: img.id,
+    //         imgid: selectedImage.id,
+    //         url: selectedImage.sizes.full.url,
+    //         thumbnailUrl: selectedImage.sizes.thumbnail.url,
+    //         alt: selectedImage.alt,
+    //         caption: selectedImage.caption
+    //     };
+    // });
+    const locations = [ ...attributes.locations ];
+    // image.thumbnailUrl = image.sizes.thumbnail.url
+    console.log(selectedImage.sizes.thumbnail.url)
+    locations[ index ].image = {
+        id: selectedImage.id,
+        url: selectedImage.sizes.full.url,
+        thumbnailUrl: selectedImage.sizes.thumbnail.url,
+        alt: selectedImage.alt,
+        caption: selectedImage.caption
+    }
+    // locations[ index ].image = imagee;
+    setAttributes( { locations } );
+        // setAttributes({
+        //     images: updatedImages
+        // });
+    };
+    const getImageButton = (openEvent, image) => {
+        if(image.url) {
+            console.log('iiiii' + image.thumbnailUrl);
+            return (
+                <img
+                    src = { image.thumbnailUrl }
+                    // src={ image.sizes.thumbnail.url }
+                    onClick={ openEvent }
+                    className="image"
+                />
+            );
+        }
+        else {
+            return (
+                <div className="button-container">
+                    <Button
+                        onClick={ openEvent }
+                        className="button button-large"
+                    >
+                        Pick an image
+                    </Button>
+                </div>
+            );
+        }
+    }; 
 
     let locationFields,
         locationDisplay;
@@ -81,6 +136,22 @@ export default function Edit({ attributes, setAttributes, className }) {
                     value={ attributes.locations[ index ].city }
                     onChange={ ( city ) => handleLocationChangeCity( city, index ) }
                 />
+                <MediaUploadCheck>
+                        <MediaUpload
+                            onSelect={ (image) => onSelectImage1(image,index) }
+                            allowedTypes={ ['image'] }
+                            // allowedTypes={ ALLOWED_MEDIA_TYPES }
+                            value={ attributes.locations[ index ].image.id }
+                            // render={({ open }) => (
+                            //     <Button className={"image-button"} onClick={open}>
+                            //     {console.log( attributes.locations[ index ])}
+                            //         {/* <img src={img.thumbnailUrl} /> */}
+                            //         test
+                            //     </Button>
+                            // )}
+                            render={({ open }) => getImageButton(open,attributes.locations[ index ].image) }
+                        />
+                </MediaUploadCheck>
                 <IconButton
                     className="grf__remove-location-address"
                     icon="no-alt"
@@ -91,7 +162,7 @@ export default function Edit({ attributes, setAttributes, className }) {
         } );
 
         locationDisplay = attributes.locations.map( ( location, index ) => {
-            return <p key={ index }>{ location.address } { location.city }</p>;
+            return <div key={ index }><p>{ location.address }</p> <p>{ location.city }</p><img src={location.image.thumbnailUrl}/></div>;
         } );
     }
 	return [
