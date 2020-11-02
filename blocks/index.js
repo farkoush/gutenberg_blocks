@@ -20,5 +20,6 @@ import "./12-dynamic";
 import "./dos-and-donts";
 import "./hoora-tabs";
 import "./hoora-swiper";
+import "./repeater-field"
 
 

@@ -151,32 +151,32 @@ export default class Edit extends Component {
 		// 	});
 		// }
 
-		// function addImage(selectedImage, selectedImages, selectedImageIndex) {
-		// 	const updatedImage = {
-		// 		id: selectedImageIndex,
-		// 		imgid: selectedImage.id,
-		// 		url: selectedImage.sizes.full.url,
-		// 		thumbnailUrl: selectedImage.sizes.thumbnail.url,
-		// 		alt: selectedImage.alt,
-		// 		caption: selectedImage.caption
-		// 	};
-		// 	// Insert our new image into the array after the current index.
-		// 	selectedImages.splice(selectedImageIndex + 1, 0, updatedImage);
-		// 	const updatedImages = selectedImages.map((img, index) => {
-		// 		return {
-		// 			id: index,
-		// 			imgid: img.id,
-		// 			url: img.url,
-		// 			thumbnailUrl: img.thumbnailUrl,
-		// 			alt: img.alt,
-		// 			caption: img.caption
-		// 		};
-		// 	});
+		function addImage(selectedImage, selectedImages, selectedImageIndex) {
+			const updatedImage = {
+				id: selectedImageIndex,
+				imgid: selectedImage.id,
+				url: selectedImage.sizes.full.url,
+				thumbnailUrl: selectedImage.sizes.thumbnail.url,
+				alt: selectedImage.alt,
+				caption: selectedImage.caption
+			};
+			// Insert our new image into the array after the current index.
+			selectedImages.splice(selectedImageIndex + 1, 0, updatedImage);
+			const updatedImages = selectedImages.map((img, index) => {
+				return {
+					id: index,
+					imgid: img.id,
+					url: img.url,
+					thumbnailUrl: img.thumbnailUrl,
+					alt: img.alt,
+					caption: img.caption
+				};
+			});
 
-		// 	setAttributes({
-		// 		images: updatedImages
-		// 	});
-		// }
+			setAttributes({
+				images: updatedImages
+			});
+		}
 		// const onSelectImage = function(
 		// 	selectedImage,
 		// 	selectedImages,
