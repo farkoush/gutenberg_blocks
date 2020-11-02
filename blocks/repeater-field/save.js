@@ -7,7 +7,7 @@ export default function save({ attributes, className }) {
     } );
 	return (
         <div className={ className }>
-            <h2>Block</h2>
+            <h2>Repeater Field</h2>
             { locationFields }
         </div>
 	);
