@@ -8,6 +8,8 @@
 //  Import CSS.
 import './editor.scss';
 import './style.scss';
+import Edit from "./edit";
+import save from "./save";
 
 const {
 	__,
@@ -15,18 +17,6 @@ const {
 const {
 	registerBlockType,
 } = wp.blocks;
-const {
-	Button,
-	IconButton,
-	PanelBody,
-	TextControl,
-} = wp.components;
-const {
-	InspectorControls,
-} = wp.editor;
-const {
-	Fragment,
-} = wp.element;
 
 /**
  * Register: Repeater Gutenberg Block.
@@ -64,92 +54,6 @@ registerBlockType( 'grf/gutenberg-repeater-field', {
 		__( 'Repeatable' ),
 		__( 'ACF' ),
 	],
-	edit: ( props ) => {
-		const { attributes : {locations}, setAttributes, className } = this.props;
-		const handleAddLocation = () => {
-			const locations = [ ...locations ];
-			console.log('locations' + locations[0].address);
-			// locations.push( {
-			// 	address: '',
-			// } );
-			// selectedImages.splice(selectedImageIndex + 1, 0, updatedImage);
-			console.log('locations2' + locations[0].address);
-
-			// locations.map(location => {
-			// 	return{
-			// 		address : ''
-			// 	}
-			// })
-			setAttributes( { locations } );
-		};
-
-		const handleRemoveLocation = ( index ) => {
-			const locations = [ ...locations ];
-			locations.splice( index, 1 );
-			setAttributes( { locations } );
-		};
-
-		const handleLocationChange = ( address, index ) => {
-			const locations = [ ...locations ];
-			locations[ index ].address = address;
-			setAttributes( { locations } );
-		};
-
-		let locationFields,
-			locationDisplay;
-
-		if ( locations.length ) {
-			locationFields = locations.map( ( location, index ) => {
-				return <Fragment key={ index }>
-					<TextControl
-						className="grf__location-address"
-						placeholder="350 Fifth Avenue New York NY"
-						value={ locations[ index ].address }
-						onChange={ ( address ) => handleLocationChange( address, index ) }
-					/>
-					<IconButton
-						className="grf__remove-location-address"
-						icon="no-alt"
-						label="Delete location"
-						onClick={ () => handleRemoveLocation( index ) }
-					/>
-				</Fragment>;
-			} );
-
-			locationDisplay = locations.map( ( location, index ) => {
-				return <p key={ index }>{ location.address }</p>;
-			} );
-		}
-
-		return [
-			<InspectorControls key="1">
-				<PanelBody title={ __( 'Locations' ) }>
-					{ locationFields }
-					<Button
-						isDefault
-						onClick={ handleAddLocation.bind( this ) }
-					>
-						{ __( 'Add Location' ) }
-					</Button>
-				</PanelBody>
-			</InspectorControls>,
-			<div key="2" className={ props.className }>
-				<h2>Block</h2>
-				{ locationDisplay }
-			</div>,
-		];
-	},
-	save: ( props ) => {
-		const { attributes : {locations}, setAttributes, className } = this.props;
-		const locationFields = locations.map( ( location, index ) => {
-			return <p key={ index }>{ location.address }</p>;
-		} );
-
-		return (
-			<div className={ props.className }>
-				<h2>Block</h2>
-				{ locationFields }
-			</div>
-		);
-	},
+	edit: Edit,
+	save: save,
 } );
