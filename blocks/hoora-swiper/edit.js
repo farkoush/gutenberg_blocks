@@ -6,7 +6,10 @@ const {
 	Button,
     PanelBody,
     IconButton,
-	TextControl,
+    TextControl,
+    PanelRow,
+    RadioControl,
+    SelectControl,
 } = wp.components;
 
 const {
@@ -21,6 +24,16 @@ const {
 
 
 export default function Edit({ attributes, setAttributes, className }) {
+    function updateSliderSetting(event) {
+        const selected = event.target.querySelector(
+            "#hoora-carousel-loop-setting option:checked"
+        );
+        setAttributes({ loop: selected.value });
+        event.preventDefault();
+    }
+    function updateSliderSetting(value) {
+        setAttributes(value);
+    }
 	const handleAddLocation = () => {
         const locations = [ ...attributes.locations ];
         locations.push( {
@@ -83,7 +96,8 @@ export default function Edit({ attributes, setAttributes, className }) {
     }; 
 
     let locationFields,
-        locationDisplay;
+        locationDisplay,
+        settings;
 
     if ( attributes.locations.length ) {
         locationFields = attributes.locations.map( ( location, index ) => {
@@ -123,9 +137,77 @@ export default function Edit({ attributes, setAttributes, className }) {
         locationDisplay = attributes.locations.map( ( location, index ) => {
             return <div key={ index }><p>{ location.address }</p> <p>{ location.city }</p><img src={location.image.thumbnailUrl}/></div>;
         } );
+        // settings = 
+
     }
 	return [
         // <InspectorControls key="1">
+        // <InspectorControls key="3">
+            <InspectorControls key="3">
+					<PanelBody title={__("Carousel Settings")}>
+						<PanelRow>
+							<RadioControl
+								label="Auto Play"
+								selected={attributes.autoplay}
+								options={[
+									{ label: "True", value: "true" },
+									{ label: "False", value: "false" }
+								]}
+								onChange={option => {
+									updateSliderSetting({ autoplay: option });
+								}}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="Delay"
+								value={attributes.delay}
+								onChange={option => {
+									updateSliderSetting({ delay: option });
+								}}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="Speed"
+								value={attributes.speed}
+								onChange={option => {
+									updateSliderSetting({ speed: option });
+								}}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<RadioControl
+								label="Loop"
+								selected={attributes.loop}
+								options={[
+									{ label: "True", value: "true" },
+									{ label: "False", value: "false" }
+								]}
+								onChange={option => {
+									updateSliderSetting({ loop: option });
+								}}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<SelectControl
+								label="Effect"
+								selected={attributes.effect}
+								options={[
+									{ label: "Slide", value: "slide" },
+									{ label: "Fade", value: "fade" },
+									{ label: "Cube", value: "cube" },
+									{ label: "Coverflow", value: "coverflow" },
+									{ label: "Flip", value: "flip" }
+								]}
+								onChange={option => {
+									updateSliderSetting({ effect: option });
+								}}
+							/>
+						</PanelRow>
+					</PanelBody>
+				</InspectorControls>,
+
         <div key="1">
             <PanelBody title={ __( 'Locations' ) }>
                 { locationFields }
@@ -137,9 +219,9 @@ export default function Edit({ attributes, setAttributes, className }) {
                 </Button>
             </PanelBody>
         </div>,
-        <div key="2" className={ className }>
-            <h2>Swiper</h2>
-            { locationDisplay }
-        </div>,
+        // <div key="2" className={ className }>
+        //     <h2>Swiper</h2>
+        //     { locationDisplay }
+        // </div>,
     ];
 }

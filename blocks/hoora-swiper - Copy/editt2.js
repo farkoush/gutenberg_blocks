@@ -159,6 +159,70 @@ export default class Edit extends Component {
 
 		if (images.length > 0) {
 			return [
+				<InspectorControls>
+					<PanelBody title={__("Carousel Settings")}>
+						<PanelRow>
+							<RadioControl
+								label="Auto Play"
+								selected={autoplay}
+								options={[
+									{ label: "True", value: "true" },
+									{ label: "False", value: "false" }
+								]}
+								onChange={option => {
+									updateSliderSetting({ autoplay: option });
+								}}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="Delay"
+								value={delay}
+								onChange={option => {
+									updateSliderSetting({ delay: option });
+								}}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<TextControl
+								label="Speed"
+								value={speed}
+								onChange={option => {
+									updateSliderSetting({ speed: option });
+								}}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<RadioControl
+								label="Loop"
+								selected={loop}
+								options={[
+									{ label: "True", value: "true" },
+									{ label: "False", value: "false" }
+								]}
+								onChange={option => {
+									updateSliderSetting({ loop: option });
+								}}
+							/>
+						</PanelRow>
+						<PanelRow>
+							<SelectControl
+								label="Effect"
+								selected={effect}
+								options={[
+									{ label: "Slide", value: "slide" },
+									{ label: "Fade", value: "fade" },
+									{ label: "Cube", value: "cube" },
+									{ label: "Coverflow", value: "coverflow" },
+									{ label: "Flip", value: "flip" }
+								]}
+								onChange={option => {
+									updateSliderSetting({ effect: option });
+								}}
+							/>
+						</PanelRow>
+					</PanelBody>
+				</InspectorControls>,
 				<Fragment>
 					{images.map((img, imgMapIndex) => {
 						console.log('titles' + title);
