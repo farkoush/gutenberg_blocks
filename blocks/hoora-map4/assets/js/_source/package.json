@@ -1,11 +1,11 @@
 {
   "name": "jsforwp-blocks",
-  "version": "4.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "main": "blocks/index.js",
   "scripts": {
-    "dev": "cross-env webpack --watch",
-    "build": "cross-env NODE_ENV=production webpack -p"
+    "dev": "cross-env BABEL_ENV=default webpack --watch",
+    "build": "cross-env BABEL_ENV=default NODE_ENV=production webpack"
   },
   "devDependencies": {
     "@wordpress/babel-preset-default": "^1.2.0",
@@ -17,27 +17,14 @@
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "extract-text-webpack-plugin": "^3.0.2",
-    "google-map-react": "^2.1.9",
     "node-sass": "^4.9.0",
     "postcss-loader": "^2.1.5",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.19.1",
-    "swiper": "^6.3.4",
     "webpack": "^3.11.0"
   },
   "dependencies": {
-    "@wordpress/api-fetch": "^3.20.0",
-    "@wordpress/blocks": "^6.24.0",
-    "@wordpress/element": "^2.18.0",
-    "@wordpress/server-side-render": "^1.18.1",
-    "google-maps-react": "^2.0.6",
-    "lodash": "^4.17.20",
-    "react-leaflet": "^3.0.2",
-    "react-leaflet-fullscreen": "^1.0.1",
-    "@wordpress/compose": "^3.20.0",
-    "cgb-scripts": "1.23.1",
-    "leaflet": "^1.7.1",
     "lodash.throttle": "^4.1.1"
   }
 }
