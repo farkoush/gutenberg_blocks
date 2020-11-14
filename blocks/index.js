@@ -22,7 +22,8 @@ import "./hoora-tabs";
 import "./hoora-swiper2";
 import "./repeater-field";
 import "./hoora-map4";
-import "./hoora-map"
+import "./hoora-map";
+import "./hoora-googleMap"
 
 
 
