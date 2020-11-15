@@ -1,17 +1,14 @@
 /**
  * Block dependencies
  */
-// import './style.scss';
-
 import Edit from "./edit";
+import Save from "./save";
 
 /**
  * Internal block libraries
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { TextControl, PanelBody,RangeControl } = wp.components;
-const { InspectorControls } = wp.blockEditor;
 
 /**
  * Register example block
@@ -24,38 +21,40 @@ export default registerBlockType(
 		category: 'common',
 		icon: 'location-alt',
 		attributes: {
-			text: {
-				type: 'string',
-				default:''
-				// source: 'meta',
-				// meta: 'googlemapblock_gb_googlemap',
+			// center: {
+			//     type: "array",
+			//     default:[
+			//         {
+			//             lat: 23.7806365,
+			//             lng: 90.4193257,
+			//         }
+			//     ]
+			// },
+			lat: {
+				type: 'number',
+				default: 35.700700
 			},
-			center: {
-                type: "array",
-                default:[
-                    {
-                        lat: 23.7806365,
-                        lng: 90.4193257,
-                    }
-                ]
-			},
-			address: {
-                type: 'string',
-                default: 'Theater District, New York, USA',
+			lng: {
+                type: 'number',
+                default: 51.397783,
             }, 
 			zoom: {
                 type: 'number',
-                default: '11',
+                default: 17,
             },
             height: {
                 type: 'number',
-                default: '300',
+                default: 500,
             }
 		},
 		edit:Edit,
+		// save() {
+		// 	return null;
+		// },
+		// save:Save,
 		save: () => {
 			return (
-				<div id="myMapp">'Check the meta' </div>
+				<div id="myMap">'Check the meta' </div>
 			);
 		},
 	},

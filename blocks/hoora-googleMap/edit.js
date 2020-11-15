@@ -4,34 +4,35 @@
 const { Component } = wp.element;
 const { TextControl, PanelBody,RangeControl } = wp.components;
 const { InspectorControls } = wp.blockEditor;
-import Map from './Map'
+import Map from './map'
 
 export default class Edit extends Component {
     
-    constructor() {
-        super( ...arguments );
-        this.state = {
-            googleMapsLoaded: false,
-        };
-    }
+    // constructor() {
+    //     super( ...arguments );
+    //     this.state = {
+    //         googleMapsLoaded: false,
+    //     };
+    // }
     
     render() {
         const { attributes, className, setAttributes, isSelected } = this.props;
+        console.log('zoom' + attributes.zoom)
         return[
             isSelected && (
                 <InspectorControls>
                     <PanelBody>
                         <TextControl
-                            label= 'Google Map Block' 
-                            value={ attributes.text }
-                            onChange={ text => setAttributes( { text } ) }
+                            label= 'lat' 
+                            value={ attributes.lat }
+                            onChange={ lat => setAttributes( { lat } ) }
                         />
                     </PanelBody>
                     <PanelBody>
                         <TextControl
-                            label= 'address '
-                            value= { attributes.address }
-                            onChange={ address => setAttributes( { address } ) }
+                            label= 'lng'
+                            value= { attributes.lng }
+                            onChange={ lng => setAttributes( { lng } ) }
                         />
                     </PanelBody>
                     
@@ -63,12 +64,14 @@ export default class Edit extends Component {
             <Map
                 id="myMap"
                 options={{
-                center: { lat: 41.0082, lng: 28.9784 },
-                zoom: 8
+                center: { lat: attributes.lat, lng: attributes.lng },
+                zoom: parseInt(attributes.zoom,10)
                 }}
                 onMapLoad={ map => {
+                    console.log('map::' + map);
                 var marker = new window.google.maps.Marker({
-                    position: { lat: 41.0082, lng: 28.9784 },
+                    // position: { lat: 41.0082, lng: 28.9784 },
+                    position: {  lat: attributes.lat, lng: attributes.lng },
                     map: map,
                     title: 'Hello Istanbul!'
                 });

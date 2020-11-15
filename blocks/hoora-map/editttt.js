@@ -242,7 +242,7 @@ class edit extends Component {
 															allowedTypes={["image"]}
 															render={({ open }) => (
 																<div>
-																	{attributes.map_marker_list[index]
+																	{attributes.map_marker_list[index] 
 																		.customIconUrl !== "" && (
 																		<div>
 																			<RangeControl

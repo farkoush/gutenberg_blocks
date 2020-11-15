@@ -18,15 +18,16 @@ class Map extends Component {
     //   });
     // }
     componentDidMount() {
+        console.log('componentDidMount')
         if (!window.google) {
-          var s = document.createElement('script');
-          s.type = 'text/javascript';
-          s.src = `https://maps.google.com/maps/api/js?key=AIzaSyBbiAiOzcETpszNnd4ghbDHomTSJg9iw-g`;
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = `https://maps.google.com/maps/api/js?key=AIzaSyBbiAiOzcETpszNnd4ghbDHomTSJg9iw-g`;
           var x = document.getElementsByTagName('script')[0];
-          x.parentNode.insertBefore(s, x);
+          x.parentNode.insertBefore(script, x);
           // Below is important. 
           //We cannot access google.maps until it's finished loading
-          s.addEventListener('load', e => {
+          script.addEventListener('load', e => {
             this.onScriptLoad()
           })
         } else {
