@@ -6,9 +6,7 @@ class Map extends Component {
         this.onScriptLoad = this.onScriptLoad.bind(this)
       } 
     onScriptLoad() {
-        const map = new window.google.maps.Map(
-            document.getElementById(this.props.id),
-            this.props.options);
+        const map = new window.google.maps.Map( document.getElementById(this.props.id), this.props.options);
         this.props.onMapLoad(map)
     }
     // componentDidMount() {
@@ -18,7 +16,7 @@ class Map extends Component {
     //   });
     // }
     componentDidMount() {
-        console.log('componentDidMount')
+        // console.log('componentDidMount')
         if (!window.google) {
           var script = document.createElement('script');
           script.type = 'text/javascript';

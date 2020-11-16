@@ -4,7 +4,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-function hoora_image_carousel_cgb_block_assets() { // phpcs:ignore
+function hoora_image_carousel_cgb_block_assets() { // phpcs:ignore 
 	// Styles.
 	wp_register_style('swiper', "https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.css", false, '', 'all');	
 	wp_enqueue_style('swiper');

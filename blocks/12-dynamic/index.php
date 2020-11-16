@@ -5,8 +5,7 @@
 // add_action( 'plugins_loaded', __NAMESPACE__ . '\register_dynamic_block' );
 add_action( 'plugins_loaded', 'register_dynamic_block' );
 
-/**
- * Register the dynamic block.
+/** * Register the dynamic block.
  *
  * @since 2.1.0
  *

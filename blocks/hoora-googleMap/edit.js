@@ -68,7 +68,6 @@ export default class Edit extends Component {
                 zoom: parseInt(attributes.zoom,10)
                 }}
                 onMapLoad={ map => {
-                    console.log('map::' + map);
                 var marker = new window.google.maps.Marker({
                     // position: { lat: 41.0082, lng: 28.9784 },
                     position: {  lat: attributes.lat, lng: attributes.lng },

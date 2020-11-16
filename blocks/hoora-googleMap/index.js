@@ -2,7 +2,7 @@
  * Block dependencies
  */
 import Edit from "./edit";
-import Save from "./save";
+// import Save from "./save";
 
 /**
  * Internal block libraries
@@ -54,7 +54,8 @@ export default registerBlockType(
 		// save:Save,
 		save: () => {
 			return (
-				<div id="myMap">'Check the meta' </div>
+				// <div class="wp-block-webfactory-map"><iframe width='100%' height= '500px' src={'https://www.google.com/maps/embed/v1/place?q=' + encodeURIComponent('Theater District, New York, USA') + '&maptype=roadmap&zoom=12&key=AIzaSyBbiAiOzcETpszNnd4ghbDHomTSJg9iw-g'} frameBorder='0'></iframe></div>
+				<div id="map">'Check the meta' </div>
 			);
 		},
 	},
