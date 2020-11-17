@@ -1,6 +1,6 @@
 const { Component } = wp.element;
 
-class Map extends Component {
+class Map2 extends Component {
     constructor(props) {
         super(props);
         this.onScriptLoad = this.onScriptLoad.bind(this)
@@ -44,4 +44,4 @@ class Map extends Component {
         );
       }
   }
-  export default Map
+  export default Map2

@@ -4,7 +4,7 @@
 const { Component } = wp.element;
 const { TextControl, PanelBody,RangeControl } = wp.components;
 const { InspectorControls } = wp.blockEditor;
-import Map from './map'
+import Map2 from './map'
 
 export default class Edit extends Component {
     
@@ -61,7 +61,7 @@ export default class Edit extends Component {
                     </PanelBody>
                 </InspectorControls>
             ),
-            <Map
+            <Map2
                 id="myMap"
                 options={{
                 center: { lat: attributes.lat, lng: attributes.lng },

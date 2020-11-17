@@ -45,7 +45,11 @@ export default registerBlockType(
             height: {
                 type: 'number',
                 default: 500,
-            }
+			},
+			mapObj:{
+				type:'object',
+				default:{}
+			}
 		},
 		edit:Edit,
 		// save() {
