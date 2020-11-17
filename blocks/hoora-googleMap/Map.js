@@ -28,19 +28,32 @@ class Map extends Component {
           script.addEventListener('load', e => {
             this.onScriptLoad()
           })
-        } else {
+        } 
+        else {
           this.onScriptLoad()
         }
       }
   
-    // render() {
-    //   return (
-    //     <div style={{ width: 500, height: 500 }} id="map" />
-    //   );
-    // }
     render() {
+    //   ready(() => {
+    //     this.onScriptLoad()
+    //   });
+    
+    // // Thank you http://youmightnotneedjquery.com/
+    // function ready(fn) {
+    //     if (
+    //         document.attachEvent
+    //             ? document.readyState === "complete"
+    //             : document.readyState !== "loading"
+    //     ) {
+    //         fn();
+    //     } else {
+    //         document.addEventListener("DOMContentLoaded", fn);
+    //     }
+    // }
+      console.log(this.props.options);
         return (
-          <div style={{  height: 500 }} id={this.props.id} />
+          <div style={{  height: this.props.height }} id={this.props.id} />
         );
       }
   }

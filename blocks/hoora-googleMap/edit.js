@@ -17,9 +17,9 @@ export default class Edit extends Component {
     
     render() {
         const { attributes, className, setAttributes, isSelected } = this.props;
-        console.log('zoom' + attributes.zoom)
-        return[
-            isSelected && (
+        // console.log('zoom' + attributes.zoom)
+        return[(
+            // isSelected && (
                 <InspectorControls>
                     <PanelBody>
                         <TextControl
@@ -60,14 +60,17 @@ export default class Edit extends Component {
                         />
                     </PanelBody>
                 </InspectorControls>
-            ),
+            // ),
+        ),
             <Map
                 id="myMap"
+                height = {attributes.height}
                 options={{
                 center: { lat: attributes.lat, lng: attributes.lng },
                 zoom: parseInt(attributes.zoom,10)
                 }}
                 onMapLoad={ map => {
+                    console.log(attributes.zoom)
                 var marker = new window.google.maps.Marker({
                     // position: { lat: 41.0082, lng: 28.9784 },
                     position: {  lat: attributes.lat, lng: attributes.lng },
