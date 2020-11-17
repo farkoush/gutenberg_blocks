@@ -56,10 +56,21 @@ export default registerBlockType(
 		// 	return null;
 		// },
 		// save:Save,
-		save: () => {
+		save: (props) => {
+			const { className } = props;
+			const { lat, lng,zoom,height } = props.attributes;
+	
+			const data = {
+				lat, lng,zoom,height
+			};
 			return (
 				// <div class="wp-block-webfactory-map"><iframe width='100%' height= '500px' src={'https://www.google.com/maps/embed/v1/place?q=' + encodeURIComponent('Theater District, New York, USA') + '&maptype=roadmap&zoom=12&key=AIzaSyBbiAiOzcETpszNnd4ghbDHomTSJg9iw-g'} frameBorder='0'></iframe></div>
-				<div id="map">'Check the meta' </div>
+				// <div id="map" style={{  height: 500 }}>'Check the meta' </div>
+				<div
+					id="map" style={{  height: 500 }}
+					className={className}
+					data-react-props={JSON.stringify(data)} 
+				/>
 			);
 		},
 	},

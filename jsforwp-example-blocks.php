@@ -76,6 +76,22 @@ function enqueue_block_editor_assets() {
 		[ 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor' ],
 		filemtime( _get_plugin_directory() . $block_path )
 	);
+
+}
+
+add_action( 'enqueue_block_assets', 'enqueue_block_assets' );
+// save_post
+function enqueue_block_assets() {
+	if ( is_admin() ) {
+        return;
+	}
+	// wp_enqueue_script(
+	// 	'guty-paint/view-scripts',
+	// 	plugins_url( '/assets/dist/build.view.js', __FILE__ ),
+    //     array( 'wp-blocks', 'wp-element', 'react', 'react-dom' )
+    // );
+	wp_enqueue_script( 'script', _get_plugin_url() . '/assets/js/main.js', '', filemtime( _get_plugin_directory() . '/assets/js/main.js' ) );
+
 }
 
 // include __DIR__ . '/blocks/08-form-fields/index.php';
