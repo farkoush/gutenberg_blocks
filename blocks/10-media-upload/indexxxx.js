@@ -80,7 +80,7 @@ export default registerBlockType(
                 } );
             };
             const onRemoveImage = () => {
-                setAttributes({
+                setAttributes({ 
                     imgID: null,
                     imgURL: null,
                     imgAlt: null,
