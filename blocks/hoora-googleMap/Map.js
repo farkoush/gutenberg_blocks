@@ -9,28 +9,10 @@ class Map extends Component {
         const map = new window.google.maps.Map( document.getElementById(this.props.id), this.props.options);
         this.props.onMapLoad(map)
     }
-    // componentDidMount() {
-    //     console.log('componentDidMount')
-    //     if (!window.google) {
-    //       var script = document.createElement('script');
-    //       script.type = 'text/javascript';
-    //       script.src = `https://maps.google.com/maps/api/js?key=AIzaSyBbiAiOzcETpszNnd4ghbDHomTSJg9iw-g`;
-    //       var x = document.getElementsByTagName('script')[0];
-    //       x.parentNode.insertBefore(script, x);
-    //       // Below is important. 
-    //       //We cannot access google.maps until it's finished loading
-    //       script.addEventListener('load', e => {
-    //         this.onScriptLoad();
-    //       })
-    //     } 
-    //     else {
-    //       this.onScriptLoad()
-    //     }
-      // }
 
-
-    componentDidUpdate() {        
-      console.log('componentDidUpdate()')
+    // componentDidUpdate() {        
+    componentDidMount() {        
+      // console.log('componentDidUpdate()')
       if (!window.google) {
         var script = document.createElement('script');
         script.type = 'text/javascript';
@@ -41,17 +23,19 @@ class Map extends Component {
           this.onScriptLoad();
         })
       } 
-      else {
-        this.onScriptLoad()
-      }
+      // else {
+      //   this.onScriptLoad()
+      // }
     }
-  
-     
 
+    componentDidUpdate(prevProps) {
+      this.onScriptLoad();
+    }
 
     render() {
       // window._wpLoadBlockEditor.then( function() {
-      //     console.log( 'hooray!' );
+      //     // console.log( 'hooray!' );
+      //     this.onScriptLoad();
       // });
       // console.log(this.props.options);
         return (
