@@ -1,16 +1,16 @@
 const { Component } = wp.element;
-// this component just use in Edit
 class Map extends Component {
+  // this component just use in Edit
     constructor(props) {
         super(props);
         this.onScriptLoad = this.onScriptLoad.bind(this)
-      } 
+    } 
     onScriptLoad() {
         const map = new window.google.maps.Map( document.getElementById(this.props.id), this.props.options);
         this.props.onMapLoad(map)
     }
-    componentDidMount() {
-        console.log('componentDidMount')
+    // componentDidMount() {
+    //     console.log('componentDidMount')
     //     if (!window.google) {
     //       var script = document.createElement('script');
     //       script.type = 'text/javascript';
@@ -26,7 +26,7 @@ class Map extends Component {
     //     else {
     //       this.onScriptLoad()
     //     }
-      }
+      // }
 
 
     componentDidUpdate() {        
@@ -50,9 +50,9 @@ class Map extends Component {
 
 
     render() {
-      window._wpLoadBlockEditor.then( function() {
-          console.log( 'hooray!' );
-      });
+      // window._wpLoadBlockEditor.then( function() {
+      //     console.log( 'hooray!' );
+      // });
       // console.log(this.props.options);
         return (
           <div style={{  height: this.props.height }} id={this.props.id} />

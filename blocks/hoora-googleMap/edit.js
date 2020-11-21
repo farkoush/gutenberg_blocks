@@ -112,7 +112,7 @@ export default class Edit extends Component {
                                 </MediaUploadCheck>
                                 { !! attributes.image.ID &&
                                 <MediaUploadCheck>
-                                    <Button onClick={ onRemoveImage } isLink isDestructive>
+                                    <Button onClick={ onRemoveImage }>
                                     X                                    
                                     </Button>
                                 </MediaUploadCheck>
