@@ -26,6 +26,7 @@ import "./repeater-field";
 import "./hoora-googlemap";
 import "./googlemap";
 // import "./canvas";
+import "./accordion/";
 
 
 
