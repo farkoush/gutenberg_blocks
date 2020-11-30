@@ -1,8 +1,6 @@
 /**
  * Internal block libraries
  */
-    import './editor.scss';
-    import Item from './item'
 const { Component, Fragment } = wp.element;
 const { TextControl, Panel, PanelBody,PanelRow,RangeControl, Button } = wp.components;
 const { InspectorControls, 	MediaUpload, MediaUploadCheck, InnerBlocks } = wp.blockEditor;
@@ -45,11 +43,18 @@ export default class Edit extends Component {
                 </InspectorControls>
             // ),
         ),
-        <div>
-            <Item/>
-
-
-        </div>
+        <Panel header="My Panel">
+            <PanelBody title="My Block Settings" icon={ more } initialOpen={ true }>
+                <PanelRow>
+                    <InnerBlocks
+                        template={ INNER_BLOCKS_TEMPLATE }
+                        allowedBlocks={ ALLOWED_BLOCKS }
+                        // templateLock={ true }
+                        orientation="horizontal"
+                    />
+                </PanelRow>
+            </PanelBody>
+        </Panel>
         ]
 
       }

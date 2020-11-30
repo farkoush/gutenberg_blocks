@@ -93,6 +93,7 @@ include __DIR__ . '/blocks/12-dynamic/index.php';
 include __DIR__ . '/blocks/hoora-menu/index.php';
 // include __DIR__ . '/blocks/hoora-map4/map-block-gutenbergg.php';
 include __DIR__ . '/blocks/hoora-googlemap/index.php';
+include __DIR__ . '/blocks/hoora-faq/index.php';
 
 // include __DIR__ . '/blocks/block/index.php';
 

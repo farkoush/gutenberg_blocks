@@ -2,6 +2,7 @@
 	
 	// import './editor.scss';
 	import Edit from "./edit";
+	import './editor.scss';
 	import { more } from '@wordpress/icons';
 	const { registerBlockType } = wp.blocks;
 	const { Component } = wp.element;
@@ -43,11 +44,7 @@
 		edit: Edit,
 		save: ( props ) => {
 			return(
-				<Panel header="My Panel">
-					<PanelBody title="My Block Settings" icon={ more } initialOpen={ true }>
-						<PanelRow><InnerBlocks.Content /></PanelRow>
-					</PanelBody>
-				</Panel>
+				<div>save</div>
 			)
 			// const question = props.attributes.question;
 			// const answer = props.attributes.answer;
