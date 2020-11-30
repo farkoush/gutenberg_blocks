@@ -3,6 +3,7 @@
 	// import './editor.scss';
 	import Edit from "./edit";
 	import './editor.scss';
+	import Item from './item'
 	import { more } from '@wordpress/icons';
 	const { registerBlockType } = wp.blocks;
 	const { Component } = wp.element;
@@ -14,22 +15,31 @@
 
 
 	const attributes = {
-		question: {
-			source: 'children',
-			selector: '.meow-faq-question',
-			default: 'Question...'
-		},
-		answer: {
-			source: 'children',
-			selector: '.meow-tab-content',
-			default: 'Answer...'
-		},
+		// question: {
+		// 	source: 'children',
+		// 	selector: '.meow-faq-question',
+		// 	default: 'Question...'
+		// },
+		// answer: {
+		// 	source: 'children',
+		// 	selector: '.meow-tab-content',
+		// 	default: 'Answer...'
+		// },
+
 		// hash: {
 		// 	source: 'attribute',
 		// 	attribute: 'id',
 		// 	selector: 'input',
 		// 	default: ''
 		// }
+		question: {
+			type: 'string',
+			default: 'Question...',
+		},   
+		answer: {
+			type: 'string',
+			default: 'Answer...',
+		},   
 	}
 
 	export default registerBlockType( 'hoora/faq', {
@@ -43,8 +53,13 @@
 		attributes,
 		edit: Edit,
 		save: ( props ) => {
+			const { attributes } = props;
+			
 			return(
-				<div>save</div>
+				<div>
+            		<Item header="Section 1111" body="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"/>
+
+				</div>
 			)
 			// const question = props.attributes.question;
 			// const answer = props.attributes.answer;
