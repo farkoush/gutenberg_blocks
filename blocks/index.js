@@ -27,6 +27,8 @@ import "./hoora-googlemap";
 import "./googlemap";
 // import "./canvas";
 import "./accordion/";
+import "./hoora-faq/";
+
 
 
 
