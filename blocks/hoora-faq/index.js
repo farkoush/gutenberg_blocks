@@ -54,10 +54,10 @@
 		edit: Edit,
 		save: ( props ) => {
 			const { attributes } = props;
-			
+			const { lat, lng, zoom, height } = props.attributes;
 			return(
 				<div>
-            		<Item header="Section 1111" body="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>"/>
+            		<Item header={attributes.question} body={attributes.answer}/>
 
 				</div>
 			)

@@ -6,24 +6,24 @@ class Item extends Component {
     constructor(props) {
         super(props);
     }     
-    componentDidMount() {        
-      // console.log('componentDidUpdate()')
-    //   if (window.accordion) {
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-        for (i = 0; i < acc.length; i++) {
-          acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-              panel.style.maxHeight = null;
-            } else {
-              panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-          });
-        }
-    //   } 
-    }
+    // componentDidMount() {        
+    //   // console.log('componentDidUpdate()')
+    // //   if (window.accordion) {
+    //     var acc = document.getElementsByClassName("accordion");
+    //     var i;
+    //     for (i = 0; i < acc.length; i++) {
+    //       acc[i].addEventListener("click", function() {
+    //         this.classList.toggle("active");
+    //         var panel = this.nextElementSibling;
+    //         if (panel.style.maxHeight) {
+    //           panel.style.maxHeight = null;
+    //         } else {
+    //           panel.style.maxHeight = panel.scrollHeight + "px";
+    //         }
+    //       });
+    //     }
+    // //   } 
+    // }
 
 
     render() {
