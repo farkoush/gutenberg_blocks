@@ -28,6 +28,8 @@ import "./googlemap";
 // import "./canvas";
 // import "./accordion/";
 import "./hoora-faq/";
+import "./hoora-faq-update/";
+import "./hoora-faq-update/faq-header/";
 import "./hoora-accordion02/";
 
 
