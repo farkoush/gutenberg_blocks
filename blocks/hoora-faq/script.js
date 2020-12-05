@@ -1,27 +1,9 @@
-  // window._wpLoadBlockEditor.then( function() {
-    if (document.getElementById("accordion")){
-      console.log('mainnnn.js');
-  
-  }
+  console.log("ffsadfasfsdfsdfsd");
   ready(() => {
-      // window._wpLoadBlockEditor.then( function() {
           console.log( 'hooray!' );
-          // this.onScriptLoad();
           var acc = document.getElementsByClassName("accordion");
           var i;
           console.log("acccccccccccccccTTTTTpp    ", acc);
-          // acc.addEventListener('load', e => {
-          // var arr = acc.prototype.slice.call( htmlCollection )
-          // var arr = [].slice.call(acc);
-          var arry = Array.from(acc)
-          var arr = Array.from(acc)
-
-          // var arr = [...acc];
-
-          console.log('arrrrrrrrrrrr' + arry + arr);
-          // acc.forEach(element => {
-          //   console.log(element);
-          // });
           for (i = 0; i < acc.length; i++) {
             console.log(acc[1]);
             acc[i].addEventListener("click", function() {
@@ -35,8 +17,7 @@
               }
             });
           }
-      // });
-  // });
+
 });
 
 

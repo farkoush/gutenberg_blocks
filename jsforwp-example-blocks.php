@@ -79,38 +79,10 @@ function enqueue_block_editor_assets() {
 
 }
 
-// add_action( 'enqueue_block_assets', 'enqueue_block_assets' );
-// // save_post
-// function enqueue_block_assets() {
-// 	if ( is_admin() ) {
-//         return;
-// 	}
-// 	wp_enqueue_script( 'script', _get_plugin_url() . '/assets/js/main.js', '', filemtime( _get_plugin_directory() . '/assets/js/main.js' ) );
-// }
-
-// include __DIR__ . '/blocks/08-form-fields/index.php';
 include __DIR__ . '/blocks/12-dynamic/index.php';
 include __DIR__ . '/blocks/hoora-menu/index.php';
-// include __DIR__ . '/blocks/hoora-map4/map-block-gutenbergg.php';
 include __DIR__ . '/blocks/hoora-googlemap/index.php';
 include __DIR__ . '/blocks/hoora-faq/index.php';
+include __DIR__ . '/blocks/hoora-faq-update/index.php';
 
-// include __DIR__ . '/blocks/block/index.php';
-
-// include __DIR__ . 'blocks/hoora-swiper/init.php';
-
-
-// require_once plugin_dir_path( __FILE__ ) . 'blocks/init.php';
-require_once plugin_dir_path( __FILE__ ) . 'blocks/hoora-swiper2/index.php';
-
-// include __DIR__ . '/blocks/hoora-slider/index.php';
-
-
-// include __DIR__ . '/blocks/13-navigation/index.php';
-
-// register_nav_menus( array(
-// 	'primary' => __( 'Primary Menu' ),
-// 	'primary_mobile' => __( 'Primary Menu mobile' ),
-// 	'amp_menu' => __('AMP Menu'),
-// ) );
-
+include __DIR__ . '/blocks/hoora-swiper2/index.php';
