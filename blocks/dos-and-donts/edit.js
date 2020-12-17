@@ -4,7 +4,7 @@
 // import { InnerBlocks } from '@wordpress/block-editor';
 const {
 	InnerBlocks,
-} = wp.editor;
+} = wp.blockEditor;
 import { blockColumns } from './templates';
 
 const INNER_BLOCKS_TEMPLATE = [

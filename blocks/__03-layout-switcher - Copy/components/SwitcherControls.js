@@ -36,6 +36,6 @@ const SwitcherControls = ({ blocks, icons, layouts }) => {
 };
 export default withSelect(select => {
   return {
-    blocks: select("core/editor").getBlocks()
+    blocks: select("core/block-editor").getBlocks()
   };
 })(SwitcherControls);

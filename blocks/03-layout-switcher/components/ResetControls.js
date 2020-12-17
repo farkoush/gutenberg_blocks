@@ -53,7 +53,7 @@ export default compose(
     isOpen: false
   }),
   withDispatch(dispatch => {
-    const { resetBlocks, insertBlocks } = dispatch("core/editor");
+    const { resetBlocks, insertBlocks } = dispatch("core/block-editor");
     return {
       resetBlocks,
       insertBlocks

@@ -6,7 +6,7 @@ import Canvas from "./MyCanvas";
 
 const { registerBlockType } = wp.blocks;
 
-const { RichText, InspectorControls, ColorPalette } = wp.editor;
+const { RichText, InspectorControls, ColorPalette } = wp.blockEditor;
 
 registerBlockType("guty2/paint-me", {
     title: "Paint me",

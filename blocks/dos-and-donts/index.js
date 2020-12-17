@@ -15,7 +15,7 @@ import Edit from './edit';
 import { __ } from '@wordpress/i18n';
 // import { registerBlockType } from '@wordpress/blocks';
 const { registerBlockType } = wp.blocks;
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;
 /**
  * Register block type.
  */

@@ -1,1 +1,1 @@
-const { InnerBlocks } = wp.editor;
+const { InnerBlocks } = wp.blockEditor;

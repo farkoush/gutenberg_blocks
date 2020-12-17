@@ -1,4 +1,4 @@
-const { RichText, MediaUpload, PlainText } = wp.editor;
+const { RichText, MediaUpload, PlainText } = wp.blockEditor;
 const { registerBlockType } = wp.blocks;
 const { Button } = wp.components;
 

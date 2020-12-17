@@ -79,10 +79,11 @@ function enqueue_block_editor_assets() {
 
 }
 
-include __DIR__ . '/blocks/12-dynamic/index.php';
-include __DIR__ . '/blocks/hoora-menu/index.php';
-include __DIR__ . '/blocks/hoora-googlemap/index.php';
-include __DIR__ . '/blocks/hoora-faq/index.php';
-include __DIR__ . '/blocks/hoora-faq-update/index.php';
+// include __DIR__ . '/blocks/12-dynamic/index.php';
+// include __DIR__ . '/blocks/hoora-menu/index.php';
+// include __DIR__ . '/blocks/hoora-googlemap/index.php';
+// include __DIR__ . '/blocks/hoora-swiper2/index.php';
+include __DIR__ . '/blocks/hoora-tab/index.php';
 
-include __DIR__ . '/blocks/hoora-swiper2/index.php';
+
+

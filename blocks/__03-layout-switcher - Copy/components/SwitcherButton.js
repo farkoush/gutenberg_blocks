@@ -28,7 +28,7 @@ const SwitcherButton = ({
 
 export default withDispatch(dispatch => {
   const { removeBlocks, resetBlocks, insertBlocks, insertBlock } = dispatch(
-    "core/editor"
+    "core/block-editor"
   );
   return {
     removeBlocks,
