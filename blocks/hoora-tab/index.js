@@ -19,14 +19,38 @@ const attributes = {
 
 };
 
+function MyButtonBlockAppender( { rootClientId } ) {
+    return (
+        <Inserter
+            rootClientId={ rootClientId }
+            renderToggle={ ( { onToggle, disabled } ) => (
+                <IconButton
+                    className="my-button-block-appender"
+                    onClick={ onToggle }
+                    disabled={ disabled }
+                    label="Add a New Item"
+                    icon="plus"
+                />
+            ) }
+            isAppender
+        />
+    );
+}
+
+{/* <div className={ className }>
+    <InnerBlocks
+        allowedBlocks={['hoora/faqitem']}
+        template={[['hoora/faqitem']]}
+        renderAppender={ () => (
+            <MyButtonBlockAppender rootClientId={ clientId } />
+        ) }
+    />
+</div> */}
 registerBlockType( 'hoora/tabs', {
     title: 'hoora tab',
     category: 'hoora',
     attributes,
     edit( { className, attributes, clientId , setAttributes} ) {
-        const onSelect = ( tabName ) => {
-            console.log( 'Selecting tab', tabName );
-        };
         const handleCheck = (e) => {
             console.log('eee' + e.target);
             setAttributes({activeClasses : ! attributes.activeClasses});

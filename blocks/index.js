@@ -11,6 +11,7 @@ import "./i18n.js";
 // import "./hoora-googlemap";
 import "./03-layout-switcher";
 import "./hoora-tab";
+import "./tabbed-content/block"
 
 
 
