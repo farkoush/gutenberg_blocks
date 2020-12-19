@@ -20,14 +20,14 @@
 		},   
 	}
 
-	export default registerBlockType( 'hoora/tabitem', {
-		title: __( 'tab Item', 'tab-block' ),
+	export default registerBlockType( 'hoora/faqitem', {
+		title: __( 'FAQ Item', 'faq-block' ),
 		// icon: 'welcome-learn-more',
 		icon: 'heart',
 		category: 'formatting', // (common, formatting, layout, widgets, embed)
 		keywords: [ __( 'section' ), __( 'header' ) ],
 		customClassName: false,
-		parent: [ 'hoora/tab' ],
+		parent: [ 'hoora/faq' ],
 		className: false,
 		attributes,
         edit: Edit,

@@ -9,22 +9,22 @@
 	const { __ } = window.wp.i18n;
 	const { InnerBlocks } = wp.blockEditor;
 
-	const attributes = {
-		question: {
-			type: 'string',
-			default: 'Question...',
-		},   
-		answer: {
-			type: 'string',
-			default: 'Answer...',
-		},   
-	}
+	// const attributes = {
+	// 	question: {
+	// 		type: 'string',
+	// 		default: 'Question...',
+	// 	},   
+	// 	answer: {
+	// 		type: 'string',
+	// 		default: 'Answer...',
+	// 	},   
+	// }
 
 	export default registerBlockType( 'hoora/tabitem', {
-		title: __( 'tab Item', 'tab-block' ),
+		title: __( 'TAB Item', 'tab-block' ),
 		// icon: 'welcome-learn-more',
-		icon: 'heart',
-		category: 'formatting', // (common, formatting, layout, widgets, embed)
+		// icon: 'heart',
+		category: 'hoora', // (common, formatting, layout, widgets, embed)
 		keywords: [ __( 'section' ), __( 'header' ) ],
 		customClassName: false,
 		parent: [ 'hoora/tab' ],
@@ -37,7 +37,7 @@
         //         template={[
         //             [ 'core/heading', {
         //                 customClasses: 'accordion',
-        //                 placeholder: 'faq Heading'
+        //                 placeholder: 'tab Heading'
         //             } ],
         //             [ 'hoora/section', {
         //                 customClasses: 'is-active',
@@ -47,7 +47,7 @@
         // },
 		save: ( props ) => {
 			return(
-				<div className="faq-container">
+				<div className="tab-container">
 					<InnerBlocks.Content />
 				</div>
 			)

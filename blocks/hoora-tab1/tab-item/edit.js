@@ -1,5 +1,5 @@
 const { Component, Fragment } = wp.element;
-const { TextControl, Panel, PanelBody,PanelRow,RangeControl, Button, createBlock } = wp.components;
+const { TextControl, Panel, PanelBody,PanelRow,RangeControl, Button } = wp.components;
 const { InspectorControls, 	MediaUpload, MediaUploadCheck, InnerBlocks } = wp.blockEditor;
 import { more } from '@wordpress/icons';
 
@@ -14,11 +14,11 @@ export default class Edit extends Component {
                     template={[
                         [ 'core/heading', {
                             className: 'accordion',
-                            placeholder: 'tab Heading'
+                            placeholder: 'faq Heading'
                         } ],
-                        // [ 'hoora/section', {
-                        // className: 'panel',
-                        // } ],
+                        [ 'hoora/section', {
+                        className: 'panel',
+                        } ],
                     ]}
                     // templateLock="insert" 
                 />
