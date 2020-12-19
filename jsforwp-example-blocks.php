@@ -83,7 +83,9 @@ function enqueue_block_editor_assets() {
 // include __DIR__ . '/blocks/hoora-menu/index.php';
 // include __DIR__ . '/blocks/hoora-googlemap/index.php';
 // include __DIR__ . '/blocks/hoora-swiper2/index.php';
+// include __DIR__ . '/blocks/hoora-tab/index.php';
 include __DIR__ . '/blocks/hoora-tab/index.php';
+// include __DIR__ . '/blocks/tabbed-content/block.php';
 
 
 

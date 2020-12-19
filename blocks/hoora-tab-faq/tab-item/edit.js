@@ -13,12 +13,17 @@ export default class Edit extends Component {
                     // allowedBlocks={ [ 'core/image', 'core/paragraph' ] }
                     template={[
                         [ 'core/heading', {
-                            className: 'accordion',
-                            placeholder: 'tab Heading'
+                            className: 'tab-link',
+                            placeholder: 'tab Heading',
+                            dataTab="tab-1"
                         } ],
                         // [ 'hoora/section', {
                         // className: 'panel',
                         // } ],
+                        [ 'hoora/group', {
+                            className: 'tab-content',
+                            
+                        } ],
                     ]}
                     // templateLock="insert" 
                 />

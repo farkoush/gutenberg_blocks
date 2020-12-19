@@ -10,11 +10,13 @@ import "./i18n.js";
 // import "./hoora-swiper2";
 // import "./hoora-googlemap";
 import "./03-layout-switcher";
-import "./hoora-tab";
-import "./hoora-tab/tab-item";
+// import "./hoora-tab";
+// import "./hoora-tab/tab-item";
 // import "./tabbed-content/block"
-import "./hoora-faq"
-import "./hoora-faq/faq-item";
+// import "./tabbed-content/components/tab"
+// import "./hoora-faq"
+// import "./hoora-faq/faq-item";
+import "./hoora-tab"
 // console.log("blocks");
 
 

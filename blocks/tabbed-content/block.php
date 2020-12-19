@@ -14,13 +14,13 @@ function ub_render_tab_block($attributes, $contents){
         . $contents . '</div>';
 }
 
-if ( !class_exists( 'simple_html_dom_node' ) ) {
-    require dirname( dirname( __DIR__ ) ) . '/simple_html_dom.php';
-}
+// if ( !class_exists( 'simple_html_dom_node' ) ) {
+//     require dirname( dirname( __DIR__ ) ) . '/simple_html_dom.php';
+// }
 
 function ub_register_tab_block(){
     if(function_exists('register_block_type')){
-        require dirname(dirname(__DIR__)) . '/defaults.php';
+        // require dirname(dirname(__DIR__)) . '/defaults.php';
         register_block_type('ub/tab-block', array(
             'attributes' => $defaultValues['ub/tab-block']['attributes'],
             'render_callback' =>  'ub_render_tab_block'));
@@ -103,7 +103,7 @@ function ub_render_tabbed_content_block($attributes, $contents){
 
 function ub_register_tabbed_content_block(){
     if(function_exists('register_block_type')){
-        require dirname(dirname(__DIR__)) . '/defaults.php';
+        // require dirname(dirname(__DIR__)) . '/defaults.php';
         register_block_type('ub/tabbed-content-block', array(
             'attributes' => $defaultValues['ub/tabbed-content-block']['attributes'],
             'render_callback' =>  'ub_render_tabbed_content_block'));
