@@ -17,7 +17,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
           document.getElementById(tab_id).classList.add('current')
         })
     });
-
-
   }
 });
