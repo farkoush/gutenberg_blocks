@@ -14,8 +14,8 @@ import "./03-layout-switcher";
 // import "./hoora-faq/faq-item";
 import "./hoora-tab"
 import "./hoora-tab/tabpane"
-import "./plugin-toc"
-
+// import "./plugin-toc"
+import "./02-data-example"
 // console.log("blocks");
 
 

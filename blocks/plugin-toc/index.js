@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-const { registerPlugin } = wp.plugins;
+// const { registerPlugin } = wp.plugins;
 const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
 const { PanelBody, PanelRow } = wp.components;
 
@@ -32,8 +32,8 @@ const TableOfContents = props => {
   );
 };
 
-registerPlugin("hoora-toc", {
-  icon,
-  render: TableOfContents
-});
+// registerPlugin("hoora-toc", {
+//   icon,
+//   render: TableOfContents
+// });
 
