@@ -13,6 +13,9 @@ import "./03-layout-switcher";
 // import "./hoora-faq"
 // import "./hoora-faq/faq-item";
 import "./hoora-tab"
+import "./hoora-tab/tabpane"
+import "./plugin-toc"
+
 // console.log("blocks");
 
 

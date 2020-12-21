@@ -9,6 +9,8 @@ function hoora_tab_assets1() { // phpcs:ignore
     wp_enqueue_script('hoora_tab-js');
     wp_register_style('style-css', plugins_url('/hoora-tab/style.css', dirname(__FILE__)));
     wp_enqueue_style( 'style-css');
+    wp_register_style('editor-css', plugins_url('/hoora-tab/editor.css', dirname(__FILE__)));
+    wp_enqueue_style( 'editor-css');
 }
 
 // Hook: Frontend assets.
