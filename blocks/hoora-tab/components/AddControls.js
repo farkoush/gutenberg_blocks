@@ -4,7 +4,7 @@ const { Button, Modal } = wp.components;
 const { withDispatch } = wp.data;
 const { compose, withState } = wp.compose;
 
-const ResetControls = ({
+const AddControls = ({
   isOpen,
   setState,
   layout,
@@ -14,33 +14,28 @@ const ResetControls = ({
   return (
     <Fragment>
       <Button isLink isDestructive onClick={() => setState({ isOpen: true })}>
-        {__("Reset Layout", "jsforwpadvblocks")}
+        {"Add Item"}
       </Button>
       {isOpen && (
         <Modal
           className="layout-switcher-reset"
-          title={__("Warning!", "jsforwpadvblocks")}
+          title="Warning!"
           onRequestClose={() => setState({ isOpen: false })}
         >
           <p>
-            {__("This action will remove all blocks", "jsforwpadvblocks")}
-            <strong>
-              {__(
-                "This can be undone before leaving the page with the Undo option.",
-                "jsforwpadvblocks"
-              )}
-            </strong>
+            This action will remove all blocks
+            <strong>This can be undone before leaving the page with the Undo option.</strong>
           </p>
           <p>
             <Button
               isDefault
               onClick={() => { 
-                resetBlocks([]);
+                // resetBlocks([]);
                 insertBlocks(layout);
                 setState({ isOpen: false });
               }}
             >
-              {__("Reset Layout", "jsforwpadvblocks")}
+            Add Item
             </Button>
           </p>
         </Modal>
@@ -55,8 +50,8 @@ export default compose(
   withDispatch(dispatch => {
     const { resetBlocks, insertBlocks } = dispatch("core/block-editor");
     return {
-      resetBlocks,
+    //   resetBlocks,
       insertBlocks
     };
   })
-)(ResetControls);
+)(AddControls);

@@ -16,7 +16,7 @@ const attributes = {
 	},
 	tabsContent: {
 		source: "query",
-		// selector: ".wp",
+		selector: ".wp",
 		query: {
 			content: {
 				type: "array",
@@ -32,7 +32,7 @@ const attributes = {
 			content: {
 				type: "array",
 				source: "children",
-				selector: ".tab-title",
+				// selector: ".tab-title",
 			},
 		},
 	},
