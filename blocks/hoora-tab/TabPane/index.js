@@ -2,6 +2,9 @@
 const { registerBlockType } = wp.blocks;
 const { __ } = window.wp.i18n;
 const { InnerBlocks } = wp.blockEditor;
+
+// import Edit from "./edit";
+
 registerBlockType( 'hoora/tabpane', {
     title: 'Tab Pane',
     // icon: 'welcome-learn-more',
@@ -33,8 +36,8 @@ registerBlockType( 'hoora/tabpane', {
 
 });
 
-registerBlockType( 'hoora/tabitem', {
-    title: 'tabitem',
+registerBlockType( 'hoora/tabheader', {
+    title: 'tabheader',
     // icon: 'welcome-learn-more',
     icon: 'heart',
     category: 'formatting', // (common, formatting, layout, widgets, embed)
@@ -59,4 +62,26 @@ registerBlockType( 'hoora/tabitem', {
     },
 
 });
+// registerBlockType( 'hoora/tab', {
+//     title: 'tab',
+//     // icon: 'welcome-learn-more',
+//     icon: 'heart',
+//     category: 'formatting', // (common, formatting, layout, widgets, embed)
+//     // parent: [ 'hoora/tab' ],
+//     attributes : {
+//         activeTab: {
+//             type: "number",
+//             default: 0}
+//     },
+//     edit : Edit,
+//     save: (  ) => {
+//         return(
+//             <div className="">
+//                 <InnerBlocks.Content />
+//                 save
+//             </div>
+//         )
+//     },
+
+// });
 

@@ -38,8 +38,8 @@ const attributes = {
 	},
 };
 
-registerBlockType( 'hoora/tab', {
-    title: 'hoora tab',
+registerBlockType( 'hoora/tabs', {
+    title: 'hoora tabs',
     category: 'hoora',
     attributes,
     // edit( { className, attributes, clientId , setAttributes} ) {

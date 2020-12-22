@@ -28,19 +28,9 @@ function MyButtonBlockAppender( { rootClientId } ) {
 }
 
 export default class Edit extends Component {   
+    
     render() {
         const { attributes, className, setAttributes, isSelected, clientId } = this.props;
-        const layouts = {
-            default: [createBlock("core/paragraph", {})],
-            hero: [
-              createBlock("core/cover", { align: "full" }),
-              createBlock("core/button", {
-                text: "Layout Switcher",
-                align: "center"
-              }),
-              createBlock("core/columns", { columns: 3 })
-            ],
-          };
         const Tab = props => {
             const active = attributes.activeTab === props.tabIndex;
             console.log('activ' + active)
@@ -54,10 +44,10 @@ export default class Edit extends Component {
                 </li>
             );
         };
-
+    
         const TabPane = props => {
             const { children, tabIndex } = props;
-
+    
             if (attributes.activeTab === tabIndex) {
                 // return <div className="tabs-tab-pane">{children}</div>;
                 return <div className={`tabs-tab-pane ${tabIndex}`}>{children}</div>;
@@ -65,21 +55,33 @@ export default class Edit extends Component {
                 return null;
             }
         };
-
         return (
             <div className="App">
                 <div defaultTab={0}> 
-                    <div className="tabs">
-                        <Tab tabIndex={0} ><p>Homeeee</p></Tab>
+                    <div className="tabs jjjjjjjjjjjjjjjj">
+                        <Tab tabIndex={0} >
+                            <p>Homeeee</p>
+                            {/* <TextControl
+                                label="tabContent"
+                                value={attributes.tabsTitle}
+                                onChange={(tabContent) => setAttributes({tabContent })}
+                            />     */}
+                        </Tab>
                         <Tab tabIndex={1} ><p>Contact</p></Tab>
                         <Tab tabIndex={2} ><p>About</p></Tab>
                         {/* <AddControls layout={layouts.hero} /> */}
-
-                        {/* <div tabIndex={0} onClick = {e => console.log(e)}><p>Homeeee</p></div>
-                        <div tabIndex={1} onClick = {e => console.log(e)} ><p>Contact</p></div>
-                        <div tabIndex={2} onClick = {e => console.log(e)} ><p>About</p></div> */}
+                
                     </div>
-                    <TabPane tabIndex={0}>
+                    {/* <TabPane tabIndex={0}>
+                            <InnerBlocks
+                                allowedBlocks={['hoora/tabpane']}
+                                template={[['hoora/tabpane']]}
+                                renderAppender={ () => (
+                                    <MyButtonBlockAppender rootClientId={ clientId } />
+                                ) }
+                            />
+                    </TabPane> */}
+                    <TabPane tabIndex={0}>Tab Content for home
                             <InnerBlocks
                                 allowedBlocks={['hoora/tabpane']}
                                 template={[['hoora/tabpane']]}
@@ -88,9 +90,24 @@ export default class Edit extends Component {
                                 ) }
                             />
                     </TabPane>
-
-                    <TabPane tabIndex={1}>Tab Content for Contact</TabPane>
-                    <TabPane tabIndex={2}>About</TabPane>
+                    <TabPane tabIndex={1}>Tab Content for Contact
+                            <InnerBlocks
+                                allowedBlocks={['hoora/tabpane']}
+                                template={[['hoora/tabpane']]}
+                                renderAppender={ () => (
+                                    <MyButtonBlockAppender rootClientId={ clientId } />
+                                ) }
+                            />
+                    </TabPane>
+                    <TabPane tabIndex={2}>About
+                            <InnerBlocks
+                                allowedBlocks={['hoora/tabpane']}
+                                template={[['hoora/tabpane']]}
+                                renderAppender={ () => (
+                                    <MyButtonBlockAppender rootClientId={ clientId } />
+                                ) }
+                            />
+                    </TabPane> 
                 </div>
             </div>
         );
