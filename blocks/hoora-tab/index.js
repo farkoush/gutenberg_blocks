@@ -3,23 +3,39 @@ const { InnerBlocks } = wp.blockEditor;
 import Edit from "./edit";
 
 const attributes = {
-	tabLink: {
+	id: {
+		type: "number",
+		default: -1,
+	},
+	activeControl: {
 		type: "string",
-		default: "tab 1"
-    },
-    tabContent: {
-		type: "string",
-		default: "tab 1 content"
-    },
-    defaultTab:{
-        type: "number",
-        default:0
-    },
-    activeTab:{
-        type:"number",
-        default:0
-    }
-
+	},
+	activeTab: {
+		type: "number",
+		default: 0,
+	},
+	tabsContent: {
+		source: "query",
+		// selector: ".wp",
+		query: {
+			content: {
+				type: "array",
+				source: "children",
+				// selector: ".",
+			},
+		},
+	},
+	tabsTitle: {
+		source: "query",
+		selector: ".tabs",
+		query: {
+			content: {
+				type: "array",
+				source: "children",
+				selector: ".tab-title",
+			},
+		},
+	},
 };
 
 registerBlockType( 'hoora/tab', {
@@ -33,10 +49,6 @@ registerBlockType( 'hoora/tab', {
     // },
     edit:Edit,
     save({attributes,className}) {
-        const {
-            tabLink,
-            tabContent
-        } = attributes;
         return (
             <div className={'hoora-tab-save'}>
                 <p>Tab panel</p>
