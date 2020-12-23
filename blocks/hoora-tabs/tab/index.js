@@ -15,21 +15,35 @@ registerBlockType( 'hoora/tab', {
             type: "number",
             default: 0
         },
-        title: {
+        tabTitle: {
             type: "string",
-            default: ""
+            default: "tab title",
+            selector: 'tabs-tab'
         },
-        content: {
-            type: "array",
-            default: []
-        }
+        tabContent: {
+            type: "string",
+            default: "tab content",
+            selector: '.tabs-tab-pane'
+        },
+        // paragraph: {
+        //     type: "string",
+        //     default: ''
+        // }
     },
     edit : Edit,
-    save: (  ) => {
+    save: ( attributes ) => {
         return(
             <div className="">
-                <InnerBlocks.Content />
+                {/* <InnerBlocks.Content /> */}
                 {/* save */}
+                <p>
+                    <strong>Title</strong>
+                    {attributes.title}
+                </p>
+                <p>
+                    <strong>Content</strong>
+                    {attributes.content}
+                </p>
             </div>
         )
     },

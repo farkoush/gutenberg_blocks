@@ -29,17 +29,16 @@ function MyButtonBlockAppender( { rootClientId } ) {
 export default class Edit extends Component {   
     componentDidMount(previousProps, previousState){
         // console.log('this.props.clientId' + this.props.clientId + "  name::" + this.props.name)
-        var tabs_title = [];
-        var tabs_content = [];
-        var myID = this.props.clientId;
-        var tabs_title = [];
-        var myBlock = wp.data.select('core/block-editor').getBlock(myID);
+        var tabs_title_arr = [];
+        var tabs_content_arr = [];
+        var clientId = this.props.clientId;
+        var myBlock = wp.data.select('core/block-editor').getBlock(clientId);
         myBlock.innerBlocks.map(block => {
-             tabs_title.push( block.attributes.title );
-             tabs_content.push(block.attributes.content)
+             tabs_title_arr.push( block.attributes.tabTitle );
+             tabs_content_arr.push(block.attributes.tabContent)
         });
-        this.props.setAttributes({ 'tabs_title': tabs_title });
-        this.props.setAttributes({'tabsContent' : tabs_content})
+        this.props.setAttributes({ tabstitle: tabs_title_arr });
+        this.props.setAttributes({tabsContent : tabs_content_arr})
     }
     
     render() {
@@ -83,12 +82,7 @@ export default class Edit extends Component {
         return (
             <div className="App">
                 <div defaultTab={0}> 
-                    <div className="tabs jjjjjjjjjjjjjjjj">
-                        {console.log('attributes.tabs_title')}
-                        {console.log( attributes.tabs_title)}
-                        {console.log('attributes.tabs_content')}
-                        {console.log(attributes.tabsContent)}
-                        {/* {console.log('attributes.tabs_content' + attributes.tabs_content)} */}
+                    {/* <div className="tabs">
                             <InnerBlocks
                                 allowedBlocks={['hoora/tab']}
                                 template={[['hoora/tab']]}
@@ -96,7 +90,16 @@ export default class Edit extends Component {
                                     <MyButtonBlockAppender rootClientId={ clientId } />
                                 ) }
                             />
-                    </div>
+                    </div> */}
+                    <tabs className="tabs">
+                            <InnerBlocks
+                                allowedBlocks={['hoora/tab']}
+                                template={[['hoora/tab',{className:'tabsssss'}]]}
+                                renderAppender={ () => (
+                                    <MyButtonBlockAppender rootClientId={ clientId } />
+                                ) }
+                            />
+                    </tabs>
                 </div>
             </div>
         );

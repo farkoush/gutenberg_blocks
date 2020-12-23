@@ -3,50 +3,54 @@ const { InnerBlocks } = wp.blockEditor;
 import Edit from "./edit";
 
 const attributes = {
-	id: {
-		type: "number",
-		default: -1,
-	},
-	activeControl: {
-		type: "string",
-	},
+	// id: {
+	// 	type: "number",
+	// 	default: -1,
+	// },
+	// activeControl: {
+	// 	type: "string",
+	// },
 	activeTab: {
 		type: "number",
 		default: 0,
 	},
-	tabsContent: {
-		source: "query",
-		selector: ".wp",
-		query: {
-			content: {
-				type: "array",
-				source: "children",
-				// selector: ".",
-			},
-		},
-	},
 	tabsTitle: {
-		source: "query",
-		selector: ".tabs",
-		query: {
-			content: {
-				type: "array",
-				source: "children",
-				// selector: ".tab-title",
-			},
-		},
+		type: "array",
+		default: [],
 	},
+	tabsContent: {
+		type: "array",
+		default: [],
+	},
+	// tabsContent: {
+	// 	source: "query",
+	// 	selector: ".tabs",
+	// 	query: {
+	// 		content: {
+	// 			type: "array",
+	// 			source: "children",
+	// 			// selector: ".",
+	// 		},
+	// 	},
+	// },
+	// tabsTitle: {
+	// 	source: "query",
+	// 	selector: ".tabs",
+	// 	query: {
+	// 		content: {
+	// 			type: "array",
+	// 			source: "children",
+	// 			// selector: ".tab-title",
+	// 		},
+	// 	},
+	// },
+	
 };
 
 registerBlockType( 'hoora/tabs', {
     title: 'hoora tabs',
     category: 'hoora',
     attributes,
-    // edit( { className, attributes, clientId , setAttributes} ) {
-    //     return(
-    //         <div>edit</div>
-    //     )
-    // },
     edit:Edit,
     save({attributes,className}) {
         return (
