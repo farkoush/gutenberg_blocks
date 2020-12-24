@@ -35,6 +35,7 @@ module.exports = {
   entry: {
     './assets/js/editor.blocks' : './blocks/index.js',
     './assets/js/frontend.blocks' : './blocks/frontend.js',
+    './assets/js/plugins.blocks' : './plugins/index.js',
   },
   output: {
     path: path.resolve( __dirname ),

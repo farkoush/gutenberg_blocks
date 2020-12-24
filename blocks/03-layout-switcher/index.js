@@ -10,7 +10,7 @@ import SwitcherControls from "./components/SwitcherControls";
 
 
 export default registerBlockType( 'hoora/switcher', {
-  title:'switcher',
+  title:'hoora switcher',
   icon: 'heart',
   category: 'formatting', // (common, formatting, layout, widgets, embed)
       // edit: Edit,

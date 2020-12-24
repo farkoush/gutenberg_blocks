@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
-// const { registerPlugin } = wp.plugins;
+const { registerPlugin } = wp.plugins;
 const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
 const { PanelBody, PanelRow } = wp.components;
 
@@ -15,12 +15,12 @@ import BlockList from "./components/BlockList";
 const TableOfContents = props => {
   return (
     <Fragment>
-      <PluginSidebarMoreMenuItem target="hoora-toc">
-        {"Table of Contents"}
+      <PluginSidebarMoreMenuItem target="jsforwpadvgb-toc">
+        {__("Table of Contents", "jsforwpadvblocks")}
       </PluginSidebarMoreMenuItem>
       <PluginSidebar
-        name="hoora-toc"
-        title="Table of Contents"
+        name="jsforwpadvgb-toc"
+        title={__("Table of Contents", "jsforwpadvblocks")}
       >
         <PanelBody>
           <PanelRow>
@@ -32,8 +32,7 @@ const TableOfContents = props => {
   );
 };
 
-// registerPlugin("hoora-toc", {
-//   icon,
-//   render: TableOfContents
-// });
-
+registerPlugin("jsforwpadvgb-toc", {
+  icon,
+  render: TableOfContents
+});

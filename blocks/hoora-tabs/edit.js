@@ -33,12 +33,15 @@ export default class Edit extends Component {
         var tabs_content_arr = [];
         var clientId = this.props.clientId;
         var myBlock = wp.data.select('core/block-editor').getBlock(clientId);
-        myBlock.innerBlocks.map(block => {
+        myBlock.innerBlocks.map( (block,index) => {
              tabs_title_arr.push( block.attributes.tabTitle );
              tabs_content_arr.push(block.attributes.tabContent)
+             console.log(block);
+             console.log(index);
         });
         this.props.setAttributes({ tabstitle: tabs_title_arr });
-        this.props.setAttributes({tabsContent : tabs_content_arr})
+        this.props.setAttributes({tabsContent : tabs_content_arr});
+
     }
     
     render() {
@@ -67,18 +70,15 @@ export default class Edit extends Component {
                 return null;
             }
         };
-        const Tabs = props => {
-            const {children} = props;
-            var tabs_title = [];
-            var tabs_content = [];
-            // console.dir(children); 
-            var myBlock = wp.data.select('core/block-editor').getBlock(clientId);
-            myBlock.innerBlocks.map(block => {
-                 tabs_title.push( block.attributes.title );
-                 tabs_content.push ( block.attributes.content)
-            });
-            return <div>gggggg{tabs_title} {}</div>;
-        }
+        const INNER_BLOCKS_TEMPLATE = [
+            [
+                'hoora/tab',
+                {
+                    className: 'aquila-dos-and-donts__groupjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj',
+                },
+            ],
+        ];
+        const ALLOWED_BLOCKS = [ 'hoora/tab' ];
         return (
             <div className="App">
                 <div defaultTab={0}> 
@@ -91,15 +91,19 @@ export default class Edit extends Component {
                                 ) }
                             />
                     </div> */}
-                    <tabs className="tabs">
+                    <div className="tabs">
                             <InnerBlocks
-                                allowedBlocks={['hoora/tab']}
-                                template={[['hoora/tab',{className:'tabsssss'}]]}
+                                // allowedBlocks={['hoora/tab']}
+                                // template={[
+                                //     ['hoora/tab', {className:'tabsssss'}]
+                                // ]}
+                                template={ INNER_BLOCKS_TEMPLATE }
+				                allowedBlocks={ ALLOWED_BLOCKS }
                                 renderAppender={ () => (
                                     <MyButtonBlockAppender rootClientId={ clientId } />
                                 ) }
                             />
-                    </tabs>
+                    </div>
                 </div>
             </div>
         );

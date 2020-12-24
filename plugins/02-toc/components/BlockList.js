@@ -6,7 +6,7 @@ const BlockList = ({ blocks }) => {
   const blockItems = blocks.map(block => {
     return <BlockItem block={block} />;
   });
-  return <ul className="hoora-toc">{blockItems}</ul>;
+  return <ul className="jsforwp-toc">{blockItems}</ul>;
 };
 
 export default withSelect(select => {

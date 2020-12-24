@@ -8,25 +8,21 @@ export default class Edit extends Component {
         const { attributes, className, setAttributes, isSelected, clientId } = this.props;
         return (
             <div>
-                    <li className="tabs-tab" tabIndex={0} >
-                        <p>Homeeee</p>
+                    {/* <li className="tabs-tab" tabIndex={0} >
+                        <p>Homeeee</p> */}
                         <TextControl
                             label="tabtitle"
                             value={attributes.tabTitle}
                             onChange={(tabTitle) => setAttributes({tabTitle})}
                         />  
-                    </li>
-                    <div className="tabs-tab-pane" tabIndex={0}>Tab Content for home
-                            {/* <InnerBlocks
-                                allowedBlocks={['core/paragraph']}
-                                template={[['core/paragraph']]}
-                            /> */}
+                    {/* </li> */}
+                    {/* <div className="tabs-tab-pane" tabIndex={0}>Tab Content for home */}
                         <TextControl
                             label="tabContent"
                             value={attributes.tabContent}
                             onChange={(tabContent) => setAttributes({tabContent})}
                         /> 
-                    </div>
+                    {/* </div> */}
             </div>
         );
     }

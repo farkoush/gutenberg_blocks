@@ -25,24 +25,30 @@ registerBlockType( 'hoora/tab', {
             default: "tab content",
             selector: '.tabs-tab-pane'
         },
+        tabIndex:{
+            type: "number",
+            default: 0
+        }
         // paragraph: {
         //     type: "string",
         //     default: ''
         // }
     },
     edit : Edit,
-    save: ( attributes ) => {
+    save: ( {attributes,className} ) => {
+        {console.log('attributes')}
+        {console.log(attributes)}
         return(
             <div className="">
                 {/* <InnerBlocks.Content /> */}
                 {/* save */}
                 <p>
                     <strong>Title</strong>
-                    {attributes.title}
+                    {attributes.tabTitle}
                 </p>
                 <p>
                     <strong>Content</strong>
-                    {attributes.content}
+                    {attributes.tabContent}
                 </p>
             </div>
         )
