@@ -1,5 +1,5 @@
 import "./i18n.js";
-
+console.log("blocks")
 /**
  * Import example blocks
  */
@@ -17,6 +17,8 @@ import "./hoora-tabs/tab"
 // import "./plugin-toc"
 import "./02-data-example"
 // console.log("blocks");
+
+import "./filters"
 
 
 

@@ -7,7 +7,7 @@ const { createHigherOrderComponent } = wp.compose;
 
 import classnames from "classnames";
 import ClassManager from '../components/ClassManager.js';
-import "./style.css";
+// import "./style.css";
 
 addFilter(
   "blocks.registerBlockType",
