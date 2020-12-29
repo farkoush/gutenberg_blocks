@@ -10,11 +10,13 @@ addFilter(
 
 function extendWithGetSaveContentExtraProps(props) {
   // Add class of "no-citation" if a quote has no citation
-  if ("wp-block-quote" === props.className && !props.children[1]) {
-    return lodash.merge(props, {
-      className: classnames(props.className, "no-citation")
-    });
-  }
+  console.log("children")
+  console.log(props.children);
+  // if ("wp-block-quote" === props.className && !props.children[1]) {
+  //   return lodash.merge(props, {
+  //     className: classnames(props.className, "no-citationnnn")
+  //   });
+  // }
 
   // Add background to code on the frontend
   if ("wp-block-code" === props.className) {

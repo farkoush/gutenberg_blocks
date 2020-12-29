@@ -16,7 +16,7 @@ const attributes = {
 	},
 	tabsTitle: {
 		type: "array",
-		default: ['ttt'],
+		default: [],
 	},
 	tabsContent: {
 		type: "array",

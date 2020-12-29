@@ -13,7 +13,7 @@ function customCoverClassName(className, name) {
     // This will OVERRIDE the class
     // return "my-block-cover";
     // Add a custom class of your own
-    return classnames(className, "my-block-cover");
+    return classnames(className, "my-block-coverrrr");
   }
 
   return className;

@@ -14,13 +14,15 @@ function MyButtonBlockAppender( { rootClientId } ) {
         <Inserter
             rootClientId={ rootClientId }
             renderToggle={ ( { onToggle, disabled } ) => (
-                <Button
-                    className="my-button-block-appender"
-                    onClick={ onToggle }
-                    disabled={ disabled }
-                    label="Add a New Item"
-                    icon="plus"
-                />
+                <div className="hhhh">
+                    <Button
+                        className="my-button-block-appender"
+                        onClick={ onToggle }
+                        disabled={ disabled }
+                        label="Add a New Item"
+                        icon="plus"
+                    />
+                </div>
             ) }
             isAppender
         />
@@ -36,8 +38,8 @@ export default class Edit extends Component {
         myBlock.innerBlocks.map( (block,index) => {
              tabs_title_arr.push( block.attributes.tabTitle );
              tabs_content_arr.push(block.attributes.tabContent)
-             console.log(block);
-             console.log(index);
+            //  console.log(block);
+            //  console.log(index);
         });
         this.props.setAttributes({ tabstitle: tabs_title_arr });
         this.props.setAttributes({tabsContent : tabs_content_arr});
@@ -60,45 +62,57 @@ export default class Edit extends Component {
             );
         };
     
-        const TabPane = props => {
-            const { children, tabIndex } = props;
+        // const TabPane = props => {
+        //     const { children, tabIndex } = props;
     
-            if (attributes.activeTab === tabIndex) {
-                // return <div className="tabs-tab-pane">{children}</div>;
-                return <div className={`tabs-tab-pane ${tabIndex}`}>{children}</div>;
-            } else {
-                return null;
-            }
-        };
-        const INNER_BLOCKS_TEMPLATE = [
-            [
-                'hoora/tab',
-                {
-                    className: 'aquila-dos-and-donts__groupjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj',
-                },
-            ],
-        ];
-        const ALLOWED_BLOCKS = [ 'hoora/tab' ];
+        //     if (attributes.activeTab === tabIndex) {
+        //         // return <div className="tabs-tab-pane">{children}</div>;
+        //         return <div className={`tabs-tab-pane ${tabIndex}`}>{children}</div>;
+        //     } else {
+        //         return null;
+        //     }
+        // };
+        if (attributes.tabstitle === 'undefined')    {
+            console.log('undefined')
+        }
+
         return (
             <div className="App">
                 <div defaultTab={0}> 
-                    {/* <div className="tabs">
+                    <div className="tabs">
+                        <div className="tabs jjjjjjjjjjjjjjjj">
+                            {
+                                if (attributes.tabstitle) {
+
+                                    var tab = attributes.tabstitle.map((answer, i) => {     
+                                        console.log("Entered");                 
+                                        // Return the element. Also pass key     
+                                        return (<Tab key={answer} answer={answer} />) 
+                                     })                      
+                                }
+                            }
+                            {/* <Tab tabIndex={1} ><p>Contact</p></Tab>
+                            <Tab tabIndex={2} ><p>About</p></Tab> */}
+                            {/* <AddControls layout={layouts.hero} /> */}
+                    
+                        </div>
+                        {/* <TabPane tabIndex={0}>
+                                <InnerBlocks
+                                    allowedBlocks={['hoora/tabpane']}
+                                    template={[['hoora/tabpane']]}
+                                    renderAppender={ () => (
+                                        <MyButtonBlockAppender rootClientId={ clientId } />
+                                    ) }
+                                />
+                        </TabPane> */}
+                        {/* <TabPane tabIndex={0}>Tab Content for home</TabPane>
+                        <TabPane tabIndex={1}>Tab Content for Contact</TabPane>
+                        <TabPane tabIndex={2}>About</TabPane>  */}
                             <InnerBlocks
                                 allowedBlocks={['hoora/tab']}
-                                template={[['hoora/tab']]}
-                                renderAppender={ () => (
-                                    <MyButtonBlockAppender rootClientId={ clientId } />
-                                ) }
-                            />
-                    </div> */}
-                    <div className="tabs">
-                            <InnerBlocks
-                                // allowedBlocks={['hoora/tab']}
-                                // template={[
-                                //     ['hoora/tab', {className:'tabsssss'}]
-                                // ]}
-                                template={ INNER_BLOCKS_TEMPLATE }
-				                allowedBlocks={ ALLOWED_BLOCKS }
+                                template={[
+                                    ['hoora/tab', {level: 2, tabindex:1, content:[]}]
+                                ]}
                                 renderAppender={ () => (
                                     <MyButtonBlockAppender rootClientId={ clientId } />
                                 ) }

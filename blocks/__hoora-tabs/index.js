@@ -16,7 +16,7 @@ const attributes = {
 	},
 	tabsTitle: {
 		type: "array",
-		default: ['ttt'],
+		default: [],
 	},
 	tabsContent: {
 		type: "array",
@@ -47,8 +47,8 @@ const attributes = {
 	
 };
 
-registerBlockType( 'hoora/tabs', {
-    title: 'hoora tabs',
+registerBlockType( 'hoora/tabstab', {
+    title: 'hoora tabstab',
     category: 'hoora',
     attributes,
     edit:Edit,

@@ -1,29 +1,106 @@
-const { TextControl } = wp.components;
-const { InnerBlocks } = wp.blockEditor;
+const { TextControl, PanelBody, PanelRow } = wp.components;
+const { InnerBlocks,InspectorControls, useBlockProps   } = wp.blockEditor;
 const { Component } = wp.element;
 
 
+
+
 export default class Edit extends Component {  
+    getInspectorControls(){
+        const {attributes, setAttributes, isSelected} = this.props;
+
+            return (
+                isSelected && (
+                    <InspectorControls style={{marginBottom: '40px'}}>  
+                    <PanelBody title={"tab Settings"}>
+                        <PanelRow>
+                            <TextControl
+                                label="title"
+                                value={attributes.tabTitle}
+                                onChange={option => {
+                                    setAttributes({ tabTitle: option });
+                                }}
+                            />
+                        </PanelRow>
+                        <PanelRow>
+                            <TextControl
+                                label="tabIndex"
+                                value={attributes.tabIndex}
+                                onChange={tabIndex => {
+                                    setAttributes({ tabIndex: tabIndex });
+                                }}
+                            />
+                        </PanelRow>
+                    </PanelBody>
+                </InspectorControls>
+                )
+            );
+        }
+     
+        getBlockControls(){
+            const { attributes, setAttributes } = this.props;
+            return (
+                <InspectorControls>              
+                </InspectorControls>
+            );
+        }
     render() {
         const { attributes, className, setAttributes, isSelected, clientId } = this.props;
-        return (
-            <div>
-                    {/* <li className="tabs-tab" tabIndex={0} >
-                        <p>Homeeee</p> */}
-                        <TextControl
-                            label="tabtitle"
-                            value={attributes.tabTitle}
-                            onChange={(tabTitle) => setAttributes({tabTitle})}
-                        />  
-                    {/* </li> */}
-                    {/* <div className="tabs-tab-pane" tabIndex={0}>Tab Content for home */}
-                        <TextControl
-                            label="tabContent"
-                            value={attributes.tabContent}
-                            onChange={(tabContent) => setAttributes({tabContent})}
-                        /> 
-                    {/* </div> */}
-            </div>
-        );
+        // const blockProps = useBlockProps();
+        // const Tab = props => {
+        //     const active = attributes.activeTab === props.tabIndex;
+        //     console.log('activ' + active)
+        //     return (
+        //         <div>
+        //             <li
+        //                 onClick={() => {setAttributes({activeTab: props.tabIndex}); }} //setAttributes actoiveTab : tabIndex 
+        //                 className={`tabs-tab ${isSelected ? "active" : ""}`}
+        //             >
+        //                 {" "}
+        //                 {props.label}{" "}
+        //             </li>
+        //             <div
+        //                 className={`tabs-tab-pane ${!isSelected ? "hide" : ""}`}
+        //             >
+        //                 {props.children}
+        //             </div>
+        //         </div>
+        //     );
+        // };
+        const TabPane = props => {
+            const { children, tabIndex } = props;
+    
+            if (attributes.activeTab === tabIndex) {
+                // return <div className="tabs-tab-pane">{children}</div>;
+                return <div className={`tabs-tab-pane ${tabIndex}`}>{children}</div>;
+            } else {
+                return null;
+            }
+        };
+        return ([
+            this.getInspectorControls(),
+            this.getBlockControls(),
+            // <div { ...blockProps } tabIndex={attributes.tabIndex}>
+            // <div tabIndex={attributes.tabIndex} label={attributes.tabTitle}>
+            //     <p>{attributes.tabIndex}</p>
+            //     {/* <p>{attributes.tabTitle}</p> */}
+            //     <InnerBlocks
+            //         allowedBlocks={['core/group']}
+            //         template={[['core/group']]}
+            //     />
+            // </div>
+            // <div tabIndex={attributes.tabIndex} label={attributes.tabTitle}>
+            //     <div >Tab Content for Contact</div>
+            // </div>
+            <TabPane tabIndex={attributes.tabIndex}>
+
+                <InnerBlocks
+                    allowedBlocks={['core/group']}
+                    template={[['core/group']]}
+                />
+
+            </TabPane>
+
+        ]);
     }
 }

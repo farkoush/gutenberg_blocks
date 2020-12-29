@@ -14,11 +14,15 @@ import "./03-layout-switcher";
 // import "./hoora-faq/faq-item";
 import "./hoora-tabs"
 import "./hoora-tabs/tab"
+// import "./hoora-tabs2"
 // import "./plugin-toc"
 import "./02-data-example"
 // console.log("blocks");
 
 import "./filters"
+import "./__hoora-tabs"
+import "./__hoora-tabs/tab"
+
 
 
 

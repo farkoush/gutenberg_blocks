@@ -6,9 +6,9 @@ console.log("filters")
 // import "./add-heading-full-align"; //dont undrestand
 //import "./block-edit"; //work well
 // import "./extendCodeBlockDemo_";
-import "./extendCodeBlockDemo"; //work well
+// import "./extendCodeBlockDemo"; //work well
 // import "./registerBlockType";
-import "./getSaveElement";
-// import "./getSaveContentExtraProps";
-// import "./getBlockDefaultClassName";
+// import "./getSaveElement";
+// import "./getSaveContentExtraProps"; //not work
+import "./getBlockDefaultClassName";
 // import "./extendCodeBlockDemo";

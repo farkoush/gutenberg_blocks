@@ -1,7 +1,7 @@
 
 const { registerBlockType } = wp.blocks;
 const { __ } = window.wp.i18n;
-const { InnerBlocks, useBlockProps } = wp.blockEditor;
+const { InnerBlocks } = wp.blockEditor;
 
 import Edit from "./edit";
 
@@ -26,8 +26,8 @@ registerBlockType( 'hoora/tab', {
             selector: '.tabs-tab-pane'
         },
         tabIndex:{
-            type: "string",
-            default: "0"
+            type: "number",
+            default: 0
         }
         // paragraph: {
         //     type: "string",
@@ -36,24 +36,23 @@ registerBlockType( 'hoora/tab', {
     },
     edit : Edit,
     save: ( {attributes,className} ) => {
-        const blockProps = useBlockProps.save();
+        {console.log('attributes')}
+        {console.log(attributes)}
         return(
-            // <div { ...blockProps } className="" tabIndex={attributes.tabIndex}>
-            <div className="" tabIndex={attributes.tabIndex}>
-                <p>tabIndex : {attributes.tabIndex}</p>
-                <p>tabTitle: {attributes.tabTitle}</p>
-                <InnerBlocks.Content/>
+            <div className="">
+                {/* <InnerBlocks.Content /> */}
+                {/* save */}
+                <p>
+                    <strong>Title</strong>
+                    {attributes.tabTitle}
+                </p>
+                <p>
+                    <strong>Content</strong>
+                    {attributes.tabContent}
+                </p>
             </div>
         )
     },
-    // save(props) {
-    //     const {attributes} = props;
-    //       return(
-    //         <div className={'flex-column' + ' ' }>
-    //         <InnerBlocks.Content />
-    //         </div>
-    //     );
-    //   }
 
 });
 
