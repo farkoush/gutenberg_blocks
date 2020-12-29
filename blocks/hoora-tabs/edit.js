@@ -29,22 +29,47 @@ function MyButtonBlockAppender( { rootClientId } ) {
     );
 };
 export default class Edit extends Component {   
-    componentDidMount(previousProps, previousState){
+    constructor(props) {
+        super(props);
+        this.handleLoad = this.handleLoad.bind(this);
+     }
+    
+     componentDidMount() {
+        window.addEventListener('load', this.handleLoad);
+     }
+    
+    //  componentWillUnmount() { 
+    //    window.removeEventListener('load', this.handleLoad)  
+    //  }
+    
+     handleLoad() {
         // console.log('this.props.clientId' + this.props.clientId + "  name::" + this.props.name)
         var tabs_title_arr = [];
         var tabs_content_arr = [];
         var clientId = this.props.clientId;
         var myBlock = wp.data.select('core/block-editor').getBlock(clientId);
         myBlock.innerBlocks.map( (block,index) => {
-             tabs_title_arr.push( block.attributes.tabTitle );
-             tabs_content_arr.push(block.attributes.tabContent)
+            tabs_title_arr.push( block.attributes.tabTitle );
+            tabs_content_arr.push(block.attributes.tabContent)
             //  console.log(block);
             //  console.log(index);
         });
         this.props.setAttributes({ tabstitle: tabs_title_arr });
         this.props.setAttributes({tabsContent : tabs_content_arr});
-
-    }
+     }
+    // componentDidMount(previousProps, previousState){
+    //             var tabs_title_arr = [];
+    //             var tabs_content_arr = [];
+    //             var clientId = this.props.clientId;
+    //             var myBlock = wp.data.select('core/block-editor').getBlock(clientId);
+    //             myBlock.innerBlocks.map( (block,index) => {
+    //                 tabs_title_arr.push( block.attributes.tabTitle );
+    //                 tabs_content_arr.push(block.attributes.tabContent)
+    //             });
+    //             this.props.setAttributes({ tabstitle: tabs_title_arr });
+    //             this.props.setAttributes({tabsContent : tabs_content_arr});
+    //             console.log('componentDidMount')
+    // }
     
     render() {
         const { attributes, className, setAttributes, isSelected, clientId } = this.props;
@@ -72,25 +97,27 @@ export default class Edit extends Component {
         //         return null;
         //     }
         // };
-        if (attributes.tabstitle === 'undefined')    {
-            console.log('undefined')
-        }
-
+        // if (attributes.tabstitle === 'undefined')    {
+        //     console.log('undefined')
+        // }
+        // if (attributes.tabstitle !== undefined){
+        //     console.log('ddddddd')
+        //     var tabsTitle = attributes.tabsTitle;
+        // }
+        // else {console.log('llllllllllllllll')}
         return (
             <div className="App">
                 <div defaultTab={0}> 
                     <div className="tabs">
                         <div className="tabs jjjjjjjjjjjjjjjj">
-                            {
-                                if (attributes.tabstitle) {
-
-                                    var tab = attributes.tabstitle.map((answer, i) => {     
+                                    {/* {console.log(attributes.tabstitle)} */}
+                                    {/* { tabsTitle.map((answer, i) => {     
                                         console.log("Entered");                 
                                         // Return the element. Also pass key     
                                         return (<Tab key={answer} answer={answer} />) 
                                      })                      
-                                }
-                            }
+                                } */}
+                            
                             {/* <Tab tabIndex={1} ><p>Contact</p></Tab>
                             <Tab tabIndex={2} ><p>About</p></Tab> */}
                             {/* <AddControls layout={layouts.hero} /> */}

@@ -14,9 +14,9 @@ const attributes = {
 		type: "number",
 		default: 0,
 	},
-	tabsTitle: {
+	tabstitle: {
 		type: "array",
-		default: ['ttt'],
+		default: [],
 	},
 	tabsContent: {
 		type: "array",
@@ -53,6 +53,7 @@ registerBlockType( 'hoora/tabs', {
     attributes,
     edit:Edit,
     save({attributes,className}) {
+		{console.log(attributes.tabstitle)}
         return (
 			
             // <div className={'hoora-tab-save'}>
@@ -76,11 +77,15 @@ registerBlockType( 'hoora/tabs', {
             //     </div>
 			// </div>
 			<div className="aquila-dos-and-donts">
+				<ul class="tabs">
+		 			{
+		 				attributes.tabstitle.map( (tt,index) => {
+		 					<li class="tab-link current" data-tab={`tab-${index}`}>{tt}</li>
+		 				})
+		 			}
+		 		</ul>
+				<div className="tab-panel">
 				<InnerBlocks.Content />
-				<div>
-					{attributes.tabsContent.map(tc => {
-						<p>tc</p>
-					})}
 				</div>
 			</div>  
 		// 	<div className={'hoora-tab-save'}>
@@ -95,15 +100,15 @@ registerBlockType( 'hoora/tabs', {
 		// 			}
 		// 		</ul>
 				
-		// 		<div className="tab-panel">
-		// 			{
-		// 				attributes.tabsContent.map( (tc,index) => {
-		// 					<div id={`tab-${index}`} class="tab-content">
-		// 						{tc}
-		// 					</div>
-		// 				})
-		// 			}
-		// 		</div>
+				// <div className="tab-panel">
+				// 	{
+				// 		attributes.tabsContent.map( (tc,index) => {
+				// 			<div id={`tab-${index}`} class="tab-content">
+				// 				{tc}
+				// 			</div>
+				// 		})
+				// 	}
+				// </div>
 
 		// 	</div>
 		// </div>     
