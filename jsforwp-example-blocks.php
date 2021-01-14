@@ -10,7 +10,7 @@
  * Plugin Name: Gutenberg - Example Blocks
  * Plugin URI:  https://gutenberg.courses
  * Description: A plugin containing example blocks for developers.  From <a href="https://gutenberg.courses/development">Zac Gordon's Gutenberg Development Course</a>.
- * Version:     3.1.0
+ * Version:     3.1.1
  * Author:      Zac Gordon
  * Author URI:  https://twitter.com/zgordon
  * Text Domain: jsforwpblocks
@@ -84,6 +84,4 @@ function enqueue_block_editor_assets() {
 // include __DIR__ . '/blocks/hoora-googlemap/index.php';
 // include __DIR__ . '/blocks/hoora-swiper2/index.php';
 include __DIR__ . '/blocks/hoora-tabs/index.php';
-
-
-
+include __DIR__ . '/blocks/hoora-meta2/index.php';

@@ -18,6 +18,7 @@ import "./hoora-tabs/tab"
 // import "./plugin-toc"
 import "./02-data-example"
 // console.log("blocks");
+import "./hoora-meta2"
 
 import "./filters"
 import "./__hoora-tabs"

@@ -78,8 +78,9 @@ registerBlockType( 'hoora/tabs', {
 			// </div>
 			<div className="aquila-dos-and-donts">
 				<ul class="tabs">
-		 			{
-		 				attributes.tabstitle.map( (tt,index) => {
+				<li>{(attributes.tabstitle).length && console.log('attributes.tabstitle')}</li>
+					 { (attributes.tabstitle).length &&		 				
+					 	attributes.tabstitle.map( (tt,index) => {
 		 					<li class="tab-link current" data-tab={`tab-${index}`}>{tt}</li>
 		 				})
 		 			}
