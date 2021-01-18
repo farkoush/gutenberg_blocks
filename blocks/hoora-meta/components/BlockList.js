@@ -13,6 +13,5 @@ const BlockList = ({ blocks, clientId }) => {
 export default withSelect(select => {
   return {
     blocks: select("core/editor").getBlocks()
-    // blocks: select("core/editor").getBlocksByClientId()
   };
 })(BlockList);

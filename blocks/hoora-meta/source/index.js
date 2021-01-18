@@ -1,7 +1,7 @@
 // import Edit from "../gallery/edit";
 
 const {registerBlockType} = wp.blocks;
-const { Inserter,InnerBlocks } = wp.blockEditor;
+const { InnerBlocks } = wp.blockEditor;
 import EditItem from './edit-item';
 import Edit from './edit';
 
@@ -15,8 +15,8 @@ registerBlockType( 'hoora/sourceitem', {
             type : 'object',
             default:
                 {
-                    title: '',
-                    link: '',
+                    sourceTitle: '',
+                    sourceLink: '',
                 }
         },
         idx:{

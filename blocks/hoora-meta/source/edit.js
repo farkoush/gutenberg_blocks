@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { select, dispatch, withDispatch } from '@wordpress/data';
+import { useSelect, useDispatch, select, dispatch, withDispatch } from '@wordpress/data';
 const { compose, withState } = wp.compose;
 const { Component, Fragment } = wp.element;
 const { Inserter,InnerBlocks } = wp.blockEditor;
@@ -9,32 +9,27 @@ const { Inserter,InnerBlocks } = wp.blockEditor;
 import SingleBlockTypeAppender from './single-block-type-appender.js'
 import BlockList from "../components/BlockList";
 
+
 export default class Edit extends Component {
     constructor() {
         super( ...arguments );
     }
     
-    // componentDidMount() {
-    //     let _meta_source = select( 'core/editor' ).getEditedPostAttribute( 'meta' )._meta_source;
-    //     let metass = select( 'core/editor' ).getEditedPostAttribute( 'meta' ).metas;
-    //     metass = [{title1:_meta_source.titleee , features:_meta_source.linkkk}, ...metass];
-    //     console.log(metass)
-    //     dispatch( 'core/editor' ).editPost({ meta: { metas: metass } });
-    // }
+    componentDidUpdate(previousProps, previousState) {
+        var myID = this.props.clientId;
+        var source_items = [];
+        this.myBlock = wp.data.select('core/block-editor').getBlock(myID);
+        this.myBlock.innerBlocks.map((block, index) => {
+                source_items.push (block.attributes.source_attr) ;
+        });
+        this.props.setAttributes({ 'items': source_items });
+    }
     render() {
-        const { attributes,className, clientId, setAttributes } = this.props;
-        const { getBlockOrder } = select( 'core/block-editor' );
-        const { updateBlockAttributes } = dispatch( 'core/editor' );
+        const { clientId } = this.props;
         const blocks = select('core/editor').getBlocksByClientId(clientId);
-
-        const innerBlockIds = getBlockOrder( clientId );
-        innerBlockIds.forEach( ( innerBlockId, index ) => {
-            updateBlockAttributes( innerBlockId, {
-                idx: index,
-            } );
-        } );
+        
         return (
-            <div className={className}>
+            <div>
                     <BlockList clientId={clientId}/>
                     <InnerBlocks
                         allowedBlocks={['hoora/sourceitem']}
@@ -47,11 +42,10 @@ export default class Edit extends Component {
                                     buttonText="Add Block"
                                     allowedBlock="hoora/sourceitem"
                                     clientId={ clientId }
-                                    items = {attributes.items}
                                 />
                         }
                     />
-                </div>
+            </div>
         );
     }
 }
