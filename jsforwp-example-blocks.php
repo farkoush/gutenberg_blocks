@@ -85,3 +85,4 @@ function enqueue_block_editor_assets() {
 // include __DIR__ . '/blocks/hoora-swiper2/index.php';
 include __DIR__ . '/blocks/hoora-tabs/index.php';
 include __DIR__ . '/blocks/hoora-meta2/index.php';
+include __DIR__ . '/blocks/tabs/index.php';

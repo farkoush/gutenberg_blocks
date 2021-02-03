@@ -35,10 +35,10 @@ const attributes = {
 		type: 'number',
 		default: '',
 	},
-	contentBgColor: {
-		type: 'string',
-		default: '',
-	},
+	// contentBgColor: {
+	// 	type: 'string',
+	// 	default: '',
+	// },
 	contentBorderColor: {
 		type: 'string',
 		default: '',
@@ -51,17 +51,17 @@ const attributes = {
 		type: 'string',
 		default: 'linked',
 	},
-	innerPadding: {
-		type: 'array',
-		default: [ 20, 20, 20, 20 ],
-	},
-	innerPaddingControl: {
-		type: 'string',
-		default: 'linked',
-	},
-	innerPaddingM: {
-		type: 'array',
-	},
+	// innerPadding: {
+	// 	type: 'array',
+	// 	default: [ 20, 20, 20, 20 ],
+	// },
+	// innerPaddingControl: {
+	// 	type: 'string',
+	// 	default: 'linked',
+	// },
+	// innerPaddingM: {
+	// 	type: 'array',
+	// },
 	tabAlignment: {
 		type: 'string',
 		default: 'left',
@@ -99,69 +99,69 @@ const attributes = {
 		type: 'number',
 		default: 14,
 	},
-	titleColor: {
-		type: 'string',
-	},
-	titleColorHover: {
-		type: 'string',
-	},
-	titleColorActive: {
-		type: 'string',
-	},
-	titleBg: {
-		type: 'string',
-	},
-	titleBgHover: {
-		type: 'string',
-	},
-	titleBgActive: {
-		type: 'string',
-		default: '#ffffff',
-	},
-	titleBorder: {
-		type: 'string',
-	},
-	titleBorderHover: {
-		type: 'string',
-	},
-	titleBorderActive: {
-		type: 'string',
-	},
-	titleBorderWidth: {
-		type: 'array',
-	},
-	titleBorderControl: {
-		type: 'string',
-		default: 'individual',
-	},
-	titleBorderRadius: {
-		type: 'array',
-	},
-	titleBorderRadiusControl: {
-		type: 'string',
-		default: 'individual',
-	},
-	titlePadding: {
-		type: 'array',
-	},
-	titlePaddingControl: {
-		type: 'string',
-		default: 'individual',
-	},
-	titleMargin: {
-		type: 'array',
-	},
-	titleMarginControl: {
-		type: 'string',
-		default: 'individual',
-	},
-	size: {
-		type: 'number',
-	},
-	sizeType: {
-		type: 'string',
-		default: 'px',
-	},
+	// titleColor: {
+	// 	type: 'string',
+	// },
+	// titleColorHover: {
+	// 	type: 'string',
+	// },
+	// titleColorActive: {
+	// 	type: 'string',
+	// },
+	// titleBg: {
+	// 	type: 'string',
+	// },
+	// titleBgHover: {
+	// 	type: 'string',
+	// },
+	// titleBgActive: {
+	// 	type: 'string',
+	// 	default: '#ffffff',
+	// },
+	// titleBorder: {
+	// 	type: 'string',
+	// },
+	// titleBorderHover: {
+	// 	type: 'string',
+	// },
+	// titleBorderActive: {
+	// 	type: 'string',
+	// },
+	// titleBorderWidth: {
+	// 	type: 'array',
+	// },
+	// titleBorderControl: {
+	// 	type: 'string',
+	// 	default: 'individual',
+	// },
+	// titleBorderRadius: {
+	// 	type: 'array',
+	// },
+	// titleBorderRadiusControl: {
+	// 	type: 'string',
+	// 	default: 'individual',
+	// },
+	// titlePadding: {
+	// 	type: 'array',
+	// },
+	// titlePaddingControl: {
+	// 	type: 'string',
+	// 	default: 'individual',
+	// },
+	// titleMargin: {
+	// 	type: 'array',
+	// },
+	// titleMarginControl: {
+	// 	type: 'string',
+	// 	default: 'individual',
+	// },
+	// size: {
+	// 	type: 'number',
+	// },
+	// sizeType: {
+	// 	type: 'string',
+	// 	default: 'px',
+	// },
 	lineHeight: {
 		type: 'number',
 	},
@@ -220,28 +220,28 @@ const attributes = {
 		type: 'bool',
 		default: true,
 	},
-	subtitleFont: {
-		type: 'array',
-		default: [ {
-			size: [ '', '', '' ],
-			sizeType: 'px',
-			lineHeight: [ '', '', '' ],
-			lineType: 'px',
-			letterSpacing: '',
-			textTransform: '',
-			family: '',
-			google: false,
-			style: '',
-			weight: '',
-			variant: '',
-			subset: '',
-			loadGoogle: true,
-			padding: [ 0, 0, 0, 0 ],
-			paddingControl: 'linked',
-			margin: [ 0, 0, 0, 0 ],
-			marginControl: 'linked',
-		} ],
-	},
+	// subtitleFont: {
+	// 	type: 'array',
+	// 	default: [ {
+	// 		size: [ '', '', '' ],
+	// 		sizeType: 'px',
+	// 		lineHeight: [ '', '', '' ],
+	// 		lineType: 'px',
+	// 		letterSpacing: '',
+	// 		textTransform: '',
+	// 		family: '',
+	// 		google: false,
+	// 		style: '',
+	// 		weight: '',
+	// 		variant: '',
+	// 		subset: '',
+	// 		loadGoogle: true,
+	// 		padding: [ 0, 0, 0, 0 ],
+	// 		paddingControl: 'linked',
+	// 		margin: [ 0, 0, 0, 0 ],
+	// 		marginControl: 'linked',
+	// 	} ],
+	// },
 	enableSubtitle: {
 		type: 'bool',
 		default: false,
