@@ -63,19 +63,19 @@ function addCodeInspectorControls(BlockEdit) {
           >
             <BlockEdit {...props} />
           </div>
-          <InspectorControls>
-            <PanelBody title={__("Custom Settings", "jsforwpadvblocks")}>
-              <ToggleControl
-                label={__("High Contrast", "jsforwpadvblocks")}
-                checked={props.attributes.highContrast}
-                onChange={highContrast => props.setAttributes({ highContrast })}
+            <InspectorControls>
+              <PanelBody title={__("Custom Settings", "jsforwpadvblocks")}>
+                <ToggleControl
+                  label={__("High Contrast", "jsforwpadvblocks")}
+                  checked={props.attributes.highContrast}
+                  onChange={highContrast => props.setAttributes({ highContrast })}
+                />
+              <ClassManager
+                  classes={props.attributes.classes}
+                  onChange={(val) => props.setAttributes({ classes: val })}
               />
-            <ClassManager
-                classes={props.attributes.classes}
-                onChange={(val) => props.setAttributes({ classes: val })}
-            />
-            </PanelBody>
-          </InspectorControls>
+              </PanelBody>
+            </InspectorControls>
         </Fragment>
       );
     };

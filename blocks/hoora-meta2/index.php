@@ -14,20 +14,20 @@
 $value = get_post_meta( get_the_ID(), 'myguten_meta_block_field', true );
 
 
-function sidebar_plugin_script_enqueue() {
-  wp_register_script(
-      'plugin-sidebar-js',
-      get_template_directory_uri() .'/blocks/hoora-meta/plugin-sidebar.js',
-      array(
-          'wp-plugins',
-          'wp-edit-post',
-          'wp-element',
-          'wp-components'
-      )
-  );
-  wp_enqueue_script( 'plugin-sidebar-js' );
-}
-add_action( 'enqueue_block_editor_assets', 'sidebar_plugin_script_enqueue' );
+// function sidebar_plugin_script_enqueue() {
+//   wp_register_script(
+//       'plugin-sidebar-js',
+//       get_template_directory_uri() .'/blocks/hoora-meta/plugin-sidebar.js',
+//       array(
+//           'wp-plugins',
+//           'wp-edit-post',
+//           'wp-element',
+//           'wp-components'
+//       )
+//   );
+//   wp_enqueue_script( 'plugin-sidebar-js' );
+// }
+// add_action( 'enqueue_block_editor_assets', 'sidebar_plugin_script_enqueue' );
 
 
 //**** METABOX */

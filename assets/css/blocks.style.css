@@ -1,1 +1,10 @@
-.wp-block-jsforwpadvblocks-data-example li{margin-left:1.3em}
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.swiper-slide img {
+  width: 100%;
+  height: auto; }
+.wp-block-jsforwpadvblocks-data-example li {
+  margin-left: 1.3em; }

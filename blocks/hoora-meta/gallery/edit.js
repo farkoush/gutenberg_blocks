@@ -20,15 +20,9 @@ const {
 } = wp.components;
 
 
-export default class Edit extends Component {
-    constructor() {
-        super( ...arguments );
-    }
-    
+export default class Edit extends Component {  
     render() {
-        const { attributes : {image,images, autoplay, loop, speed, delay, effect}, setAttributes, className } = this.props;
-
-
+        const { attributes : {image,images}, setAttributes, className } = this.props;
 		const onSelectImage1 = img => {
 			console.log(img.id);
 			var selectImages = [];
@@ -72,16 +66,6 @@ export default class Edit extends Component {
 				);
 			}
 		}; 
-		function updateSliderSetting(event) {
-			const selected = event.target.querySelector(
-				"#hoora-carousel-loop-setting option:checked"
-			);
-			setAttributes({ loop: selected.value });
-			event.preventDefault();
-		}
-		function updateSliderSetting(value) {
-			setAttributes(value);
-		}
 
 		function removeImage(removeImg, currentImages) {
 			// Filter out the image we're deleting
@@ -130,9 +114,6 @@ export default class Edit extends Component {
 				images: updatedImages
 			});
 		}
-
-		// Replace the image with the new selected one
-		// need to update the specific attribute image with this image
 		const onSelectImage = function(
 			selectedImage,
 			selectedImages,
@@ -157,89 +138,8 @@ export default class Edit extends Component {
 			});
 		};
 
-		// Add an id to the array of selected images and update the img attribute
-		const onSelectImages = function(selectedImages) {
-			const updatedImages = selectedImages.map((img, index) => {
-				return {
-					id: index,
-					imgid: img.id,
-					url: img.sizes.full.url,
-					thumbnailUrl: img.sizes.thumbnail.url,
-					alt: img.alt,
-					caption: img.caption
-				};
-			});
-			setAttributes({
-				images: updatedImages
-			});
-		};
-
 		if (images.length > 0) {
 			return [
-				<InspectorControls>
-					<PanelBody title={__("Carousel Settings")}>
-						<PanelRow>
-							<RadioControl
-								label="Auto Play"
-								selected={autoplay}
-								options={[
-									{ label: "True", value: "true" },
-									{ label: "False", value: "false" }
-								]}
-								onChange={option => {
-									updateSliderSetting({ autoplay: option });
-								}}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<TextControl
-								label="Delay"
-								value={delay}
-								onChange={option => {
-									updateSliderSetting({ delay: option });
-								}}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<TextControl
-								label="Speed"
-								value={speed}
-								onChange={option => {
-									updateSliderSetting({ speed: option });
-								}}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<RadioControl
-								label="Loop"
-								selected={loop}
-								options={[
-									{ label: "True", value: "true" },
-									{ label: "False", value: "false" }
-								]}
-								onChange={option => {
-									updateSliderSetting({ loop: option });
-								}}
-							/>
-						</PanelRow>
-						<PanelRow>
-							<SelectControl
-								label="Effect"
-								selected={effect}
-								options={[
-									{ label: "Slide", value: "slide" },
-									{ label: "Fade", value: "fade" },
-									{ label: "Cube", value: "cube" },
-									{ label: "Coverflow", value: "coverflow" },
-									{ label: "Flip", value: "flip" }
-								]}
-								onChange={option => {
-									updateSliderSetting({ effect: option });
-								}}
-							/>
-						</PanelRow>
-					</PanelBody>
-				</InspectorControls>,
 				<Fragment>
 					{images.map((img, imgMapIndex) => {
 						return [
@@ -298,7 +198,7 @@ export default class Edit extends Component {
 			return (
 				<Fragment>
 					<div className={className}>
-						<MediaPlaceholder
+						{/* <MediaPlaceholder
 							icon="format-gallery"
 							className={className}
 							labels={{
@@ -309,8 +209,8 @@ export default class Edit extends Component {
 							accept="image/*"
 							type="image"
 							multiple
-						/>
-						{/* <MediaUploadCheck>
+						/> */}
+						<MediaUploadCheck>
                             <MediaUpload
                                 onSelect={ onSelectImage1 }
                                 allowedTypes={ ['image'] }
@@ -318,7 +218,7 @@ export default class Edit extends Component {
 								value={ image.id }
 								render={({ open }) => getImageButton(open) }
                             />
-                        </MediaUploadCheck> */}
+                        </MediaUploadCheck>
 					</div>
 				</Fragment>
 			);
