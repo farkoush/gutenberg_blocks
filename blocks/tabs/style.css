@@ -1,0 +1,126 @@
+.kt-tabs-wrap .wp-block-kadence-tab[role="tabpanel"] {
+	display: none;
+}
+.kt-tabs-wrap.kt-active-tab-1 > .kt-tabs-content-wrap > .kt-inner-tab-1 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-2 > .kt-tabs-content-wrap > .kt-inner-tab-2 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-3 > .kt-tabs-content-wrap > .kt-inner-tab-3 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-4 > .kt-tabs-content-wrap > .kt-inner-tab-4 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-5 > .kt-tabs-content-wrap > .kt-inner-tab-5 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-6 > .kt-tabs-content-wrap > .kt-inner-tab-6 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-7 > .kt-tabs-content-wrap > .kt-inner-tab-7 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-8 > .kt-tabs-content-wrap > .kt-inner-tab-8 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-9 > .kt-tabs-content-wrap > .kt-inner-tab-9 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-10 > .kt-tabs-content-wrap > .kt-inner-tab-10 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-11 > .kt-tabs-content-wrap > .kt-inner-tab-11 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-12 > .kt-tabs-content-wrap > .kt-inner-tab-12 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-13 > .kt-tabs-content-wrap > .kt-inner-tab-13 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-14 > .kt-tabs-content-wrap > .kt-inner-tab-14 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-15 > .kt-tabs-content-wrap > .kt-inner-tab-15 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-16 > .kt-tabs-content-wrap > .kt-inner-tab-16 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-17 > .kt-tabs-content-wrap > .kt-inner-tab-17 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-18 > .kt-tabs-content-wrap > .kt-inner-tab-18 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-19 > .kt-tabs-content-wrap > .kt-inner-tab-19 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-20 > .kt-tabs-content-wrap > .kt-inner-tab-20 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-21 > .kt-tabs-content-wrap > .kt-inner-tab-21 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-22 > .kt-tabs-content-wrap > .kt-inner-tab-22 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-23 > .kt-tabs-content-wrap > .kt-inner-tab-23 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-24 > .kt-tabs-content-wrap > .kt-inner-tab-24 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-25 > .kt-tabs-content-wrap > .kt-inner-tab-25 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-26 > .kt-tabs-content-wrap > .kt-inner-tab-26 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-27 > .kt-tabs-content-wrap > .kt-inner-tab-27 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-28 > .kt-tabs-content-wrap > .kt-inner-tab-28 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-29 > .kt-tabs-content-wrap > .kt-inner-tab-29 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-30 > .kt-tabs-content-wrap > .kt-inner-tab-30 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-31 > .kt-tabs-content-wrap > .kt-inner-tab-31 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-32 > .kt-tabs-content-wrap > .kt-inner-tab-32 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-33 > .kt-tabs-content-wrap > .kt-inner-tab-33 {
+	display: block;
+}
+.kt-tabs-wrap.kt-active-tab-34 > .kt-tabs-content-wrap > .kt-inner-tab-31 {
+	display: block;
+}
+
+.wp-block-kadence-tabs .kt-tabs-title-list li.kt-tab-title-active .kt-tab-title {
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.wp-block-kadence-tabs .kt-tabs-title-list li a.kt-tab-title {
+    padding: 8px 16px;
+    display: -webkit-flex;
+    display: flex;
+    color: #444;
+    -webkit-align-items: center;
+    align-items: center;
+    border-style: solid;
+    border-color: transparent;
+    border-width: 1px 1px 0 1px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}

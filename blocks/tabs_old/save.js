@@ -25,12 +25,11 @@ class KadenceTabsSave extends Component {
 		return string.toLowerCase().replace( /[^0-9a-z-]/g, '' );
 	}
 	render() {
-		const { attributes: { uniqueID, tabCount, currentTab, layout, titles , startTab, enableSubtitle, tabWidth, widthType }, clientId, className, setAttributes } = this.props;
-		// const { attributes: { tabCount, blockAlignment, currentTab, layout, uniqueID, titles, iSize, maxWidth, tabAlignment, startTab, enableSubtitle, widthType, tabWidth } } = this.props;
+		const { attributes: { tabCount, blockAlignment, currentTab, mobileLayout, layout, tabletLayout, uniqueID, titles, iSize, maxWidth, tabAlignment, startTab, enableSubtitle, widthType, tabWidth } } = this.props;
 		const layoutClass = ( ! layout ? 'tabs' : layout );
-		// const tabLayoutClass = ( ! tabletLayout ? 'inherit' : tabletLayout );
-		// const mobileLayoutClass = ( ! mobileLayout ? 'inherit' : mobileLayout );
-		// const accordionClass = ( ( mobileLayout && 'accordion' === mobileLayout ) || ( tabletLayout && 'accordion' === tabletLayout ) ? 'kt-create-accordion' : '' );
+		const tabLayoutClass = ( ! tabletLayout ? 'inherit' : tabletLayout );
+		const mobileLayoutClass = ( ! mobileLayout ? 'inherit' : mobileLayout );
+		const accordionClass = ( ( mobileLayout && 'accordion' === mobileLayout ) || ( tabletLayout && 'accordion' === tabletLayout ) ? 'kt-create-accordion' : '' );
 		const classId = ( ! uniqueID ? 'notset' : uniqueID );
 		const classes = classnames( `align${ blockAlignment }` );
 		const activeTab = ( startTab ? startTab : currentTab );

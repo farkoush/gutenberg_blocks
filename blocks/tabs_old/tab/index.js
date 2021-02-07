@@ -40,10 +40,6 @@ registerBlockType( 'kadence/tab', {
 			type: 'number',
 			default: 1,
 		},
-		activeTab: {
-			type:'boolean',
-			default: false
-		},
 		uniqueID: {
 			type: 'string',
 			default: '',
@@ -55,8 +51,6 @@ registerBlockType( 'kadence/tab', {
 		html: false,
 	},
 	getEditWrapperProps( attributes ) {
-		console.log('attributes');
-		console.log(attributes)
 		return { 'data-tab': attributes.id };
 	},
 	edit,
