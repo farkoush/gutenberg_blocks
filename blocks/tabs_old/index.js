@@ -53,12 +53,12 @@ function kt_stripStringRender( string ) {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'kadence/tabs', {
+registerBlockType( 'hoora/tabs', {
 	title: __( 'Tabs' ),
 	icon: {
 		src: icons.blocktabs,
 	},
-	category: 'kadence-blocks',
+	category: 'hoora-blocks',
 	keywords: [
 		__( 'tabs' ),
 		__( 'tab' ),

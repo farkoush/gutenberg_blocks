@@ -86,7 +86,7 @@ li.kt-tab-title-active .kadence-blocks-tab-item__control-menu {
 .wp-block-kadence-tabs .block-editor-block-list__layout .block-editor-block-list__block {
     max-width: none !important;
 }
-.kt-tabs-content-wrap [data-type="kadence/tab"] {
+.kt-tabs-content-wrap [data-type="hoora/tab"] {
     display: none;
 }
 .wp-block-kadence-tabs.kt-active-tab-1 > .kt-tabs-wrap > .kt-tabs-content-wrap > .block-editor-inner-blocks > .block-editor-block-list__layout > [data-tab="1"] {

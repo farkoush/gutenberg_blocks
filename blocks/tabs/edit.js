@@ -34,9 +34,9 @@ const {
  */
 const { __, sprintf } = wp.i18n;
 
-const ALLOWED_BLOCKS = [ 'kadence/tab' ];
+const ALLOWED_BLOCKS = [ 'hoora/tab' ];
 // const getPanesTemplate = memoize( ( panes ) => {
-// 	return times( panes, n => [ 'kadence/tab', { id: n + 1 } ] );
+// 	return times( panes, n => [ 'hoora/tab', { id: n + 1 } ] );
 // } );
 
 const kttabsUniqueIDs = [];
@@ -84,7 +84,7 @@ class KadenceTabs extends Component {
 	render() {
 		const { attributes: { uniqueID, tabCount, currentTab, layout, titles , startTab, enableSubtitle, tabWidth, widthType }, clientId, className, setAttributes } = this.props;
 		const handleAddItem = () => {
-			const newBlock = createBlock( 'kadence/tab', { id: tabCount + 1, activeTab : 1 + i === currentTab ? true : false } );
+			const newBlock = createBlock( 'hoora/tab', { id: tabCount + 1, activeTab : 1 + i === currentTab ? true : false } );
 			setAttributes( { tabCount: tabCount + 1 } );
 			this.props.insertTab( newBlock );
 			//wp.data.dispatch( 'core/block-editor' ).insertBlock( newBlock, clientId );
@@ -108,7 +108,7 @@ class KadenceTabs extends Component {
 		}
 		const layoutClass = ( ! layout ? 'tabs' : layout );
 		const classes = classnames( className, `kt-tabs-wrap kt-tabs-id${ uniqueID } kt-tabs-has-${ tabCount }-tabs kt-active-tab-${ currentTab } kt-tabs-layout-${ layoutClass }` );
-		// const getPanesTemplate = (tabCount) => Array.from({length:tabCount},(_,i)=> [ 'kadence/tab', { id: i + 1 } ]);
+		// const getPanesTemplate = (tabCount) => Array.from({length:tabCount},(_,i)=> [ 'hoora/tab', { id: i + 1 } ]);
 		const renderTitles = ( index ) => { 
 			return (
 				<Fragment>
@@ -193,7 +193,7 @@ class KadenceTabs extends Component {
 								
 								<InnerBlocks
 									// template={ getPanesTemplate( tabCount ) }
-									template = {Array.from({length:tabCount},(_,i)=> [ 'kadence/tab', { id: i + 1,  activeTab : 1 + i === currentTab ? true : false } ])}
+									template = {Array.from({length:tabCount},(_,i)=> [ 'hoora/tab', { id: i + 1,  activeTab : 1 + i === currentTab ? true : false } ])}
 									templateLock={ false }
 									allowedBlocks={ ALLOWED_BLOCKS } 
 								/>

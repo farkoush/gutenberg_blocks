@@ -9,7 +9,7 @@ function hoora_block_assets2() { // phpcs:ignore
     wp_enqueue_style('main-styles1', get_template_directory_uri() . '/blocks/tabs/style.css', array('wp-editor'), filemtime(get_template_directory() . '/blocks/tabs/style.css'), false);
     // wp_enqueue_style('main-styles2', plugins_url( '/blocks/tabs/editor.css', dirname( __FILE__ ) ), array('wp-editor'), filemtime(get_template_directory() . '/blocks/tabs/style.css'), false);
     // wp_enqueue_script('main-style3', get_template_directory_uri() . '/blocks/tabs/script.js', array('wp-editor'), filemtime(get_template_directory() . '/blocks/tabs/script.js'), false);
-    wp_enqueue_script('main-style3', get_template_directory_uri() . '/blocks/tabs/fronted.js', array('wp-editor'), filemtime(get_template_directory() . '/blocks/tabs/fronted.js'), false);
+    wp_enqueue_script('main-styles2', plugins_url( '/blocks/tabs/script.js', dirname( __FILE__ ) ), array('wp-editor'), filemtime(get_template_directory() . '/blocks/tabs/script.js'), false);
 }
 
 // Hook: Frontend assets.

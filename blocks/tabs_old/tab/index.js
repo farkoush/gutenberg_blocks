@@ -30,11 +30,11 @@ const { registerBlockType } = wp.blocks;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'kadence/tab', {
+registerBlockType( 'hoora/tab', {
 	title: __( 'Tab' ),
 	icon: icons.block,
-	category: 'kadence-blocks',
-	parent: [ 'kadence/tabs' ],
+	category: 'hoora-blocks',
+	parent: [ 'hoora/tabs' ],
 	attributes: {
 		id: {
 			type: 'number',

@@ -12,8 +12,8 @@ import "./hoora-swiper2";
 import "./03-layout-switcher";
 // import "./hoora-faq"
 // import "./hoora-faq/faq-item";
-import "./hoora-tabs"
-import "./hoora-tabs/tab"
+// import "./hoora-tabs"
+// import "./hoora-tabs/tab"
 // import "./hoora-tabs2"
 // import "./plugin-toc"
 import "./02-data-example"

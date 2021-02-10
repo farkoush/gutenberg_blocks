@@ -34,9 +34,9 @@ const {
  */
 const { __, sprintf } = wp.i18n;
 
-const ALLOWED_BLOCKS = [ 'kadence/tab' ];
+const ALLOWED_BLOCKS = [ 'hoora/tab' ];
 const getPanesTemplate = memoize( ( panes ) => {
-	return times( panes, n => [ 'kadence/tab', { id: n + 1 } ] );
+	return times( panes, n => [ 'hoora/tab', { id: n + 1 } ] );
 } );
 const kttabsUniqueIDs = [];
 /**
@@ -255,7 +255,7 @@ class KadenceTabs extends Component {
 									className="kt-tab-add"
 									isPrimary={ true }
 									onClick={ () => {
-										const newBlock = createBlock( 'kadence/tab', { id: tabCount + 1 } );
+										const newBlock = createBlock( 'hoora/tab', { id: tabCount + 1 } );
 										setAttributes( { tabCount: tabCount + 1 } );
 										this.props.insertTab( newBlock );
 										//wp.data.dispatch( 'core/block-editor' ).insertBlock( newBlock, clientId );
