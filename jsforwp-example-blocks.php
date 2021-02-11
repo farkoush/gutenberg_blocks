@@ -78,6 +78,9 @@ function enqueue_block_editor_assets() {
 	);
 
 }
+// define( 'KADENCE_BLOCKS_PATH', realpath( plugin_dir_path( __FILE__ ) ) . DIRECTORY_SEPARATOR );
+// require_once KADENCE_BLOCKS_PATH . 'dist/init.php';
+// include __DIR__ . '/dist/init.php';
 
 // include __DIR__ . '/blocks/12-dynamic/index.php';
 // include __DIR__ . '/blocks/hoora-menu/index.php';
@@ -86,3 +89,5 @@ function enqueue_block_editor_assets() {
 // include __DIR__ . '/blocks/hoora-tabs/index.php';
 include __DIR__ . '/blocks/hoora-meta2/index.php';
 include __DIR__ . '/blocks/tabs/index.php';
+include __DIR__ . '/blocks/accordion/index.php';
+

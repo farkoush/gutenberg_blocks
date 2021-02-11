@@ -1,3 +1,4 @@
+console.log('tabssss')
 // document.addEventListener("DOMContentLoaded", function(event) { 
 //   var tabLinks = document.getElementsByClassName("kt-title-item");
 //   var tabContents = document.getElementsByClassName("wp-block-hoora-tab");
@@ -52,6 +53,7 @@
   // } );
 
   document.addEventListener("DOMContentLoaded", function(event) { 
+    console.log('tabssss')
 
     var hooraTabsWraps = document.querySelectorAll('.kt-tabs-wrap');
       [].forEach.call(hooraTabsWraps, function(el, _) {

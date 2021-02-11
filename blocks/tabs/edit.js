@@ -1,4 +1,4 @@
-import icons from '../icons';
+// import icons from '../icons';
 // import times from 'lodash/times';
 // import map from 'lodash/map';
 import classnames from 'classnames';
@@ -8,7 +8,7 @@ import classnames from 'classnames';
 /**
  * Import Css
  */
-import './editor.scss';
+// import './editor.scss';
 const {
 	createBlock,
 } = wp.blocks;

@@ -1,8 +1,8 @@
 import icons from '../icons';
 
 import attributes from './attributes';
-import classnames from 'classnames';
-import times from 'lodash/times';
+// import classnames from 'classnames';
+// import times from 'lodash/times';
 const {
 	Fragment,
 } = wp.element;

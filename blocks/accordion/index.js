@@ -5,7 +5,7 @@
 /**
  * Import Icons
  */
-import icons from '../../icons';
+// import icons from '../../icons';
 /**
  * Import attributes
  */
@@ -21,8 +21,8 @@ import save from './save';
 /**
  * Import Css
  */
-// import './style.scss';
-// import './editor.scss';
+import './style.scss';
+import './editor.scss';
 
 /**
  * Internal block libraries
@@ -39,12 +39,13 @@ const { registerBlockType } = wp.blocks;
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'kadence/accordion', {
+registerBlockType( 'kadence2/accordion', {
 	title: __( 'Accordion', 'kadence-blocks' ),
 	description: __( 'Create beautiful accordions! Each pane can contain any other block, customize title styles, content background, and borders.', 'kadence-blocks' ),
-	icon: {
-		src: icons.accordionBlock,
-	},
+	// icon: {
+	// 	src: icons.accordionBlock,
+	// },
+	icon:'heart',
 	category: 'kadence-blocks',
 	keywords: [
 		__( 'accordion', 'kadence-blocks' ),

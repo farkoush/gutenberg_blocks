@@ -55,8 +55,8 @@ registerBlockType( 'hoora/tab', {
 		html: false,
 	},
 	getEditWrapperProps( attributes ) {
-		console.log('attributes');
-		console.log(attributes)
+		// console.log('attributes');
+		// console.log(attributes)
 		return { 'data-tab': attributes.id };
 	},
 	edit,
