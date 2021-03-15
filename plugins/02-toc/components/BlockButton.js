@@ -23,6 +23,6 @@ const BlockButton = ({ block, isBlockSelected }) => {
 export default withSelect((select, ownProps) => {
   const { clientId } = ownProps.block;
   return {
-    isBlockSelected: select("core/editor").isBlockSelected(clientId)
+    isBlockSelected: select("core/editor").isBlockSelected(clientId) 
   };
 })(BlockButton);

@@ -1000,12 +1000,14 @@ export default compose( [
 	withSelect( ( select, ownProps ) => {
 		const { clientId } = ownProps;
 		const {
-			getBlock,
+			getBlock, isBlockSelected
 		} = select( 'core/block-editor' );
 		const block = getBlock( clientId );
+		const isBlockSelected = isBlockSelected(clientId);
 		return {
 			accordionBlock: block,
 			realPaneCount: block.innerBlocks.length,
+			isBlockSelected
 		};
 	} ),
 	withDispatch( ( dispatch, { clientId }, { select } ) => {
