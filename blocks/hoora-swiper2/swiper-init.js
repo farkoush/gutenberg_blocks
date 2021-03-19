@@ -1,4 +1,5 @@
 // Must include the swiper slider first!
+console.log('swiper-iniiiiiiit')
 if (window.Swiper === undefined) {
 	console.warn(
 		"You must include the Swiper library (http://idangero.us/swiper/) in order for this controller to work."

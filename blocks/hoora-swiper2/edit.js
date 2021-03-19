@@ -32,6 +32,8 @@ export default function Edit({ attributes, setAttributes, className }) {
         event.preventDefault();
     }
     function updateSliderSetting(value) {
+        console.log('valueee');
+        console.log((value))
         setAttributes(value);
     }
 	const handleAddItem = () => {
