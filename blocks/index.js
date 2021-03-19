@@ -7,7 +7,7 @@ console.log("blocks")
 // import "./hoora-card";
 // import "./12-dynamic";
 // import "./dos-and-donts";
-import "./hoora-swiper2";
+import "./hoora-swiper";
 // import "./hoora-googlemap";
 import "./03-layout-switcher";
 // import "./hoora-faq"
@@ -26,8 +26,8 @@ import "./02-data-example"
 // import "./gallery"
 
 // import "./dos-and-donts"
-import "./tabs"
-import "./tab"
+// import "./tabs"
+// import "./tab"
 // import "./accordion"
 // import "./pane"
 import "./form"

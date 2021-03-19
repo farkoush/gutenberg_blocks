@@ -54,9 +54,9 @@ class FluentCRMControls extends Component {
 		/**
 		 * Confirm active.
 		 */
-		if ( undefined !== kadence_blocks_params.fluentCRM && kadence_blocks_params.fluentCRM ) {
-			this.setState( { isActive: true } );
-		}
+		// if ( undefined !== kadence_blocks_params.fluentCRM && kadence_blocks_params.fluentCRM ) {
+		// 	this.setState( { isActive: true } );
+		// }
 	}
 	getLists() {
 		this.setState( { isFetching: true } );

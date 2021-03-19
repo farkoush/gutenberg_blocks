@@ -389,11 +389,11 @@ registerBlockType( 'hoora/form', {
 			if ( fields[ index ].label && fields[ index ].label.includes( '{privacy_policy}' ) ) {
 				acceptLabelBefore = fields[ index ].label.split( '{' )[ 0 ];
 				acceptLabelAfter = fields[ index ].label.split( '}' )[ 1 ];
-				acceptLabel = (
-					<Fragment>
-						{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
-					</Fragment>
-				);
+				// acceptLabel = (
+				// 	<Fragment>
+				// 		{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
+				// 	</Fragment>
+				// );
 			} else {
 				acceptLabel = fields[ index ].label;
 			}
@@ -813,11 +813,11 @@ registerBlockType( 'hoora/form', {
 					if ( fields[ index ].label && fields[ index ].label.includes( '{privacy_policy}' ) ) {
 						acceptLabelBefore = fields[ index ].label.split( '{' )[ 0 ];
 						acceptLabelAfter = fields[ index ].label.split( '}' )[ 1 ];
-						acceptLabel = (
-							<Fragment>
-								{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
-							</Fragment>
-						);
+						// acceptLabel = (
+						// 	<Fragment>
+						// 		{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
+						// 	</Fragment>
+						// );
 					} else {
 						acceptLabel = fields[ index ].label;
 					}
@@ -1213,11 +1213,11 @@ registerBlockType( 'hoora/form', {
 					if ( fields[ index ].label && fields[ index ].label.includes( '{privacy_policy}' ) ) {
 						acceptLabelBefore = fields[ index ].label.split( '{' )[ 0 ];
 						acceptLabelAfter = fields[ index ].label.split( '}' )[ 1 ];
-						acceptLabel = (
-							<Fragment>
-								{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
-							</Fragment>
-						);
+						// acceptLabel = (
+						// 	<Fragment>
+						// 		{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
+						// 	</Fragment>
+						// );
 					} else {
 						acceptLabel = fields[ index ].label;
 					}
@@ -1578,12 +1578,12 @@ registerBlockType( 'hoora/form', {
 					let acceptLabelAfter;
 					if ( fields[ index ].label && fields[ index ].label.includes( '{privacy_policy}' ) ) {
 						acceptLabelBefore = fields[ index ].label.split( '{' )[ 0 ];
-						acceptLabelAfter = fields[ index ].label.split( '}' )[ 1 ];
-						acceptLabel = (
-							<Fragment>
-								{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
-							</Fragment>
-						);
+						// acceptLabelAfter = fields[ index ].label.split( '}' )[ 1 ];
+						// acceptLabel = (
+						// 	<Fragment>
+						// 		{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
+						// 	</Fragment>
+						// );
 					} else {
 						acceptLabel = fields[ index ].label;
 					}
@@ -1941,11 +1941,11 @@ registerBlockType( 'hoora/form', {
 					if ( fields[ index ].label && fields[ index ].label.includes( '{privacy_policy}' ) ) {
 						acceptLabelBefore = fields[ index ].label.split( '{' )[ 0 ];
 						acceptLabelAfter = fields[ index ].label.split( '}' )[ 1 ];
-						acceptLabel = (
-							<Fragment>
-								{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
-							</Fragment>
-						);
+						// acceptLabel = (
+						// 	<Fragment>
+						// 		{ acceptLabelBefore }<a href={ ( undefined !== kadence_blocks_params.privacy_link && '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( undefined !== kadence_blocks_params.privacy_title && '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
+						// 	</Fragment>
+						// );
 					} else {
 						acceptLabel = fields[ index ].label;
 					}

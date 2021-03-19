@@ -56,17 +56,17 @@ class MailerLiteControls extends Component {
 		 * Get settings
 		 */
 		let settings;
-		wp.api.loadPromise.then( () => {
-			settings = new wp.api.models.Settings();
-			settings.fetch().then( response => {
-				this.setState( {
-					api: response.kadence_blocks_mailerlite_api,
-				} );
-				if ( '' !== this.state.api ) {
-					this.setState( { isSavedAPI: true } );
-				}
-			} );
-		} );
+		// wp.api.loadPromise.then( () => {
+		// 	settings = new wp.api.models.Settings();
+		// 	settings.fetch().then( response => {
+		// 		this.setState( {
+		// 			api: response.kadence_blocks_mailerlite_api,
+		// 		} );
+		// 		if ( '' !== this.state.api ) {
+		// 			this.setState( { isSavedAPI: true } );
+		// 		}
+		// 	} );
+		// } );
 	}
 	getMailerLiteGroup() {
 		if ( ! this.state.api ) {

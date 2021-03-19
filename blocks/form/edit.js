@@ -153,7 +153,7 @@ class KadenceForm extends Component {
 			secretKey: '',
 			isSavedKey: false,
 			isSaving: false,
-			user: ( kadence_blocks_params.userrole ? kadence_blocks_params.userrole : 'admin' ),
+			// user: ( kadence_blocks_params.userrole ? kadence_blocks_params.userrole : 'admin' ),
 		};
 	}
 	showSettings( key ) {
@@ -249,18 +249,18 @@ class KadenceForm extends Component {
 		 * Get settings
 		 */
 		let settings;
-		wp.api.loadPromise.then( () => {
-			settings = new wp.api.models.Settings();
-			settings.fetch().then( response => {
-				this.setState( {
-					siteKey: response.kadence_blocks_recaptcha_site_key,
-					secretKey: response.kadence_blocks_recaptcha_secret_key,
-				} );
-				if ( '' !== this.state.siteKey && '' !== this.state.secretKey ) {
-					this.setState( { isSavedKey: true } );
-				}
-			} );
-		} );
+		// wp.api.loadPromise.then( () => {
+		// 	settings = new wp.api.models.Settings();
+		// 	settings.fetch().then( response => {
+		// 		this.setState( {
+		// 			siteKey: response.kadence_blocks_recaptcha_site_key,
+		// 			secretKey: response.kadence_blocks_recaptcha_secret_key,
+		// 		} );
+		// 		if ( '' !== this.state.siteKey && '' !== this.state.secretKey ) {
+		// 			this.setState( { isSavedKey: true } );
+		// 		}
+		// 	} );
+		// } );
 	}
 	componentDidUpdate( prevProps ) {
 		// Deselect field when deselecting the block
@@ -1154,11 +1154,11 @@ class KadenceForm extends Component {
 			if ( fields[ index ].label && fields[ index ].label.includes( '{privacy_policy}' ) ) {
 				acceptLabelBefore = fields[ index ].label.split( '{' )[ 0 ];
 				acceptLabelAfter = fields[ index ].label.split( '}' )[ 1 ];
-				acceptLabel = (
-					<Fragment>
-						{ acceptLabelBefore }<a href={ ( '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
-					</Fragment>
-				);
+				// acceptLabel = (
+				// 	<Fragment>
+				// 		{ acceptLabelBefore }<a href={ ( '' !== kadence_blocks_params.privacy_link ? kadence_blocks_params.privacy_link : '#' ) } target="blank" rel="noopener noreferrer">{ ( '' !== kadence_blocks_params.privacy_title ? kadence_blocks_params.privacy_title : 'Privacy policy' ) }</a>{ acceptLabelAfter }
+				// 	</Fragment>
+				// );
 			} else {
 				acceptLabel = fields[ index ].label;
 			}
@@ -1192,7 +1192,7 @@ class KadenceForm extends Component {
 							<input type="checkbox" name={ `kb_field_${ index }` } id={ `kb_field_${ index }` } className={ `kb-field kb-checkbox-style kb-${ fields[ index ].type }` }value="accept" checked={ fields[ index ].inline ? true : false } style={ {
 								borderColor: ( undefined === style[ 0 ].border ? undefined : KadenceColorOutput( style[ 0 ].border, ( style[ 0 ].borderOpacity !== undefined ? style[ 0 ].borderOpacity : 1 ) ) ),
 							} } />
-							<label htmlFor={ `kb_field_${ index }` } style={ {
+							{/* <label htmlFor={ `kb_field_${ index }` } style={ {
 								fontWeight: labelFont[ 0 ].weight,
 								fontStyle: labelFont[ 0 ].style,
 								color: KadenceColorOutput( labelFont[ 0 ].color ),
@@ -1209,7 +1209,7 @@ class KadenceForm extends Component {
 								marginRight: ( '' !== labelFont[ 0 ].margin[ 1 ] ? labelFont[ 0 ].margin[ 1 ] + 'px' : undefined ),
 								marginBottom: ( '' !== labelFont[ 0 ].margin[ 2 ] ? labelFont[ 0 ].margin[ 2 ] + 'px' : undefined ),
 								marginLeft: ( '' !== labelFont[ 0 ].margin[ 3 ] ? labelFont[ 0 ].margin[ 3 ] + 'px' : undefined ),
-							} }>{ ( fields[ index ].label ? acceptLabel : <span className="kb-placeholder">{ 'Field Label' }</span> ) } { ( fields[ index ].required && style[ 0 ].showRequired ? <span className="required" style={ { color: style[ 0 ].requiredColor } }>*</span> : '' ) }</label>
+							} }>{ ( fields[ index ].label ? acceptLabel : <span className="kb-placeholder">{ 'Field Label' }</span> ) } { ( fields[ index ].required && style[ 0 ].showRequired ? <span className="required" style={ { color: style[ 0 ].requiredColor } }>*</span> : '' ) }</label> */}
 						</Fragment>
 					) }
 					{ 'accept' !== fields[ index ].type && (
