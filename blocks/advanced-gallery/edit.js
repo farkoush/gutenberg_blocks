@@ -102,7 +102,6 @@ class GalleryEdit extends Component {
 		this.setLinkTo = this.setLinkTo.bind( this );
 		this.changeImageThumbSize = this.changeImageThumbSize.bind( this );
 		this.changeImageLightSize = this.changeImageLightSize.bind( this );
-		this.showSettings = this.showSettings.bind( this );
 		this.setColumnsNumber = this.setColumnsNumber.bind( this );
 		this.setCaptions = this.setCaptions.bind( this );
 		this.toggleImageCrop = this.toggleImageCrop.bind( this );
@@ -262,13 +261,13 @@ class GalleryEdit extends Component {
 		} );
 	}
 
-	setLinkTo( value ) {
-		this.setAttributes( { linkTo: value } );
-	}
+	// setLinkTo( value ) {
+	// 	this.setAttributes( { linkTo: value } );
+	// }
 
-	setColumnsNumber( value ) {
-		this.setAttributes( { columns: value } );
-	}
+	// setColumnsNumber( value ) {
+	// 	this.setAttributes( { columns: value } );
+	// }
 
 	toggleImageCrop() {
 		this.setAttributes( { imageCrop: ! this.props.attributes.imageCrop } );
@@ -383,101 +382,80 @@ class GalleryEdit extends Component {
 		const { uniqueID, images, columns, linkTo, ids, columnControl, showCaption, captionStyles, type, imageRatio, captionStyle, gutter, thumbSize, autoPlay, autoSpeed, transSpeed, slidesScroll, arrowStyle, dotStyle, imageRadius, margin, marginUnit, displayShadow, shadow, shadowHover, carouselHeight, imageFilter, lightboxCaption, carouselAlign, thumbnailColumns, thumbnailRatio, autoplay, speed, delay, loop, effect } = attributes;
 		const galleryTypes = applyFilters( 'kadence.galleryTypes', typeOptions );
 		const hasImages = !! images.length;
-		const onColumnChange = ( value ) => {
-			let columnArray = [];
-			if ( 1 === value ) {
-				columnArray = [ 1, 1, 1, 1, 1, 1 ];
-			} else if ( 2 === value ) {
-				columnArray = [ 2, 2, 2, 2, 1, 1 ];
-			} else if ( 3 === value ) {
-				columnArray = [ 3, 3, 3, 2, 1, 1 ];
-			} else if ( 4 === value ) {
-				columnArray = [ 4, 4, 4, 3, 2, 2 ];
-			} else if ( 5 === value ) {
-				columnArray = [ 5, 5, 5, 4, 4, 3 ];
-			} else if ( 6 === value ) {
-				columnArray = [ 6, 6, 6, 4, 4, 3 ];
-			} else if ( 7 === value ) {
-				columnArray = [ 7, 7, 7, 5, 5, 4 ];
-			} else if ( 8 === value ) {
-				columnArray = [ 8, 8, 8, 6, 4, 4 ];
-			}
-			setAttributes( { columns: columnArray } );
-		};
-		const gconfig = {
-			google: {
-				families: [ captionStyles[ 0 ].family + ( captionStyles[ 0 ].variant ? ':' + captionStyles[ 0 ].variant : '' ) ],
-			},
-		};
-		const config = ( captionStyles[ 0 ].google ? gconfig : '' );
-		function CustomNextArrow( props ) {
-			const { className, style, onClick } = props;
-			return (
-				<button
-					className={ className }
-					style={ { ...style, display: 'block' } }
-					onClick={ onClick }
-				>
-					<Dashicon icon="arrow-right-alt2" />
-				</button>
-			);
-		}
+		// const gconfig = {
+		// 	google: {
+		// 		families: [ captionStyles[ 0 ].family + ( captionStyles[ 0 ].variant ? ':' + captionStyles[ 0 ].variant : '' ) ],
+		// 	},
+		// };
+		// const config = ( captionStyles[ 0 ].google ? gconfig : '' );
+		// function CustomNextArrow( props ) {
+		// 	const { className, style, onClick } = props;
+		// 	return (
+		// 		<button
+		// 			className={ className }
+		// 			style={ { ...style, display: 'block' } }
+		// 			onClick={ onClick }
+		// 		>
+		// 			<Dashicon icon="arrow-right-alt2" />
+		// 		</button>
+		// 	);
+		// }
 
-		function CustomPrevArrow( props ) {
-			const { className, style, onClick } = props;
-			return (
-				<button
-					className={ className }
-					style={ { ...style, display: 'block' } }
-					onClick={ onClick }
-				>
-					<Dashicon icon="arrow-left-alt2" />
-				</button>
-			);
-		}
-		const carouselSettings = {
-			dots: ( dotStyle === 'none' ? false : true ),
-			arrows: ( arrowStyle === 'none' ? false : true ),
-			infinite: true,
-			speed: transSpeed,
-			draggable: false,
-			autoplaySpeed: autoSpeed,
-			autoplay: autoPlay,
-			slidesToShow: columns[ 0 ],
-			slidesToScroll: ( slidesScroll === 'all' ? columns[ 0 ] : 1 ),
-			nextArrow: <CustomNextArrow />,
-			prevArrow: <CustomPrevArrow />,
-		};
-		const sliderSettings = {
-			dots: ( dotStyle === 'none' ? false : true ),
-			arrows: ( arrowStyle === 'none' ? false : true ),
-			infinite: true,
-			fade: true,
-			speed: transSpeed,
-			draggable: false,
-			autoplaySpeed: autoSpeed,
-			autoplay: autoPlay,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			nextArrow: <CustomNextArrow />,
-			prevArrow: <CustomPrevArrow />,
-		};
-		const swiperrSettings = {
-			dots: false,
-			arrows: ( arrowStyle === 'none' ? false : true ),
-			infinite: true,
-			fade: false,
-			speed: transSpeed,
-			draggable: false,
-			autoplaySpeed: autoSpeed,
-			autoplay: autoPlay,
-			slidesToShow: thumbnailColumns[ 0 ],
-			slidesToScroll: 1,
-			nextArrow: <CustomNextArrow />,
-			prevArrow: <CustomPrevArrow />,
-			swipeToSlide: true,
-			focusOnSelect: true,
-		};
+		// function CustomPrevArrow( props ) {
+		// 	const { className, style, onClick } = props;
+		// 	return (
+		// 		<button
+		// 			className={ className }
+		// 			style={ { ...style, display: 'block' } }
+		// 			onClick={ onClick }
+		// 		>
+		// 			<Dashicon icon="arrow-left-alt2" />
+		// 		</button>
+		// 	);
+		// }
+		// const carouselSettings = {
+		// 	dots: ( dotStyle === 'none' ? false : true ),
+		// 	arrows: ( arrowStyle === 'none' ? false : true ),
+		// 	infinite: true,
+		// 	speed: transSpeed,
+		// 	draggable: false,
+		// 	autoplaySpeed: autoSpeed,
+		// 	autoplay: autoPlay,
+		// 	slidesToShow: columns[ 0 ],
+		// 	slidesToScroll: ( slidesScroll === 'all' ? columns[ 0 ] : 1 ),
+		// 	nextArrow: <CustomNextArrow />,
+		// 	prevArrow: <CustomPrevArrow />,
+		// };
+		// const sliderSettings = {
+		// 	dots: ( dotStyle === 'none' ? false : true ),
+		// 	arrows: ( arrowStyle === 'none' ? false : true ),
+		// 	infinite: true,
+		// 	fade: true,
+		// 	speed: transSpeed,
+		// 	draggable: false,
+		// 	autoplaySpeed: autoSpeed,
+		// 	autoplay: autoPlay,
+		// 	slidesToShow: 1,
+		// 	slidesToScroll: 1,
+		// 	nextArrow: <CustomNextArrow />,
+		// 	prevArrow: <CustomPrevArrow />,
+		// };
+		// const swiperrSettings = {
+		// 	dots: false,
+		// 	arrows: ( arrowStyle === 'none' ? false : true ),
+		// 	infinite: true,
+		// 	fade: false,
+		// 	speed: transSpeed,
+		// 	draggable: false,
+		// 	autoplaySpeed: autoSpeed,
+		// 	autoplay: autoPlay,
+		// 	slidesToShow: thumbnailColumns[ 0 ],
+		// 	slidesToScroll: 1,
+		// 	nextArrow: <CustomNextArrow />,
+		// 	prevArrow: <CustomPrevArrow />,
+		// 	swipeToSlide: true,
+		// 	focusOnSelect: true,
+		// };
 		const controls = (
 			<BlockControls>
 				{ hasImages && (
@@ -522,52 +500,52 @@ class GalleryEdit extends Component {
 				notices={ hasImages ? undefined : noticeUI }
 			/>
 		);
-		const buildCSS = (
-			<style>
-				{ `
-					.wp-block[data-type="kadence/advancedgallery"]  ul.kb-gallery-main-contain.kb-gallery-id-${ uniqueID } {
-						${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'margin: -' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
-					}
-					.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item {
-						${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'padding:' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
-					}
-					.kb-gallery-main-contain.kb-gallery-type-carousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-slider,
-					.kb-gallery-main-contain.kb-gallery-type-thumbslider.kb-gallery-id-${ uniqueID } .kt-blocks-carousel-thumbnails.slick-slider {
-						${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'margin: 0 -' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
-					}
-					.kb-gallery-main-contain.kb-gallery-type-carousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-slider .slick-slide,
-					.kb-gallery-main-contain.kb-gallery-type-fluidcarousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-slider .slick-slide,
-					.kb-gallery-main-contain.kb-gallery-type-thumbslider.kb-gallery-id-${ uniqueID } .kt-blocks-carousel-thumbnails.slick-slider .slick-slide {
-						${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'padding: 4px ' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
-					}
-					.kb-gallery-main-contain.kb-gallery-type-fluidcarousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel.kb-carousel-mode-align-left .slick-slider .slick-slide {
-						${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'padding: 4px ' + ( gutter[ 0 ] ) + 'px 4px 0;' : '' ) }
-					}
-					.kb-gallery-main-contain.kb-gallery-type-carousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-prev,
-					.kb-gallery-main-contain.kb-gallery-type-thumbslider.kb-gallery-id-${ uniqueID } .kt-blocks-carousel-thumbnails .slick-prev {
-						${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'left:' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
-					}
-					.kb-gallery-main-contain.kb-gallery-type-carousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-next,
-					.kb-gallery-main-contain.kb-gallery-type-thumbslider.kb-gallery-id-${ uniqueID } .kt-blocks-carousel-thumbnails .slick-next {
-						${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'right:' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
-					}
-					${ ( captionStyles && undefined !== captionStyles[ 0 ] && undefined !== captionStyles[ 0 ].background ? `.kb-gallery-id-${ uniqueID }.kb-gallery-main-contain .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner figcaption { background: linear-gradient( 0deg, ` + KadenceColorOutput( ( captionStyles[ 0 ].background ? captionStyles[ 0 ].background : '#000000' ), ( '' !== captionStyles[ 0 ].backgroundOpacity ? captionStyles[ 0 ].backgroundOpacity : 0.5 ) ) + ' 0, ' + KadenceColorOutput( ( captionStyles[ 0 ].background ? captionStyles[ 0 ].background : '#000000' ), 0 ) + ' 100% );}' : '' ) }
-					${ ( captionStyles && undefined !== captionStyles[ 0 ] && undefined !== captionStyles[ 0 ].background ? `.kb-gallery-id-${ uniqueID }.kb-gallery-caption-style-cover-hover.kb-gallery-main-contain .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner figcaption, .kb-gallery-id-${ uniqueID }.kb-gallery-caption-style-below.kb-gallery-main-contain .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner figcaption { background:` + KadenceColorOutput( ( captionStyles[ 0 ].background ? captionStyles[ 0 ].background : '#000000' ), ( '' !== captionStyles[ 0 ].backgroundOpacity ? captionStyles[ 0 ].backgroundOpacity : 0.5 ) ) + ';}' : '' ) }
-					${ ( captionStyles && undefined !== captionStyles[ 0 ] && undefined !== captionStyles[ 0 ].color ? `.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner figcaption { color:` + KadenceColorOutput( captionStyles[ 0 ].color ) + ';}' : '' ) }
-					.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item .kb-gal-image-radius { box-shadow:${ ( displayShadow ? shadow[ 0 ].hOffset + 'px ' + shadow[ 0 ].vOffset + 'px ' + shadow[ 0 ].blur + 'px ' + shadow[ 0 ].spread + 'px ' + KadenceColorOutput( shadow[ 0 ].color, shadow[ 0 ].opacity ) : 'none' ) }; }
-					.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item:hover .kb-gal-image-radius { box-shadow:${ ( displayShadow ? shadowHover[ 0 ].hOffset + 'px ' + shadowHover[ 0 ].vOffset + 'px ' + shadowHover[ 0 ].blur + 'px ' + shadowHover[ 0 ].spread + 'px ' + KadenceColorOutput( shadowHover[ 0 ].color, shadowHover[ 0 ].opacity ) : 'none' ) }; }
-					.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item .kb-gal-image-radius {
-						${ ( imageRadius && undefined !== imageRadius[ 0 ] && '' !== imageRadius[ 0 ] ? 'border-radius:' + imageRadius[ 0 ] + 'px ' + imageRadius[ 1 ] + 'px ' + imageRadius[ 2 ] + 'px ' + imageRadius[ 3 ] + 'px;' : '' ) }
-					}
-					.kb-gallery-main-contain.kb-gallery-type-fluidcarousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-list figure .kb-gal-image-radius, .kb-gallery-main-contain.kb-gallery-type-fluidcarousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-list figure .kb-gal-image-radius img {
-						${ ( carouselHeight && undefined !== carouselHeight[ 0 ] && '' !== carouselHeight[ 0 ] ? 'height:' + carouselHeight[ 0 ] + 'px;' : '' ) }
-					}
-					.wp-block-kadence-advancedgallery .kb-gallery-type-tiles.kb-gallery-id-${ uniqueID } > .kadence-blocks-gallery-item, .wp-block-kadence-advancedgallery .kb-gallery-type-tiles.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner img {
-						${ ( carouselHeight && undefined !== carouselHeight[ 0 ] && '' !== carouselHeight[ 0 ] ? 'height:' + carouselHeight[ 0 ] + 'px;' : '' ) }
-					}
-			` }
-			</style>
-		);
+		// const buildCSS = (
+		// 	<style>
+		// 		{ `
+		// 			.wp-block[data-type="kadence/advancedgallery"]  ul.kb-gallery-main-contain.kb-gallery-id-${ uniqueID } {
+		// 				${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'margin: -' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
+		// 			}
+		// 			.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item {
+		// 				${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'padding:' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
+		// 			}
+		// 			.kb-gallery-main-contain.kb-gallery-type-carousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-slider,
+		// 			.kb-gallery-main-contain.kb-gallery-type-thumbslider.kb-gallery-id-${ uniqueID } .kt-blocks-carousel-thumbnails.slick-slider {
+		// 				${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'margin: 0 -' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
+		// 			}
+		// 			.kb-gallery-main-contain.kb-gallery-type-carousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-slider .slick-slide,
+		// 			.kb-gallery-main-contain.kb-gallery-type-fluidcarousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-slider .slick-slide,
+		// 			.kb-gallery-main-contain.kb-gallery-type-thumbslider.kb-gallery-id-${ uniqueID } .kt-blocks-carousel-thumbnails.slick-slider .slick-slide {
+		// 				${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'padding: 4px ' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
+		// 			}
+		// 			.kb-gallery-main-contain.kb-gallery-type-fluidcarousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel.kb-carousel-mode-align-left .slick-slider .slick-slide {
+		// 				${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'padding: 4px ' + ( gutter[ 0 ] ) + 'px 4px 0;' : '' ) }
+		// 			}
+		// 			.kb-gallery-main-contain.kb-gallery-type-carousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-prev,
+		// 			.kb-gallery-main-contain.kb-gallery-type-thumbslider.kb-gallery-id-${ uniqueID } .kt-blocks-carousel-thumbnails .slick-prev {
+		// 				${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'left:' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
+		// 			}
+		// 			.kb-gallery-main-contain.kb-gallery-type-carousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-next,
+		// 			.kb-gallery-main-contain.kb-gallery-type-thumbslider.kb-gallery-id-${ uniqueID } .kt-blocks-carousel-thumbnails .slick-next {
+		// 				${ ( gutter && undefined !== gutter[ 0 ] && '' !== gutter[ 0 ] ? 'right:' + ( gutter[ 0 ] / 2 ) + 'px;' : '' ) }
+		// 			}
+		// 			${ ( captionStyles && undefined !== captionStyles[ 0 ] && undefined !== captionStyles[ 0 ].background ? `.kb-gallery-id-${ uniqueID }.kb-gallery-main-contain .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner figcaption { background: linear-gradient( 0deg, ` + KadenceColorOutput( ( captionStyles[ 0 ].background ? captionStyles[ 0 ].background : '#000000' ), ( '' !== captionStyles[ 0 ].backgroundOpacity ? captionStyles[ 0 ].backgroundOpacity : 0.5 ) ) + ' 0, ' + KadenceColorOutput( ( captionStyles[ 0 ].background ? captionStyles[ 0 ].background : '#000000' ), 0 ) + ' 100% );}' : '' ) }
+		// 			${ ( captionStyles && undefined !== captionStyles[ 0 ] && undefined !== captionStyles[ 0 ].background ? `.kb-gallery-id-${ uniqueID }.kb-gallery-caption-style-cover-hover.kb-gallery-main-contain .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner figcaption, .kb-gallery-id-${ uniqueID }.kb-gallery-caption-style-below.kb-gallery-main-contain .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner figcaption { background:` + KadenceColorOutput( ( captionStyles[ 0 ].background ? captionStyles[ 0 ].background : '#000000' ), ( '' !== captionStyles[ 0 ].backgroundOpacity ? captionStyles[ 0 ].backgroundOpacity : 0.5 ) ) + ';}' : '' ) }
+		// 			${ ( captionStyles && undefined !== captionStyles[ 0 ] && undefined !== captionStyles[ 0 ].color ? `.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner figcaption { color:` + KadenceColorOutput( captionStyles[ 0 ].color ) + ';}' : '' ) }
+		// 			.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item .kb-gal-image-radius { box-shadow:${ ( displayShadow ? shadow[ 0 ].hOffset + 'px ' + shadow[ 0 ].vOffset + 'px ' + shadow[ 0 ].blur + 'px ' + shadow[ 0 ].spread + 'px ' + KadenceColorOutput( shadow[ 0 ].color, shadow[ 0 ].opacity ) : 'none' ) }; }
+		// 			.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item:hover .kb-gal-image-radius { box-shadow:${ ( displayShadow ? shadowHover[ 0 ].hOffset + 'px ' + shadowHover[ 0 ].vOffset + 'px ' + shadowHover[ 0 ].blur + 'px ' + shadowHover[ 0 ].spread + 'px ' + KadenceColorOutput( shadowHover[ 0 ].color, shadowHover[ 0 ].opacity ) : 'none' ) }; }
+		// 			.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item .kb-gal-image-radius {
+		// 				${ ( imageRadius && undefined !== imageRadius[ 0 ] && '' !== imageRadius[ 0 ] ? 'border-radius:' + imageRadius[ 0 ] + 'px ' + imageRadius[ 1 ] + 'px ' + imageRadius[ 2 ] + 'px ' + imageRadius[ 3 ] + 'px;' : '' ) }
+		// 			}
+		// 			.kb-gallery-main-contain.kb-gallery-type-fluidcarousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-list figure .kb-gal-image-radius, .kb-gallery-main-contain.kb-gallery-type-fluidcarousel.kb-gallery-id-${ uniqueID } .kt-blocks-carousel .slick-list figure .kb-gal-image-radius img {
+		// 				${ ( carouselHeight && undefined !== carouselHeight[ 0 ] && '' !== carouselHeight[ 0 ] ? 'height:' + carouselHeight[ 0 ] + 'px;' : '' ) }
+		// 			}
+		// 			.wp-block-kadence-advancedgallery .kb-gallery-type-tiles.kb-gallery-id-${ uniqueID } > .kadence-blocks-gallery-item, .wp-block-kadence-advancedgallery .kb-gallery-type-tiles.kb-gallery-id-${ uniqueID } .kadence-blocks-gallery-item .kadence-blocks-gallery-item-inner img {
+		// 				${ ( carouselHeight && undefined !== carouselHeight[ 0 ] && '' !== carouselHeight[ 0 ] ? 'height:' + carouselHeight[ 0 ] + 'px;' : '' ) }
+		// 			}
+		// 	` }
+		// 	</style>
+		// );
 		if ( ! hasImages ) {
 			return (
 				<Fragment>
@@ -576,26 +554,25 @@ class GalleryEdit extends Component {
 				</Fragment>
 			);
 		}
-		const columnControlTypes = [
-			{ key: 'linked', name: __( 'Linked', 'kadence-blocks' ), icon: __( 'Linked', 'kadence-blocks' ) },
-			{ key: 'individual', name: __( 'Individual', 'kadence-blocks' ), icon: __( 'Individual', 'kadence-blocks' ) },
-		];
-		const galleryClassNames = classnames(
-			'kb-gallery-main-contain',
-			{
-				[ `kb-gallery-type-${ type }` ]: type,
-				[ `kb-gallery-id-${ uniqueID }` ]: uniqueID,
-				[ `kb-gallery-caption-style-${ captionStyle }` ]: captionStyle,
-				[ `kb-gallery-filter-${ imageFilter }` ]: imageFilter,
-			}
-		);
+		// const columnControlTypes = [
+		// 	{ key: 'linked', name: __( 'Linked', 'kadence-blocks' ), icon: __( 'Linked', 'kadence-blocks' ) },
+		// 	{ key: 'individual', name: __( 'Individual', 'kadence-blocks' ), icon: __( 'Individual', 'kadence-blocks' ) },
+		// ];
+		// const galleryClassNames = classnames(
+		// 	'kb-gallery-main-contain',
+		// 	{
+		// 		[ `kb-gallery-type-${ type }` ]: type,
+		// 		[ `kb-gallery-id-${ uniqueID }` ]: uniqueID,
+		// 		[ `kb-gallery-caption-style-${ captionStyle }` ]: captionStyle,
+		// 		[ `kb-gallery-filter-${ imageFilter }` ]: imageFilter,
+		// 	}
+		// );
 		const renderGalleryImages = ( img, index, thumbnail = false ) => {
 			/* translators: %1$d is the order number of the image, %2$d is the total number of images. */
 			const ariaLabel = sprintf( __( 'image %1$d of %2$d in gallery', 'kadence-blocks' ), ( index + 1 ), images.length );
 			const ratio = ( thumbnail ? thumbnailRatio : imageRatio );
 			return (
-				<li className="kadence-blocks-gallery-item" key={ img.id || img.url }>
-					<div className="kadence-blocks-gallery-item-inner">
+				<li className="swiper-slideee  " key={ img.id || img.url }>
 						<GalleryImage
 							thumbUrl={ img.thumbUrl }
 							url={ img.url }
@@ -626,16 +603,15 @@ class GalleryEdit extends Component {
 							type={ type }
 							thumbnail={ thumbnail }
 						/>
-					</div>
 				</li>
 			);
 		};
-		const typeLabel = galleryTypes.filter( ( item ) => ( item.value === type ) );
+		// const typeLabel = galleryTypes.filter( ( item ) => ( item.value === type ) );
 		return (
 			<div className={ `${ className } kb-gallery-container` } style={ {
 				margin: ( undefined !== margin[ 0 ] && undefined !== margin[ 0 ].desk && '' !== margin[ 0 ].desk[ 0 ] ? margin[ 0 ].desk[ 0 ] + ( undefined !== marginUnit ? marginUnit : 'px' ) + ' ' + margin[ 0 ].desk[ 1 ] + ( undefined !== marginUnit ? marginUnit : 'px' ) + ' ' + margin[ 0 ].desk[ 2 ] + ( undefined !== marginUnit ? marginUnit : 'px' ) + ' ' + margin[ 0 ].desk[ 3 ] + ( undefined !== marginUnit ? marginUnit : 'px' ) + ' ' : undefined ),
 			} } >
-				{ buildCSS }
+				{/* { buildCSS } */}
 				{ controls }
 				{ this.showSettings( 'allSettings' ) && (
 					<InspectorControls>
@@ -701,324 +677,6 @@ class GalleryEdit extends Component {
 								/>
 							</PanelRow>
 						</PanelBody>
-						<PanelBody title={ __( 'Gallery Settings', 'kadence-blocks' ) }>
-							<h2>{ __( 'Gallery Type:' ) + ' ' + ( undefined !== typeLabel && undefined !== typeLabel[ 0 ] && typeLabel[ 0 ].label ? typeLabel[ 0 ].label : 'Masonry' ) }</h2>
-							<ButtonGroup className="kt-style-btn-group kb-gallery-type-select" aria-label={ __( 'Gallery Type', 'kadence-blocks' ) }>
-								{ map( galleryTypes, ( { value, label, icon, isDisabled } ) => (
-									<Tooltip text={ label }>
-										<Button
-											key={ value }
-											className={ `kt-style-btn${ ( isDisabled ? ' kb-disabled-btn' : '' ) }` }
-											isSmall
-											isDisabled={ isDisabled }
-											isPrimary={ type === value }
-											aria-pressed={ type === value }
-											onClick={ () => {
-												if ( ! isDisabled ) {
-													setAttributes( { type: value } );
-												}
-											} }
-										>
-											{ icon }
-										</Button>
-									</Tooltip>
-								) ) }
-							</ButtonGroup>
-							{ ( type === 'grid' || type === 'carousel' || type === 'slider' || type === 'thumbslider' ) && (
-								<SelectControl
-									label={ __( 'Image ratio', 'kadence-blocks' ) }
-									options={ [
-										{
-											label: __( 'Landscape 4:3', 'kadence-blocks' ),
-											value: 'land43',
-										},
-										{
-											label: __( 'Landscape 3:2', 'kadence-blocks' ),
-											value: 'land32',
-										},
-										{
-											label: __( 'Landscape 2:1', 'kadence-blocks' ),
-											value: 'land21',
-										},
-										{
-											label: __( 'Landscape 3:1', 'kadence-blocks' ),
-											value: 'land31',
-										},
-										{
-											label: __( 'Landscape 4:1', 'kadence-blocks' ),
-											value: 'land41',
-										},
-										{
-											label: __( 'Portrait 3:4', 'kadence-blocks' ),
-											value: 'port34',
-										},
-										{
-											label: __( 'Portrait 2:3', 'kadence-blocks' ),
-											value: 'port23',
-										},
-										{
-											label: __( 'Square 1:1', 'kadence-blocks' ),
-											value: 'square',
-										},
-										{
-											label: __( 'Inherit', 'kadence-blocks' ),
-											value: 'inherit',
-										},
-									] }
-									value={ imageRatio }
-									onChange={ ( value ) => setAttributes( { imageRatio: value } ) }
-								/>
-							) }
-							{ type && ( type === 'carousel' || type === 'grid' || type === 'masonry' ) && (
-								<Fragment>
-									<ButtonGroup className="kt-size-type-options kt-outline-control" aria-label={ __( 'Column Control Type', 'kadence-blocks' ) }>
-										{ map( columnControlTypes, ( { name, key, icon } ) => (
-											<Tooltip text={ name }>
-												<Button
-													key={ key }
-													className="kt-size-btn"
-													isSmall
-													isPrimary={ columnControl === key }
-													aria-pressed={ columnControl === key }
-													onClick={ () => setAttributes( { columnControl: key } ) }
-												>
-													{ icon }
-												</Button>
-											</Tooltip>
-										) ) }
-									</ButtonGroup>
-									{ columnControl !== 'individual' && (
-										<RangeControl
-											label={ __( 'Columns' ) }
-											value={ columns[ 2 ] }
-											onChange={ onColumnChange }
-											min={ 1 }
-											max={ 8 }
-										/>
-									) }
-									{ columnControl && columnControl === 'individual' && (
-										<Fragment>
-											<h4>{ __( 'Columns', 'kadence-blocks' ) }</h4>
-											<RangeControl
-												label={ __( 'Screen Above 1500px', 'kadence-blocks' ) }
-												value={ columns[ 0 ] }
-												onChange={ ( value ) => setAttributes( { columns: [ value, columns[ 1 ], columns[ 2 ], columns[ 3 ], columns[ 4 ], columns[ 5 ] ] } ) }
-												min={ 1 }
-												max={ 8 }
-											/>
-											<RangeControl
-												label={ __( 'Screen 1200px - 1499px', 'kadence-blocks' ) }
-												value={ columns[ 1 ] }
-												onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], value, columns[ 2 ], columns[ 3 ], columns[ 4 ], columns[ 5 ] ] } ) }
-												min={ 1 }
-												max={ 8 }
-											/>
-											<RangeControl
-												label={ __( 'Screen 992px - 1199px', 'kadence-blocks' ) }
-												value={ columns[ 2 ] }
-												onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], columns[ 1 ], value, columns[ 3 ], columns[ 4 ], columns[ 5 ] ] } ) }
-												min={ 1 }
-												max={ 8 }
-											/>
-											<RangeControl
-												label={ __( 'Screen 768px - 991px', 'kadence-blocks' ) }
-												value={ columns[ 3 ] }
-												onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], columns[ 1 ], columns[ 2 ], value, columns[ 4 ], columns[ 5 ] ] } ) }
-												min={ 1 }
-												max={ 8 }
-											/>
-											<RangeControl
-												label={ __( 'Screen 544px - 767px', 'kadence-blocks' ) }
-												value={ columns[ 4 ] }
-												onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], columns[ 1 ], columns[ 2 ], columns[ 3 ], value, columns[ 5 ] ] } ) }
-												min={ 1 }
-												max={ 8 }
-											/>
-											<RangeControl
-												label={ __( 'Screen Below 543px', 'kadence-blocks' ) }
-												value={ columns[ 5 ] }
-												onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], columns[ 1 ], columns[ 2 ], columns[ 3 ], columns[ 4 ], value ] } ) }
-												min={ 1 }
-												max={ 8 }
-											/>
-										</Fragment>
-									) }
-								</Fragment>
-							) }
-						
-							{ type !== 'slider' && this.showSettings( 'gutterSettings' ) && (
-								<Fragment>
-									<h2 className="kt-heading-size-title">{ __( 'Gutter', 'kadence-blocks' ) }</h2>
-									<TabPanel className="kt-size-tabs"
-										activeClass="active-tab"
-										tabs={ [
-											{
-												name: 'desk',
-												title: <Dashicon icon="desktop" />,
-												className: 'kt-desk-tab',
-											},
-											{
-												name: 'tablet',
-												title: <Dashicon icon="tablet" />,
-												className: 'kt-tablet-tab',
-											},
-											{
-												name: 'mobile',
-												title: <Dashicon icon="smartphone" />,
-												className: 'kt-mobile-tab',
-											},
-										] }>
-										{
-											( tab ) => {
-												let tabout;
-												if ( tab.name ) {
-													if ( 'mobile' === tab.name ) {
-														tabout = (
-															<RangeControl
-																value={ ( ( undefined !== gutter && undefined !== gutter[ 2 ] ) ? gutter[ 2 ] : '' ) }
-																onChange={ value => setAttributes( { gutter: [ ( ( undefined !== gutter && undefined !== gutter[ 0 ] ) ? gutter[ 0 ] : '' ), ( ( undefined !== gutter && undefined !== gutter[ 1 ] ) ? gutter[ 1 ] : '' ), value ] } ) }
-																step={ 2 }
-																min={ 0 }
-																max={ 100 }
-															/>
-														);
-													} else if ( 'tablet' === tab.name ) {
-														tabout = (
-															<RangeControl
-																value={ ( ( undefined !== gutter && undefined !== gutter[ 1 ] ) ? gutter[ 1 ] : '' ) }
-																onChange={ value => setAttributes( { gutter: [ ( ( undefined !== gutter && undefined !== gutter[ 0 ] ) ? gutter[ 0 ] : '' ), value, ( ( undefined !== gutter && undefined !== gutter[ 2 ] ) ? gutter[ 2 ] : '' ) ] } ) }
-																step={ 2 }
-																min={ 0 }
-																max={ 100 }
-															/>
-														);
-													} else {
-														tabout = (
-															<RangeControl
-																value={ ( ( undefined !== gutter && undefined !== gutter[ 0 ] ) ? gutter[ 0 ] : '' ) }
-																onChange={ value => setAttributes( { gutter: [ value, ( ( undefined !== gutter && undefined !== gutter[ 1 ] ) ? gutter[ 1 ] : '' ), ( ( undefined !== gutter && undefined !== gutter[ 2 ] ) ? gutter[ 2 ] : '' ) ] } ) }
-																step={ 2 }
-																min={ 0 }
-																max={ 100 }
-															/>
-														);
-													}
-												}
-												return <div className={ tab.className } key={ tab.className }>{ tabout }</div>;
-											}
-										}
-									</TabPanel>
-								</Fragment>
-							) }
-						</PanelBody>
-						{ type && ( type === 'carousel' || type === 'slider' ) && (
-							<Fragment>
-								{ this.showSettings( 'carouselSettings' ) && (
-									<PanelBody
-										title={ __( 'Carousel Settings', 'kadence-blocks' ) }
-										initialOpen={ false }
-									>
-										<ToggleControl
-											label={ __( 'Carousel Auto Play', 'kadence-blocks' ) }
-											checked={ autoPlay }
-											onChange={ ( value ) => setAttributes( { autoPlay: value } ) }
-										/>
-										{ autoPlay && (
-											<RangeControl
-												label={ __( 'Autoplay Speed', 'kadence-blocks' ) }
-												value={ autoSpeed }
-												onChange={ ( value ) => setAttributes( { autoSpeed: value } ) }
-												min={ 500 }
-												max={ 15000 }
-												step={ 10 }
-											/>
-										) }
-										<RangeControl
-											label={ __( 'Carousel Slide Transition Speed', 'kadence-blocks' ) }
-											value={ transSpeed }
-											onChange={ ( value ) => setAttributes( { transSpeed: value } ) }
-											min={ 100 }
-											max={ 2000 }
-											step={ 10 }
-										/>
-										{ type === 'carousel' && (
-											<SelectControl
-												label={ __( 'Slides to Scroll', 'kadence-blocks' ) }
-												options={ [
-													{
-														label: __( 'One' ),
-														value: '1',
-													},
-													{
-														label: __( 'All' ),
-														value: 'all',
-													},
-												] }
-												value={ slidesScroll }
-												onChange={ ( value ) => setAttributes( { slidesScroll: value } ) }
-											/>
-										) }
-										<SelectControl
-											label={ __( 'Arrow Style', 'kadence-blocks' ) }
-											options={ [
-												{
-													label: __( 'White on Dark', 'kadence-blocks' ),
-													value: 'whiteondark',
-												},
-												{
-													label: __( 'Black on Light', 'kadence-blocks' ),
-													value: 'blackonlight',
-												},
-												{
-													label: __( 'Outline Black', 'kadence-blocks' ),
-													value: 'outlineblack',
-												},
-												{
-													label: __( 'Outline White', 'kadence-blocks' ),
-													value: 'outlinewhite',
-												},
-												{
-													label: __( 'None', 'kadence-blocks' ),
-													value: 'none',
-												},
-											] }
-											value={ arrowStyle }
-											onChange={ ( value ) => setAttributes( { arrowStyle: value } ) }
-										/>
-										{ type !== 'thumbslider' && (
-											<SelectControl
-												label={ __( 'Dot Style', 'kadence-blocks' ) }
-												options={ [
-													{
-														label: __( 'Dark', 'kadence-blocks' ),
-														value: 'dark',
-													},
-													{
-														label: __( 'Light', 'kadence-blocks' ),
-														value: 'light',
-													},
-													{
-														label: __( 'Outline Dark', 'kadence-blocks' ),
-														value: 'outlinedark',
-													},
-													{
-														label: __( 'Outline Light', 'kadence-blocks' ),
-														value: 'outlinelight',
-													},
-													{
-														label: __( 'None', 'kadence-blocks' ),
-														value: 'none',
-													},
-												] }
-												value={ dotStyle }
-												onChange={ ( value ) => setAttributes( { dotStyle: value } ) }
-											/>
-										) }
-									</PanelBody>
-								) }
-							</Fragment>
-						) }
-						
 						
 					</InspectorControls>
 				) }
@@ -1027,114 +685,24 @@ class GalleryEdit extends Component {
 					<WebfontLoader config={ config }>
 					</WebfontLoader>
 				) } */}
-				{ type && type === 'swiperr' && (
-					<div id={ `kb-gallery-id-${ uniqueID }` } className={ galleryClassNames }>
-						<div className={ `kt-blocks-carousel kt-blocks-fluid-carousel kt-carousel-container-dotstyle-${ dotStyle }${ ( carouselAlign === false ? ' kb-carousel-mode-align-left' : '' ) }` }>
-							{ images.length !== 1 && [
-									<p>ffffffffffffffff</p>,
-								<div>
-									{ images.map( ( img, index ) => {
-										return renderGalleryImages( img, index );
-									} ) }
-								</div>
-							]}
-							{ images.length === 1 && (
-								images.map( ( img, index ) => {
-									return renderGalleryImages( img, index );
-								} )
-							) }
-						</div>
-					</div>
-				) }
-				{ type && type === 'slider' && (
-					<div className={ galleryClassNames }>
-						<div className={ `kt-blocks-carousel kt-blocks-slider kt-carousel-container-dotstyle-${ dotStyle }` }>
+					<div id={ `kb-gallery-id-${ uniqueID }` } className={` swiper-containerr  `}>
+						<div className={ `swiper-wrapperr ${ ( carouselAlign === false ? ' kb-carousel-mode-align-left' : '' ) }` }>
 							{ images.length !== 1 && (
-								<Slider className={ `kt-carousel-arrowstyle-${ arrowStyle } kt-carousel-dotstyle-${ dotStyle }` } { ...sliderSettings }>
-									{ images.map( ( img, index ) => {
+
+									images.map( ( img, index ) => {
 										return renderGalleryImages( img, index );
-									} ) }
-								</Slider>
-							) }
+									} ) 
+								)
+							}
 							{ images.length === 1 && (
 								images.map( ( img, index ) => {
 									return renderGalleryImages( img, index );
 								} )
 							) }
 						</div>
+						<div class="swiper-pagination"></div>
 					</div>
-				) }
-				{ type && type === 'carousel' && (
-					<div className={ galleryClassNames }
-						data-columns-xxl={ columns[ 0 ] }
-						data-columns-xl={ columns[ 1 ] }
-						data-columns-lg={ columns[ 2 ] }
-						data-columns-md={ columns[ 3 ] }
-						data-columns-sm={ columns[ 4 ] }
-						data-columns-xs={ columns[ 5 ] }
-					>
-						<div className={ `kt-blocks-carousel kt-carousel-container-dotstyle-${ dotStyle }` }>
-							{ images.length > columns[ 0 ] && (
-								<Slider className={ `kt-carousel-arrowstyle-${ arrowStyle } kt-carousel-dotstyle-${ dotStyle }` } { ...carouselSettings }>
-									{ images.map( ( img, index ) => {
-										return renderGalleryImages( img, index );
-									} ) }
-								</Slider>
-							) }
-							{ images.length <= columns[ 0 ] && (
-								images.map( ( img, index ) => {
-									return renderGalleryImages( img, index );
-								} )
-							) }
-						</div>
-					</div>
-				) }
-				{ type && type === 'masonry' && (
-					<Masonry
-						className={ galleryClassNames }
-						elementType={ 'ul' }
-						data-columns-xxl={ columns[ 0 ] }
-						data-columns-xl={ columns[ 1 ] }
-						data-columns-lg={ columns[ 2 ] }
-						data-columns-md={ columns[ 3 ] }
-						data-columns-sm={ columns[ 4 ] }
-						data-columns-xs={ columns[ 5 ] }
-						options={ {
-							transitionDuration: 0,
-						} }
-						disableImagesLoaded={ false }
-						enableResizableChildren={ true }
-						updateOnEachImageLoad={ false }
-					>
-						{ images.map( ( img, index ) => {
-							return renderGalleryImages( img, index );
-						} ) }
-					</Masonry>
-				) }
-				{ type && type === 'grid' && (
-					<ul
-						className={ galleryClassNames }
-						data-columns-xxl={ columns[ 0 ] }
-						data-columns-xl={ columns[ 1 ] }
-						data-columns-lg={ columns[ 2 ] }
-						data-columns-md={ columns[ 3 ] }
-						data-columns-sm={ columns[ 4 ] }
-						data-columns-xs={ columns[ 5 ] }
-					>
-						{ images.map( ( img, index ) => {
-							return renderGalleryImages( img, index );
-						} ) }
-					</ul>
-				) }
-				{ type && type === 'tiles' && (
-					<ul
-						className={ galleryClassNames }
-					>
-						{ images.map( ( img, index ) => {
-							return renderGalleryImages( img, index );
-						} ) }
-					</ul>
-				) }
+				
 				{ isSelected && (
 					mediaPlaceholder
 				) }
