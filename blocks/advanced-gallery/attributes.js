@@ -14,69 +14,73 @@
         default: 'linked',
     },
     images: {
-        type: 'array',
-        default: [],
-        source: 'query',
-        selector: '.kadence-blocks-gallery-item',
-        query: {
-            url: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'data-full-image',
-            },
-            thumbUrl: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'src',
-            },
-            lightUrl: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'data-light-image',
-            },
-            link: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'data-link',
-            },
-            customLink: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'data-custom-link',
-            },
-            linkTarget: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'data-custom-link-target',
-            },
-            width: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'width',
-            },
-            height: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'height',
-            },
-            alt: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'alt',
-                default: '',
-            },
-            id: {
-                source: 'attribute',
-                selector: 'img',
-                attribute: 'data-id',
-            },
-            caption: {
-                type: 'string',
-                source: 'html',
-                selector: '.kadence-blocks-gallery-item__caption',
-            },
-        },
+        type: "array",
+        default: []
     },
+    // images: {
+    //     type: 'array',
+    //     default: [],
+    //     source: 'query',
+    //     selector: '.kadence-blocks-gallery-item',
+    //     query: {
+    //         url: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'data-full-image',
+    //         },
+    //         thumbUrl: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'src',
+    //         },
+    //         lightUrl: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'data-light-image',
+    //         },
+    //         link: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'data-link',
+    //         },
+    //         customLink: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'data-custom-link',
+    //         },
+    //         linkTarget: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'data-custom-link-target',
+    //         },
+    //         width: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'width',
+    //         },
+    //         height: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'height',
+    //         },
+    //         alt: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'alt',
+    //             default: '',
+    //         },
+    //         id: {
+    //             source: 'attribute',
+    //             selector: 'img',
+    //             attribute: 'data-id',
+    //         },
+    //         caption: {
+    //             type: 'string',
+    //             source: 'html',
+    //             selector: '.kadence-blocks-gallery-item__caption',
+    //         },
+    //     },
+    // },
     lightSize: {
         type: 'string',
         default: 'full',
