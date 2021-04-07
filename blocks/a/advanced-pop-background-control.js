@@ -39,8 +39,7 @@ const {
 } = wp.data;
 /* global kadence_blocks_params */
 // eslint-disable-next-line camelcase
-// const isKadenceT = ( typeof kadence_blocks_params !== 'undefined' && kadence_blocks_params.isKadenceT ? true : false );
-const isKadenceT = true;
+const isKadenceT = ( typeof kadence_blocks_params !== 'undefined' && kadence_blocks_params.isKadenceT ? true : false );
 /**
  * Build the Measure controls
  * @returns {object} Measure settings.

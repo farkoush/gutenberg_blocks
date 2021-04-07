@@ -79,64 +79,64 @@ export default function ResponsiveMeasurementControls( {
 		},
 	];
 	const output = {};
-	output.Mobile = (
-		<MeasurementControls
-			key={ 2 }
-			className="measure-mobile-size"
-			label={ ( subLabel ? __( 'Mobile:', 'kadence-blocks' ) + subLabel : undefined ) }
-			measurement={ ( mobileValue ? mobileValue : [ '', '', '', '' ] ) }
-			control={ ( realMobileControl ? realMobileControl : 'individual' ) }
-			onChange={ ( size ) => onChangeMobile( size ) }
-			onControl={ ( sizeControl ) => realOnChangeMobileControl( sizeControl ) }
-			min={ min }
-			max={ max }
-			step={ step }
-			allowEmpty={ zero }
-			unit={ unit }
-			showUnit={ true }
-			units={ [ unit ] }
-			preset={ preset }
-		/>
-	);
-	output.Tablet = (
-		<MeasurementControls
-			key={ 1 }
-			className="measure-tablet-size"
-			label={ ( subLabel ? __( 'Tablet:', 'kadence-blocks' ) + subLabel : undefined ) }
-			measurement={ ( tabletValue ? tabletValue : [ '', '', '', '' ] ) }
-			control={ ( realTabletControl ? realTabletControl : 'individual' ) }
-			onChange={ ( size ) => onChangeTablet( size ) }
-			onControl={ ( sizeControl ) => realOnChangeTabletControl( sizeControl ) }
-			min={ min }
-			max={ max }
-			step={ step }
-			allowEmpty={ zero }
-			unit={ unit }
-			showUnit={ true }
-			units={ [ unit ] }
-			preset={ preset }
-		/>
-	);
-	output.Desktop = (
-		<MeasurementControls
-			key={ 0 }
-			className="measure-desktop-size"
-			label={ ( subLabel ? subLabel : undefined ) }
-			measurement={ ( value ? value : [ '', '', '', '' ] ) }
-			control={ ( control ? control : 'individual' ) }
-			onChange={ ( size ) => onChange( size ) }
-			onControl={ ( sizeControl ) => onChangeControl( sizeControl ) }
-			min={ min }
-			max={ max }
-			step={ step }
-			allowEmpty={ zero }
-			unit={ unit }
-			onUnit={ ( onUnit ? onUnit : undefined ) }
-			showUnit={ showUnit }
-			units={ units }
-			preset={ preset }
-		/>
-	);
+	// output.Mobile = (
+	// 	<MeasurementControls
+	// 		key={ 2 }
+	// 		className="measure-mobile-size"
+	// 		label={ ( subLabel ? __( 'Mobile:', 'kadence-blocks' ) + subLabel : undefined ) }
+	// 		measurement={ ( mobileValue ? mobileValue : [ '', '', '', '' ] ) }
+	// 		control={ ( realMobileControl ? realMobileControl : 'individual' ) }
+	// 		onChange={ ( size ) => onChangeMobile( size ) }
+	// 		onControl={ ( sizeControl ) => realOnChangeMobileControl( sizeControl ) }
+	// 		min={ min }
+	// 		max={ max }
+	// 		step={ step }
+	// 		allowEmpty={ zero }
+	// 		unit={ unit }
+	// 		showUnit={ true }
+	// 		units={ [ unit ] }
+	// 		preset={ preset }
+	// 	/>
+	// );
+	// output.Tablet = (
+	// 	<MeasurementControls
+	// 		key={ 1 }
+	// 		className="measure-tablet-size"
+	// 		label={ ( subLabel ? __( 'Tablet:', 'kadence-blocks' ) + subLabel : undefined ) }
+	// 		measurement={ ( tabletValue ? tabletValue : [ '', '', '', '' ] ) }
+	// 		control={ ( realTabletControl ? realTabletControl : 'individual' ) }
+	// 		onChange={ ( size ) => onChangeTablet( size ) }
+	// 		onControl={ ( sizeControl ) => realOnChangeTabletControl( sizeControl ) }
+	// 		min={ min }
+	// 		max={ max }
+	// 		step={ step }
+	// 		allowEmpty={ zero }
+	// 		unit={ unit }
+	// 		showUnit={ true }
+	// 		units={ [ unit ] }
+	// 		preset={ preset }
+	// 	/>
+	// );
+	// output.Desktop = (
+	// 	<MeasurementControls
+	// 		key={ 0 }
+	// 		className="measure-desktop-size"
+	// 		label={ ( subLabel ? subLabel : undefined ) }
+	// 		measurement={ ( value ? value : [ '', '', '', '' ] ) }
+	// 		control={ ( control ? control : 'individual' ) }
+	// 		onChange={ ( size ) => onChange( size ) }
+	// 		onControl={ ( sizeControl ) => onChangeControl( sizeControl ) }
+	// 		min={ min }
+	// 		max={ max }
+	// 		step={ step }
+	// 		allowEmpty={ zero }
+	// 		unit={ unit }
+	// 		onUnit={ ( onUnit ? onUnit : undefined ) }
+	// 		showUnit={ showUnit }
+	// 		units={ units }
+	// 		preset={ preset }
+	// 	/>
+	// );
 	return [
 		onChange && onChangeTablet && onChangeMobile && (
 			<div className={ 'components-base-control kb-responsive-measure-control' }>

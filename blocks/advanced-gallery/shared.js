@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { get, pick } from 'lodash';
-console.log('shareeeed');
+
 export const pickRelevantMediaFiles = ( image, lightSize, thumbSize, oldImages ) => {
 	const imageProps = pick( image, [ 'alt', 'id', 'link', 'caption' ] );
 	if ( image.id && ! image.sizes && ! image.media_details ) {

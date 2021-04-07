@@ -94,7 +94,6 @@ class GalleryImage extends Component {
 	render() {
 		const { url, width, height, imageRatio, lightUrl, thumbUrl, customLink, linkTarget, alt, id, linkTo, link, isFirstItem, isLastItem, isSelected, showCaption, caption, captionStyle, captionStyles, onRemove, onMoveForward, onMoveBackward, setAttributes, setLinkAttributes, 'aria-label': ariaLabel, type, thumbnail } = this.props;
 		let href;
-		// console.log('gallery-iamgeeeeeeeeee');
 		switch ( linkTo ) {
 			case 'media':
 				href = url;

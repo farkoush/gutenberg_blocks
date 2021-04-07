@@ -11,7 +11,7 @@ import icons from './../../icons';
 /**
  * Import Css
  */
-import './../../editor-components.scss';
+// import './../../editor-components.scss';
 
 /**
  * Import External
