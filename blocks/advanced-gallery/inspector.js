@@ -73,13 +73,7 @@ const linkOptions = [
 	{ value: 'none', label: __( 'None', 'kadence-blocks' ) },
 ];
 const typeOptions = [
-	{ value: 'masonry', label: __( 'Masonry', 'kadence-blocks' ), icon: icons.galMasonry, isDisabled: false },
-	{ value: 'grid', label: __( 'Grid', 'kadence-blocks' ), icon: icons.galGrid, isDisabled: false },
-	{ value: 'carousel', label: __( 'Carousel', 'kadence-blocks' ), icon: icons.galCarousel, isDisabled: false },
-	{ value: 'fluidcarousel', label: __( 'Fluid Carousel', 'kadence-blocks' ), icon: icons.galFluid, isDisabled: false },
 	{ value: 'slider', label: __( 'Slider', 'kadence-blocks' ), icon: icons.galSlider, isDisabled: false },
-	{ value: 'thumbslider', label: __( 'Thumbnail Slider (Pro addon)', 'kadence-blocks' ), icon: icons.thumbslider, isDisabled: true },
-	{ value: 'tiles', label: __( 'Tiles (Pro addon)', 'kadence-blocks' ), icon: icons.galtiles, isDisabled: true },
 	// { value: 'mosaic', label: __( 'Mosaic (Pro only)', 'kadence-blocks' ), icon: icons.galSlider, isDisabled: true },
 ];
  /**
@@ -213,7 +207,7 @@ const typeOptions = [
                     </Tooltip>
                 ) ) }
             </ButtonGroup>
-            { ( type === 'grid' || type === 'carousel' || type === 'slider' || type === 'thumbslider' ) && (
+            { (  type === 'slider') && (
                 <SelectControl
                     label={ __( 'Image ratio', 'kadence-blocks' ) }
                     options={ [
@@ -257,203 +251,6 @@ const typeOptions = [
                     value={ imageRatio }
                     onChange={ ( value ) => setAttributes( { imageRatio: value } ) }
                 />
-            ) }
-            { ( type === 'thumbslider' ) && (
-                <SelectControl
-                    label={ __( 'Thumbnail Image ratio', 'kadence-blocks' ) }
-                    options={ [
-                        {
-                            label: __( 'Landscape 4:3', 'kadence-blocks' ),
-                            value: 'land43',
-                        },
-                        {
-                            label: __( 'Landscape 3:2', 'kadence-blocks' ),
-                            value: 'land32',
-                        },
-                        {
-                            label: __( 'Landscape 2:1', 'kadence-blocks' ),
-                            value: 'land21',
-                        },
-                        {
-                            label: __( 'Landscape 3:1', 'kadence-blocks' ),
-                            value: 'land31',
-                        },
-                        {
-                            label: __( 'Landscape 4:1', 'kadence-blocks' ),
-                            value: 'land41',
-                        },
-                        {
-                            label: __( 'Portrait 3:4', 'kadence-blocks' ),
-                            value: 'port34',
-                        },
-                        {
-                            label: __( 'Portrait 2:3', 'kadence-blocks' ),
-                            value: 'port23',
-                        },
-                        {
-                            label: __( 'Square 1:1', 'kadence-blocks' ),
-                            value: 'square',
-                        },
-                        {
-                            label: __( 'Inherit', 'kadence-blocks' ),
-                            value: 'inherit',
-                        },
-                    ] }
-                    value={ thumbnailRatio }
-                    onChange={ ( value ) => setAttributes( { thumbnailRatio: value } ) }
-                />
-            ) }
-            { type && ( type === 'carousel' || type === 'grid' || type === 'masonry' ) && (
-                <Fragment>
-                    <ButtonGroup className="kt-size-type-options kt-outline-control" aria-label={ __( 'Column Control Type', 'kadence-blocks' ) }>
-                        { map( columnControlTypes, ( { name, key, icon } ) => (
-                            <Tooltip text={ name }>
-                                <Button
-                                    key={ key }
-                                    className="kt-size-btn"
-                                    isSmall
-                                    isPrimary={ columnControl === key }
-                                    aria-pressed={ columnControl === key }
-                                    onClick={ () => setAttributes( { columnControl: key } ) }
-                                >
-                                    { icon }
-                                </Button>
-                            </Tooltip>
-                        ) ) }
-                    </ButtonGroup>
-                    { columnControl !== 'individual' && (
-                        <RangeControl
-                            label={ __( 'Columns' ) }
-                            value={ columns[ 2 ] }
-                            onChange={ onColumnChange }
-                            min={ 1 }
-                            max={ 8 }
-                        />
-                    ) }
-                    { columnControl && columnControl === 'individual' && (
-                        <Fragment>
-                            <h4>{ __( 'Columns', 'kadence-blocks' ) }</h4>
-                            <RangeControl
-                                label={ __( 'Screen Above 1500px', 'kadence-blocks' ) }
-                                value={ columns[ 0 ] }
-                                onChange={ ( value ) => setAttributes( { columns: [ value, columns[ 1 ], columns[ 2 ], columns[ 3 ], columns[ 4 ], columns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen 1200px - 1499px', 'kadence-blocks' ) }
-                                value={ columns[ 1 ] }
-                                onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], value, columns[ 2 ], columns[ 3 ], columns[ 4 ], columns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen 992px - 1199px', 'kadence-blocks' ) }
-                                value={ columns[ 2 ] }
-                                onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], columns[ 1 ], value, columns[ 3 ], columns[ 4 ], columns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen 768px - 991px', 'kadence-blocks' ) }
-                                value={ columns[ 3 ] }
-                                onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], columns[ 1 ], columns[ 2 ], value, columns[ 4 ], columns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen 544px - 767px', 'kadence-blocks' ) }
-                                value={ columns[ 4 ] }
-                                onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], columns[ 1 ], columns[ 2 ], columns[ 3 ], value, columns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen Below 543px', 'kadence-blocks' ) }
-                                value={ columns[ 5 ] }
-                                onChange={ ( value ) => setAttributes( { columns: [ columns[ 0 ], columns[ 1 ], columns[ 2 ], columns[ 3 ], columns[ 4 ], value ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                        </Fragment>
-                    ) }
-                </Fragment>
-            ) }
-            { type && ( type === 'thumbslider' ) && (
-                <Fragment>
-                    <ButtonGroup className="kt-size-type-options kt-outline-control" aria-label={ __( 'Thumb Column Control Type', 'kadence-blocks' ) }>
-                        { map( columnControlTypes, ( { name, key, icon } ) => (
-                            <Tooltip text={ name }>
-                                <Button
-                                    key={ key }
-                                    className="kt-size-btn"
-                                    isSmall
-                                    isPrimary={ thumbnailControl === key }
-                                    aria-pressed={ thumbnailControl === key }
-                                    onClick={ () => setAttributes( { thumbnailControl: key } ) }
-                                >
-                                    { icon }
-                                </Button>
-                            </Tooltip>
-                        ) ) }
-                    </ButtonGroup>
-                    { thumbnailControl !== 'individual' && (
-                        <RangeControl
-                            label={ __( 'Thumbnail Columns', 'kadence-blocks' ) }
-                            value={ thumbnailColumns[ 2 ] }
-                            onChange={ onThumbColumnChange }
-                            min={ 1 }
-                            max={ 10 }
-                        />
-                    ) }
-                    { thumbnailControl && thumbnailControl === 'individual' && (
-                        <Fragment>
-                            <h4>{ __( 'Columns' ) }</h4>
-                            <RangeControl
-                                label={ __( 'Screen Above 1500px', 'kadence-blocks' ) }
-                                value={ thumbnailColumns[ 0 ] }
-                                onChange={ ( value ) => setAttributes( { thumbnailColumns: [ value, thumbnailColumns[ 1 ], thumbnailColumns[ 2 ], thumbnailColumns[ 3 ], thumbnailColumns[ 4 ], thumbnailColumns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen 1200px - 1499px', 'kadence-blocks' ) }
-                                value={ thumbnailColumns[ 1 ] }
-                                onChange={ ( value ) => setAttributes( { thumbnailColumns: [ thumbnailColumns[ 0 ], value, thumbnailColumns[ 2 ], thumbnailColumns[ 3 ], thumbnailColumns[ 4 ], thumbnailColumns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen 992px - 1199px', 'kadence-blocks' ) }
-                                value={ thumbnailColumns[ 2 ] }
-                                onChange={ ( value ) => setAttributes( { thumbnailColumns: [ thumbnailColumns[ 0 ], thumbnailColumns[ 1 ], value, thumbnailColumns[ 3 ], thumbnailColumns[ 4 ], thumbnailColumns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen 768px - 991px', 'kadence-blocks' ) }
-                                value={ thumbnailColumns[ 3 ] }
-                                onChange={ ( value ) => setAttributes( { thumbnailColumns: [ thumbnailColumns[ 0 ], thumbnailColumns[ 1 ], thumbnailColumns[ 2 ], value, thumbnailColumns[ 4 ], thumbnailColumns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen 544px - 767px', 'kadence-blocks' ) }
-                                value={ thumbnailColumns[ 4 ] }
-                                onChange={ ( value ) => setAttributes( { thumbnailColumns: [ thumbnailColumns[ 0 ], thumbnailColumns[ 1 ], thumbnailColumns[ 2 ], thumbnailColumns[ 3 ], value, thumbnailColumns[ 5 ] ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                            <RangeControl
-                                label={ __( 'Screen Below 543px', 'kadence-blocks' ) }
-                                value={ thumbnailColumns[ 5 ] }
-                                onChange={ ( value ) => setAttributes( { thumbnailColumns: [ thumbnailColumns[ 0 ], thumbnailColumns[ 1 ], thumbnailColumns[ 2 ], thumbnailColumns[ 3 ], thumbnailColumns[ 4 ], value ] } ) }
-                                min={ 1 }
-                                max={ 8 }
-                            />
-                        </Fragment>
-                    ) }
-                </Fragment>
             ) }
                 <Fragment>
                     <h2 className="kt-heading-size-title">{ __( 'Gutter', 'kadence-blocks' ) }</h2>
@@ -517,77 +314,6 @@ const typeOptions = [
                         }
                     </TabPanel>
                 </Fragment>
-            { ( type === 'fluidcarousel' || type === 'tiles' ) && (
-                <Fragment>
-                    <h2 className="kt-heading-size-title">{ ( type === 'tiles' ? __( 'Row Height', 'kadence-blocks' ) : __( 'Carousel Height', 'kadence-blocks' ) ) }</h2>
-                    <TabPanel className="kt-size-tabs"
-                        activeClass="active-tab"
-                        tabs={ [
-                            {
-                                name: 'desk',
-                                title: <Dashicon icon="desktop" />,
-                                className: 'kt-desk-tab',
-                            },
-                            {
-                                name: 'tablet',
-                                title: <Dashicon icon="tablet" />,
-                                className: 'kt-tablet-tab',
-                            },
-                            {
-                                name: 'mobile',
-                                title: <Dashicon icon="smartphone" />,
-                                className: 'kt-mobile-tab',
-                            },
-                        ] }>
-                        {/* {
-                            ( tab ) => {
-                                let tabout;
-                                if ( tab.name ) {
-                                    if ( 'mobile' === tab.name ) {
-                                        tabout = (
-                                            <KadenceRange
-                                                value={ ( ( undefined !== carouselHeight && undefined !== carouselHeight[ 2 ] ) ? carouselHeight[ 2 ] : '' ) }
-                                                onChange={ value => setAttributes( { carouselHeight: [ ( ( undefined !== carouselHeight && undefined !== carouselHeight[ 0 ] ) ? carouselHeight[ 0 ] : '' ), ( ( undefined !== carouselHeight && undefined !== carouselHeight[ 1 ] ) ? carouselHeight[ 1 ] : '' ), value ] } ) }
-                                                step={ 1 }
-                                                min={ 120 }
-                                                max={ 800 }
-                                            />
-                                        );
-                                    } else if ( 'tablet' === tab.name ) {
-                                        tabout = (
-                                            <KadenceRange
-                                                value={ ( ( undefined !== carouselHeight && undefined !== carouselHeight[ 1 ] ) ? carouselHeight[ 1 ] : '' ) }
-                                                onChange={ value => setAttributes( { carouselHeight: [ ( ( undefined !== carouselHeight && undefined !== carouselHeight[ 0 ] ) ? carouselHeight[ 0 ] : '' ), value, ( ( undefined !== carouselHeight && undefined !== carouselHeight[ 2 ] ) ? carouselHeight[ 2 ] : '' ) ] } ) }
-                                                step={ 1 }
-                                                min={ 120 }
-                                                max={ 800 }
-                                            />
-                                        );
-                                    } else {
-                                        tabout = (
-                                            <KadenceRange
-                                                value={ ( ( undefined !== carouselHeight && undefined !== carouselHeight[ 0 ] ) ? carouselHeight[ 0 ] : '' ) }
-                                                onChange={ value => setAttributes( { carouselHeight: [ value, ( ( undefined !== carouselHeight && undefined !== carouselHeight[ 1 ] ) ? carouselHeight[ 1 ] : '' ), ( ( undefined !== carouselHeight && undefined !== carouselHeight[ 2 ] ) ? carouselHeight[ 2 ] : '' ) ] } ) }
-                                                step={ 1 }
-                                                min={ 120 }
-                                                max={ 800 }
-                                            />
-                                        );
-                                    }
-                                }
-                                return <div className={ tab.className } key={ tab.className }>{ tabout }</div>;
-                            }
-                        } */}
-                    </TabPanel>
-                    { type === 'fluidcarousel' && (
-                        <ToggleControl
-                            label={ __( 'Carousel Center Mode', 'kadence-blocks' ) }
-                            checked={ carouselAlign }
-                            onChange={ ( value ) => setAttributes( { carouselAlign: value } ) }
-                        />
-                    ) }
-                </Fragment>
-            ) }
             {/* { ids && undefined !== ids[ 0 ] && (
                 <ImageSizeControl
                     label={ __( 'Thumbnail Image Size', 'kadence-blocks' ) }
@@ -599,7 +325,7 @@ const typeOptions = [
                 />
             ) } */}
         </PanelBody>
-        { type && ( type === 'carousel' || type === 'fluidcarousel' || type === 'slider' || type === 'thumbslider' ) && (
+        { type && (  type === 'slider' ) && (
             <Fragment>
                     <PanelBody
                         title={ __( 'Carousel Settings', 'kadence-blocks' ) }

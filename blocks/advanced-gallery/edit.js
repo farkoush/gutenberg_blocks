@@ -7,7 +7,6 @@ import filter from 'lodash/filter';
 import forEach from 'lodash/forEach';
 import map from 'lodash/map';
 import debounce from 'lodash/debounce';
-import Masonry from 'react-masonry-component';
 // import ImageSizeControl from '../a/image-size-control'; //error when click on images
 // import WebfontLoader from '../a/fontloader';
 // import TypographyControls from '../a/typography-control';
@@ -30,15 +29,7 @@ import icons from '../a/icons';
 const { compose } = wp.compose;
 const {
 	IconButton,
-	Button,
-	ButtonGroup,
-	PanelBody,
-	Tooltip,
-	RangeControl,
-	SelectControl,
-	ToggleControl,
 	Toolbar,
-	TabPanel,
 	Dashicon,
 	withNotices,
 } = wp.components;
@@ -47,7 +38,6 @@ const {
 	BlockIcon,
 	MediaPlaceholder,
 	MediaUpload,
-	InspectorControls,
 } = wp.blockEditor;
 const { Component, Fragment } = wp.element;
 const { __, sprintf } = wp.i18n;
@@ -66,22 +56,22 @@ import { pickRelevantMediaFiles, pickRelevantMediaFilesUpdate } from './shared';
  */
 import './editor.scss';
 
-const linkOptions = [
-	{ value: 'attachment', label: __( 'Attachment Page', 'kadence-blocks' ) },
-	{ value: 'media', label: __( 'Media File', 'kadence-blocks' ) },
-	{ value: 'custom', label: __( 'Custom', 'kadence-blocks' ) },
-	{ value: 'none', label: __( 'None', 'kadence-blocks' ) },
-];
-const typeOptions = [
-	{ value: 'masonry', label: __( 'Masonry', 'kadence-blocks' ), icon: icons.galMasonry, isDisabled: false },
-	{ value: 'grid', label: __( 'Grid', 'kadence-blocks' ), icon: icons.galGrid, isDisabled: false },
-	{ value: 'carousel', label: __( 'Carousel', 'kadence-blocks' ), icon: icons.galCarousel, isDisabled: false },
-	{ value: 'fluidcarousel', label: __( 'Fluid Carousel', 'kadence-blocks' ), icon: icons.galFluid, isDisabled: false },
-	{ value: 'slider', label: __( 'Slider', 'kadence-blocks' ), icon: icons.galSlider, isDisabled: false },
-	{ value: 'thumbslider', label: __( 'Thumbnail Slider (Pro addon)', 'kadence-blocks' ), icon: icons.thumbslider, isDisabled: true },
-	{ value: 'tiles', label: __( 'Tiles (Pro addon)', 'kadence-blocks' ), icon: icons.galtiles, isDisabled: true },
-	// { value: 'mosaic', label: __( 'Mosaic (Pro only)', 'kadence-blocks' ), icon: icons.galSlider, isDisabled: true },
-];
+// const linkOptions = [
+// 	{ value: 'attachment', label: __( 'Attachment Page', 'kadence-blocks' ) },
+// 	{ value: 'media', label: __( 'Media File', 'kadence-blocks' ) },
+// 	{ value: 'custom', label: __( 'Custom', 'kadence-blocks' ) },
+// 	{ value: 'none', label: __( 'None', 'kadence-blocks' ) },
+// ];
+// const typeOptions = [
+// 	{ value: 'masonry', label: __( 'Masonry', 'kadence-blocks' ), icon: icons.galMasonry, isDisabled: false },
+// 	{ value: 'grid', label: __( 'Grid', 'kadence-blocks' ), icon: icons.galGrid, isDisabled: false },
+// 	{ value: 'carousel', label: __( 'Carousel', 'kadence-blocks' ), icon: icons.galCarousel, isDisabled: false },
+// 	{ value: 'fluidcarousel', label: __( 'Fluid Carousel', 'kadence-blocks' ), icon: icons.galFluid, isDisabled: false },
+// 	{ value: 'slider', label: __( 'Slider', 'kadence-blocks' ), icon: icons.galSlider, isDisabled: false },
+// 	{ value: 'thumbslider', label: __( 'Thumbnail Slider (Pro addon)', 'kadence-blocks' ), icon: icons.thumbslider, isDisabled: true },
+// 	{ value: 'tiles', label: __( 'Tiles (Pro addon)', 'kadence-blocks' ), icon: icons.galtiles, isDisabled: true },
+// 	// { value: 'mosaic', label: __( 'Mosaic (Pro only)', 'kadence-blocks' ), icon: icons.galSlider, isDisabled: true },
+// ];
 /**
  * This allows for checking to see if the block needs to generate a new ID.
  */
@@ -365,7 +355,7 @@ class GalleryEdit extends Component {
 	render() {
 		const { attributes, isSelected, className, noticeUI, setAttributes } = this.props;
 		const { uniqueID, images, columns, linkTo, ids, columnControl, showCaption, captionStyles, lightbox, lightSize, type, imageRatio, captionStyle, gutter, thumbSize, autoPlay, autoSpeed, transSpeed, slidesScroll, arrowStyle, dotStyle, imageRadius, margin, marginUnit, displayShadow, shadow, shadowHover, carouselHeight, imageFilter, lightboxCaption, carouselAlign, thumbnailColumns, thumbnailControl, thumbnailRatio, mobileForceHover } = attributes;
-		const galleryTypes = applyFilters( 'kadence.galleryTypes', typeOptions );
+		// const galleryTypes = applyFilters( 'kadence.galleryTypes', typeOptions );
 		const hasImages = !! images.length;
 		console.log('images');
 		console.log(images)
@@ -373,23 +363,23 @@ class GalleryEdit extends Component {
 		console.log(images.length)
 		console.log('ids')
 		console.log(ids)
-		const gconfig = {
-			google: {
-				families: [ captionStyles[ 0 ].family + ( captionStyles[ 0 ].variant ? ':' + captionStyles[ 0 ].variant : '' ) ],
-			},
-		};
-		const config = ( captionStyles[ 0 ].google ? gconfig : '' );
-		const saveCaptionFont = ( value ) => {
-			const newUpdate = captionStyles.map( ( item, index ) => {
-				if ( 0 === index ) {
-					item = { ...item, ...value };
-				}
-				return item;
-			} );
-			setAttributes( {
-				captionStyles: newUpdate,
-			} );
-		};
+		// const gconfig = {
+		// 	google: {
+		// 		families: [ captionStyles[ 0 ].family + ( captionStyles[ 0 ].variant ? ':' + captionStyles[ 0 ].variant : '' ) ],
+		// 	},
+		// };
+		// const config = ( captionStyles[ 0 ].google ? gconfig : '' );
+		// const saveCaptionFont = ( value ) => {
+		// 	const newUpdate = captionStyles.map( ( item, index ) => {
+		// 		if ( 0 === index ) {
+		// 			item = { ...item, ...value };
+		// 		}
+		// 		return item;
+		// 	} );
+		// 	setAttributes( {
+		// 		captionStyles: newUpdate,
+		// 	} );
+		// };
 		function CustomNextArrow( props ) {
 			const { className, style, onClick } = props;
 			return (
@@ -415,36 +405,6 @@ class GalleryEdit extends Component {
 				</button>
 			);
 		}
-		const carouselSettings = {
-			dots: ( dotStyle === 'none' ? false : true ),
-			arrows: ( arrowStyle === 'none' ? false : true ),
-			infinite: true,
-			speed: transSpeed,
-			draggable: false,
-			autoplaySpeed: autoSpeed,
-			autoplay: autoPlay,
-			slidesToShow: columns[ 0 ],
-			slidesToScroll: ( slidesScroll === 'all' ? columns[ 0 ] : 1 ),
-			nextArrow: <CustomNextArrow />,
-			prevArrow: <CustomPrevArrow />,
-		};
-		const fluidCarouselSettings = {
-			dots: ( dotStyle === 'none' ? false : true ),
-			arrows: ( arrowStyle === 'none' ? false : true ),
-			infinite: true,
-			speed: transSpeed,
-			draggable: false,
-			autoplaySpeed: autoSpeed,
-			autoplay: autoPlay,
-			centerMode: ( carouselAlign === false ? false : true ),
-			variableWidth: true,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			nextArrow: <CustomNextArrow />,
-			prevArrow: <CustomPrevArrow />,
-			onInit: this.carouselSizeTrigger,
-			onReInit: this.carouselSizeTrigger,
-		};
 		const sliderSettings = {
 			dots: ( dotStyle === 'none' ? false : true ),
 			arrows: ( arrowStyle === 'none' ? false : true ),
@@ -458,37 +418,6 @@ class GalleryEdit extends Component {
 			slidesToScroll: 1,
 			nextArrow: <CustomNextArrow />,
 			prevArrow: <CustomPrevArrow />,
-		};
-		const thumbsliderSettings = {
-			dots: false,
-			arrows: ( arrowStyle === 'none' ? false : true ),
-			infinite: true,
-			fade: true,
-			speed: transSpeed,
-			draggable: false,
-			autoplaySpeed: autoSpeed,
-			autoplay: autoPlay,
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			onInit: this.onSelectImage( 0 ),
-			nextArrow: <CustomNextArrow />,
-			prevArrow: <CustomPrevArrow />,
-		};
-		const thumbsliderthumbsSettings = {
-			dots: false,
-			arrows: ( arrowStyle === 'none' ? false : true ),
-			infinite: true,
-			fade: false,
-			speed: transSpeed,
-			draggable: false,
-			autoplaySpeed: autoSpeed,
-			autoplay: autoPlay,
-			slidesToShow: thumbnailColumns[ 0 ],
-			slidesToScroll: 1,
-			nextArrow: <CustomNextArrow />,
-			prevArrow: <CustomPrevArrow />,
-			swipeToSlide: true,
-			focusOnSelect: true,
 		};
 		const controls = (
 			<BlockControls>
@@ -654,24 +583,6 @@ class GalleryEdit extends Component {
 					<WebfontLoader config={ config }>
 					</WebfontLoader>
 				) } */}
-				{ type && type === 'fluidcarousel' && (
-					<div id={ `kb-gallery-id-${ uniqueID }` } className={ galleryClassNames }>
-						<div className={ `kt-blocks-carousel kt-blocks-fluid-carousel kt-carousel-container-dotstyle-${ dotStyle }${ ( carouselAlign === false ? ' kb-carousel-mode-align-left' : '' ) }` }>
-							{ images.length !== 1 && (
-								<Slider className={ `kt-carousel-arrowstyle-${ arrowStyle } kt-carousel-dotstyle-${ dotStyle }` } { ...fluidCarouselSettings }>
-									{ images.map( ( img, index ) => {
-										return renderGalleryImages( img, index );
-									} ) }
-								</Slider>
-							) }
-							{ images.length === 1 && (
-								images.map( ( img, index ) => {
-									return renderGalleryImages( img, index );
-								} )
-							) }
-						</div>
-					</div>
-				) }
 				{ type && type === 'slider' && (
 					<div className={ galleryClassNames }>
 						<div className={ `kt-blocks-carousel kt-blocks-slider kt-carousel-container-dotstyle-${ dotStyle }` }>
@@ -690,102 +601,7 @@ class GalleryEdit extends Component {
 						</div>
 					</div>
 				) }
-				{ type && type === 'thumbslider' && (
-					<div className={ galleryClassNames }>
-						<div className={ `kt-blocks-carousel kt-blocks-slider kt-carousel-container-dotstyle-${ dotStyle }` }>
-							{ images.length !== 1 && (
-								<Fragment>
-									<Slider asNavFor={ this.sliderThumbs } className={ `kt-carousel-arrowstyle-${ arrowStyle } kt-carousel-dotstyle-${ dotStyle }` } ref={ this.bindSlider } { ...thumbsliderSettings }>
-										{ images.map( ( img, index ) => {
-											return renderGalleryImages( img, index );
-										} ) }
-									</Slider>
-									<Slider className={ `kt-carousel-arrowstyle-${ arrowStyle } kt-blocks-carousel-thumbnails kb-cloned-${ ( images.length < thumbnailColumns[ 0 ] ? 'hide' : 'show' ) } kt-carousel-dotstyle-none` } asNavFor={ this.sliderSlides } ref={ this.bindThumbs } { ...thumbsliderthumbsSettings }>
-										{ images.map( ( img, index ) => {
-											return renderGalleryImages( img, index, true );
-										} ) }
-									</Slider>
-								</Fragment>
-							) }
-							{ images.length === 1 && (
-								images.map( ( img, index ) => {
-									return renderGalleryImages( img, index );
-								} )
-							) }
-						</div>
-					</div>
-				) }
-				{ type && type === 'carousel' && (
-					<div className={ galleryClassNames }
-						data-columns-xxl={ columns[ 0 ] }
-						data-columns-xl={ columns[ 1 ] }
-						data-columns-lg={ columns[ 2 ] }
-						data-columns-md={ columns[ 3 ] }
-						data-columns-sm={ columns[ 4 ] }
-						data-columns-xs={ columns[ 5 ] }
-					>
-						<div className={ `kt-blocks-carousel kt-carousel-container-dotstyle-${ dotStyle }` }>
-							{ images.length > columns[ 0 ] && (
-								<Slider className={ `kt-carousel-arrowstyle-${ arrowStyle } kt-carousel-dotstyle-${ dotStyle }` } { ...carouselSettings }>
-									{ images.map( ( img, index ) => {
-										return renderGalleryImages( img, index );
-									} ) }
-								</Slider>
-							) }
-							{ images.length <= columns[ 0 ] && (
-								images.map( ( img, index ) => {
-									return renderGalleryImages( img, index );
-								} )
-							) }
-						</div>
-					</div>
-				) }
-				{ type && type === 'masonry' && (
-					<Masonry
-						className={ galleryClassNames }
-						elementType={ 'ul' }
-						data-columns-xxl={ columns[ 0 ] }
-						data-columns-xl={ columns[ 1 ] }
-						data-columns-lg={ columns[ 2 ] }
-						data-columns-md={ columns[ 3 ] }
-						data-columns-sm={ columns[ 4 ] }
-						data-columns-xs={ columns[ 5 ] }
-						options={ {
-							transitionDuration: 0,
-						} }
-						disableImagesLoaded={ false }
-						enableResizableChildren={ true }
-						updateOnEachImageLoad={ false }
-					>
-						{ images.map( ( img, index ) => {
-							return renderGalleryImages( img, index );
-						} ) }
-					</Masonry>
-				) }
-				{ type && type === 'grid' && (
-					<ul
-						className={ galleryClassNames }
-						data-columns-xxl={ columns[ 0 ] }
-						data-columns-xl={ columns[ 1 ] }
-						data-columns-lg={ columns[ 2 ] }
-						data-columns-md={ columns[ 3 ] }
-						data-columns-sm={ columns[ 4 ] }
-						data-columns-xs={ columns[ 5 ] }
-					>
-						{ images.map( ( img, index ) => {
-							return renderGalleryImages( img, index );
-						} ) }
-					</ul>
-				) }
-				{ type && type === 'tiles' && (
-					<ul
-						className={ galleryClassNames }
-					>
-						{ images.map( ( img, index ) => {
-							return renderGalleryImages( img, index );
-						} ) }
-					</ul>
-				) }
+				
 				{ isSelected && (
 					mediaPlaceholder
 				) }
