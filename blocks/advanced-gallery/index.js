@@ -10,9 +10,9 @@ import icons from '../../icons';
 /**
  * Import edit
  */
-import edit from './edit';
+import Edit from './edit';
 import classnames from 'classnames';
-
+import Inspector from './inspector';
 /**
  * Internal block libraries
  */
@@ -324,8 +324,14 @@ registerBlockType( 'kadence/advancedgallery', {
 			},
 		],
 	},
-	edit,
-	save: props => {
+	edit: props => {
+		const { setAttributes } = props;
+
+		return [
+			<Inspector {...{ setAttributes, ...props }} />,
+			<Edit {...{ setAttributes, ...props }} />
+		];
+	},	save: props => {
 		const { attributes: { uniqueID, images, columns, type, linkTo, showCaption, captionStyle, imageRatio, imageFilter, lightbox, lightboxCaption, dotStyle, transSpeed, slidesScroll, autoPlay, arrowStyle, autoSpeed, carouselAlign, thumbnailColumns, thumbnailRatio, mobileForceHover } } = props;
 		const galleryClassNames = classnames(
 			{
