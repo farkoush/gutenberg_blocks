@@ -430,7 +430,7 @@ const typeOptions = [
                     </PanelBody>
             </Fragment>
         ) }
-        <PanelBody
+        {/* <PanelBody
             title={ __( 'Link Settings', 'kadence-blocks' ) }
             initialOpen={ false }
         >
@@ -442,7 +442,7 @@ const typeOptions = [
             />
             { linkTo === 'media' && (
                 <Fragment>
-                    {/* { ids && undefined !== ids[ 0 ] && (
+                    { ids && undefined !== ids[ 0 ] && (
                         <ImageSizeControl
                             label={ __( 'Link Image Size', 'kadence-blocks' ) }
                             slug={ lightSize }
@@ -451,7 +451,7 @@ const typeOptions = [
                             selectByValue={ false }
                             onChange={ this.changeImageLightSize }
                         />
-                    ) } */}
+                    ) }
                         <Fragment>
                             <SelectControl
                                 label={ __( 'Link Triggers?', 'kadence-blocks' ) }
@@ -482,12 +482,12 @@ const typeOptions = [
                         </Fragment>
                 </Fragment>
             ) }
-        </PanelBody>
-            <PanelBody
+        </PanelBody> */}
+            {/* <PanelBody
                 title={ __( 'Image Style', 'kadence-blocks' ) }
                 initialOpen={ false }
             >
-                {/* { ! ( type === 'carousel' && imageRatio === 'inherit' ) && ! ( type === 'slider' && imageRatio === 'inherit' ) && (
+                { ! ( type === 'carousel' && imageRatio === 'inherit' ) && ! ( type === 'slider' && imageRatio === 'inherit' ) && (
                     <MeasurementControls
                         label={ __( 'Border Radius', 'kadence-blocks' ) }
                         measurement={ imageRadius }
@@ -506,7 +506,7 @@ const typeOptions = [
                         thirdIcon={ icons.bottomright }
                         fourthIcon={ icons.bottomleft }
                     />
-                ) } */}
+                ) }
                 <SelectControl
                     label={ __( 'Image Filter', 'kadence-blocks' ) }
                     help={ __( 'Not supported in Internet Explorer', 'kadence-blocks' ) }
@@ -547,8 +547,8 @@ const typeOptions = [
                     value={ imageFilter }
                     onChange={ ( value ) => setAttributes( { imageFilter: value } ) }
                 />
-            </PanelBody>
-            <PanelBody
+            </PanelBody> */}
+            {/* <PanelBody
                 title={ __( 'Caption Settings', 'kadence-blocks' ) }
                 initialOpen={ false }
             >
@@ -589,7 +589,7 @@ const typeOptions = [
                                 onChange={ value => setAttributes( { mobileForceHover: value } ) }
                             />
                         ) }
-                        {/* <AdvancedPopColorControl
+                        <AdvancedPopColorControl
                             label={ __( 'Caption Color', 'kadence-blocks' ) }
                             colorValue={ ( captionStyles && captionStyles[ 0 ] && captionStyles[ 0 ].color ? captionStyles[ 0 ].color : '' ) }
                             colorDefault={ '' }
@@ -602,8 +602,8 @@ const typeOptions = [
                             onColorChange={ value => saveCaptionFont( { background: value } ) }
                             opacityValue={ ( captionStyles && captionStyles[ 0 ] && undefined !== captionStyles[ 0 ].backgroundOpacity ? captionStyles[ 0 ].backgroundOpacity : 0.5 ) }
                             onOpacityChange={ value => saveCaptionFont( { backgroundOpacity: value } ) }
-                        /> */}
-                        {/* <TypographyControls
+                        /> 
+                        <TypographyControls
                             fontSize={ captionStyles[ 0 ].size }
                             onFontSize={ ( value ) => saveCaptionFont( { size: value } ) }
                             fontSizeType={ captionStyles[ 0 ].sizeType }
@@ -637,10 +637,10 @@ const typeOptions = [
                             onFontStyle={ ( value ) => saveCaptionFont( { style: value } ) }
                             fontSubset={ captionStyles[ 0 ].subset }
                             onFontSubset={ ( value ) => saveCaptionFont( { subset: value } ) }
-                        /> */}
+                        />
                     </Fragment>
                 ) }
-            </PanelBody>
+            </PanelBody> */}
             <PanelBody
                 title={ __( 'Image Shadow', 'kadence-blocks' ) }
                 initialOpen={ false }
@@ -767,7 +767,7 @@ const typeOptions = [
                     </TabPanel>
                 ) }
             </PanelBody>
-            <PanelBody
+            {/* <PanelBody
                 title={ __( 'Gallery Spacing', 'kadence-blocks' ) }
                 initialOpen={ false }
             >
@@ -786,7 +786,7 @@ const typeOptions = [
                     ) ) }
                 </ButtonGroup>
                 
-            </PanelBody>
+            </PanelBody> */}
     </InspectorControls>
      );
    }

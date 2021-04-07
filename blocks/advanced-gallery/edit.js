@@ -89,12 +89,12 @@ class GalleryEdit extends Component {
 		this.changeImageThumbSize = this.changeImageThumbSize.bind( this );
 		this.changeImageLightSize = this.changeImageLightSize.bind( this );
 		this.showSettings = this.showSettings.bind( this );
-		this.setColumnsNumber = this.setColumnsNumber.bind( this );
+		// this.setColumnsNumber = this.setColumnsNumber.bind( this );
 		this.setCaptions = this.setCaptions.bind( this );
 		this.toggleImageCrop = this.toggleImageCrop.bind( this );
-		this.onMove = this.onMove.bind( this );
-		this.onMoveForward = this.onMoveForward.bind( this );
-		this.onMoveBackward = this.onMoveBackward.bind( this );
+		// this.onMove = this.onMove.bind( this );
+		// this.onMoveForward = this.onMoveForward.bind( this );
+		// this.onMoveBackward = this.onMoveBackward.bind( this );
 		this.onRemoveImage = this.onRemoveImage.bind( this );
 		this.onUploadError = this.onUploadError.bind( this );
 		this.setImageAttributes = this.setImageAttributes.bind( this );
@@ -160,31 +160,31 @@ class GalleryEdit extends Component {
 		};
 	}
 
-	onMove( oldIndex, newIndex ) {
-		const images = [ ...this.props.attributes.images ];
-		images.splice( newIndex, 1, this.props.attributes.images[ oldIndex ] );
-		images.splice( oldIndex, 1, this.props.attributes.images[ newIndex ] );
-		this.setState( { selectedImage: newIndex } );
-		this.setAttributes( { images } );
-	}
+	// onMove( oldIndex, newIndex ) {
+	// 	const images = [ ...this.props.attributes.images ];
+	// 	images.splice( newIndex, 1, this.props.attributes.images[ oldIndex ] );
+	// 	images.splice( oldIndex, 1, this.props.attributes.images[ newIndex ] );
+	// 	this.setState( { selectedImage: newIndex } );
+	// 	this.setAttributes( { images } );
+	// }
 
-	onMoveForward( oldIndex ) {
-		return () => {
-			if ( oldIndex === this.props.attributes.images.length - 1 ) {
-				return;
-			}
-			this.onMove( oldIndex, oldIndex + 1 );
-		};
-	}
+	// onMoveForward( oldIndex ) {
+	// 	return () => {
+	// 		if ( oldIndex === this.props.attributes.images.length - 1 ) {
+	// 			return;
+	// 		}
+	// 		this.onMove( oldIndex, oldIndex + 1 );
+	// 	};
+	// }
 
-	onMoveBackward( oldIndex ) {
-		return () => {
-			if ( oldIndex === 0 ) {
-				return;
-			}
-			this.onMove( oldIndex, oldIndex - 1 );
-		};
-	}
+	// onMoveBackward( oldIndex ) {
+	// 	return () => {
+	// 		if ( oldIndex === 0 ) {
+	// 			return;
+	// 		}
+	// 		this.onMove( oldIndex, oldIndex - 1 );
+	// 	};
+	// }
 
 	onRemoveImage( index ) {
 		return () => {
@@ -240,9 +240,9 @@ class GalleryEdit extends Component {
 		this.setAttributes( { linkTo: value } );
 	}
 
-	setColumnsNumber( value ) {
-		this.setAttributes( { columns: value } );
-	}
+	// setColumnsNumber( value ) {
+	// 	this.setAttributes( { columns: value } );
+	// }
 
 	toggleImageCrop() {
 		this.setAttributes( { imageCrop: ! this.props.attributes.imageCrop } );
@@ -354,7 +354,9 @@ class GalleryEdit extends Component {
 	}
 	render() {
 		const { attributes, isSelected, className, noticeUI, setAttributes } = this.props;
-		const { uniqueID, images, columns, linkTo, ids, columnControl, showCaption, captionStyles, lightbox, lightSize, type, imageRatio, captionStyle, gutter, thumbSize, autoPlay, autoSpeed, transSpeed, slidesScroll, arrowStyle, dotStyle, imageRadius, margin, marginUnit, displayShadow, shadow, shadowHover, carouselHeight, imageFilter, lightboxCaption, carouselAlign, thumbnailColumns, thumbnailControl, thumbnailRatio, mobileForceHover } = attributes;
+		// const { uniqueID, images, columns, linkTo, ids, columnControl, showCaption, captionStyles, lightbox, lightSize, type, imageRatio, captionStyle, gutter, thumbSize, autoPlay, autoSpeed, transSpeed, slidesScroll, arrowStyle, dotStyle, imageRadius, margin, marginUnit, displayShadow, shadow, shadowHover, carouselHeight, imageFilter, lightboxCaption, carouselAlign, thumbnailColumns, thumbnailControl, thumbnailRatio, mobileForceHover } = attributes;
+		const { uniqueID, images, linkTo, ids, showCaption, captionStyles, type, imageRatio, captionStyle, gutter, autoPlay, autoSpeed, transSpeed, arrowStyle, dotStyle, imageRadius, margin, marginUnit, displayShadow, shadow, shadowHover, carouselHeight, imageFilter, thumbnailRatio } = attributes;
+
 		// const galleryTypes = applyFilters( 'kadence.galleryTypes', typeOptions );
 		const hasImages = !! images.length;
 		console.log('images');
@@ -380,31 +382,31 @@ class GalleryEdit extends Component {
 		// 		captionStyles: newUpdate,
 		// 	} );
 		// };
-		function CustomNextArrow( props ) {
-			const { className, style, onClick } = props;
-			return (
-				<button
-					className={ className }
-					style={ { ...style, display: 'block' } }
-					onClick={ onClick }
-				>
-					<Dashicon icon="arrow-right-alt2" />
-				</button>
-			);
-		}
+		// function CustomNextArrow( props ) {
+		// 	const { className, style, onClick } = props;
+		// 	return (
+		// 		<button
+		// 			className={ className }
+		// 			style={ { ...style, display: 'block' } }
+		// 			onClick={ onClick }
+		// 		>
+		// 			<Dashicon icon="arrow-right-alt2" />
+		// 		</button>
+		// 	);
+		// }
 
-		function CustomPrevArrow( props ) {
-			const { className, style, onClick } = props;
-			return (
-				<button
-					className={ className }
-					style={ { ...style, display: 'block' } }
-					onClick={ onClick }
-				>
-					<Dashicon icon="arrow-left-alt2" />
-				</button>
-			);
-		}
+		// function CustomPrevArrow( props ) {
+		// 	const { className, style, onClick } = props;
+		// 	return (
+		// 		<button
+		// 			className={ className }
+		// 			style={ { ...style, display: 'block' } }
+		// 			onClick={ onClick }
+		// 		>
+		// 			<Dashicon icon="arrow-left-alt2" />
+		// 		</button>
+		// 	);
+		// }
 		const sliderSettings = {
 			dots: ( dotStyle === 'none' ? false : true ),
 			arrows: ( arrowStyle === 'none' ? false : true ),
@@ -416,8 +418,8 @@ class GalleryEdit extends Component {
 			autoplay: autoPlay,
 			slidesToShow: 1,
 			slidesToScroll: 1,
-			nextArrow: <CustomNextArrow />,
-			prevArrow: <CustomPrevArrow />,
+			// nextArrow: <CustomNextArrow />,
+			// prevArrow: <CustomPrevArrow />,
 		};
 		const controls = (
 			<BlockControls>
@@ -550,8 +552,8 @@ class GalleryEdit extends Component {
 							isFirstItem={ index === 0 }
 							isLastItem={ ( index + 1 ) === images.length }
 							isSelected={ isSelected && this.state.selectedImage === index }
-							onMoveBackward={ this.onMoveBackward( index ) }
-							onMoveForward={ this.onMoveForward( index ) }
+							// onMoveBackward={ this.onMoveBackward( index ) }
+							// onMoveForward={ this.onMoveForward( index ) }
 							onRemove={ this.onRemoveImage( index ) }
 							onSelect={ this.onSelectImage( index ) }
 							setAttributes={ ( attrs ) => this.setImageAttributes( index, attrs ) }
