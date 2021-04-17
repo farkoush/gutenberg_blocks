@@ -1,50 +1,35 @@
 {
-  "name": "jsforwp-blocks",
-  "version": "4.0.0",
-  "license": "MIT",
-  "main": "blocks/index.js",
+  "name": "homa_gutenberg_blocks",
+  "version": "1.0.0",
+  "description": "![Course Banner](https://dzwonsemrish7.cloudfront.net/items/1J3M310N0S1x170k1d0D/Cover%20GB.png)",
+  "main": "index.js",
   "scripts": {
-    "dev": "cross-env webpack --watch",
-    "build": "cross-env NODE_ENV=production webpack -p"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass blocks/hoora-swiper2/ -o  assets/css/ --output-style compressed",
+    "start": "wp-scripts start",
+    "build": "wp-scripts build blocks/index.js assets/js/index.js "
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farkoush/gutenberg_blocks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farkoush/gutenberg_blocks/issues"
+  },
+  "homepage": "https://github.com/farkoush/gutenberg_blocks#readme",
   "devDependencies": {
-    "@wordpress/babel-preset-default": "^1.2.0",
-    "@wordpress/plugins": "^2.24.0",
-    "@wordpress/scripts": "^12.5.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.3",
-    "babel-loader": "^7.1.4",
-    "classnames": "^2.2.5",
+    "@wordpress/scripts": "^14.0.1",
+    "classnames": "^2.3.1",
     "cross-env": "^5.1.5",
     "css-loader": "^0.28.11",
-    "eslint": "^4.19.1",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "google-map-react": "^2.1.9",
     "node-sass": "^4.9.0",
-    "postcss-loader": "^2.1.5",
     "raw-loader": "^0.5.1",
     "react-masonry-component": "^6.2.1",
-    "react-select": "^4.2.1",
+    "react-select": "^4.3.0",
     "react-slick": "^0.28.1",
     "sass-loader": "^6.0.7",
-    "style-loader": "^0.19.1",
-    "swiper": "^6.3.4",
-    "webpack": "^3.11.0"
-  },
-  "dependencies": {
-    "@wordpress/api-fetch": "^3.20.0",
-    "@wordpress/blocks": "^6.24.0",
-    "@wordpress/compose": "^3.20.0",
-    "@wordpress/element": "^2.18.0",
-    "@wordpress/server-side-render": "^1.18.1",
-    "cgb-scripts": "1.23.1",
-    "google-maps-react": "^2.0.6",
-    "leaflet": "^1.7.1",
-    "lodash": "^4.17.20",
-    "lodash.throttle": "^4.1.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-leaflet": "^3.0.2",
-    "react-leaflet-fullscreen": "^1.0.1"
+    "style-loader": "^0.19.1"
   }
 }

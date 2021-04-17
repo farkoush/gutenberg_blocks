@@ -2,16 +2,16 @@
 /**
  * Plugin's bootstrap file to launch the plugin.
  *
- * @package     Gutenberg_Courses\Example_Blocks
- * @author      Zac Gordon (@zgordon)
+ * @package     gutenberg_blocks
+ * @author      farkoush (@zgordon)
  * @license     GPL2+
  *
  * @wordpress-plugin
- * Plugin Name: Gutenberg - Example Blocks
+ * Plugin Name: homa - Gutenberg Blocks
  * Plugin URI:  https://gutenberg.courses
- * Description: A plugin containing example blocks for developers.  From <a href="https://gutenberg.courses/development">Zac Gordon's Gutenberg Development Course</a>.
+ * Description: A plugin containing example blocks for developers.  From <a href="https://gutenberg.courses/development">farkoush's Gutenberg Development Course</a>.
  * Version:     3.1.1
- * Author:      Zac Gordon
+ * Author:      farkoush
  * Author URI:  https://twitter.com/zgordon
  * Text Domain: jsforwpblocks
  * Domain Path: /languages
@@ -66,8 +66,8 @@ add_action( 'enqueue_block_editor_assets', 'enqueue_block_editor_assets' );
  */
 function enqueue_block_editor_assets() {
 	// Make paths variables so we don't write em twice ;)
-	$block_path = '/assets/js/editor.blocks.js';
-	$style_path = '/assets/css/blocks.editor.css';
+	$block_path = '/build/index.js';
+	$style_path = '/build/index.css';
 
 	// Enqueue the bundled block JS file
 	wp_enqueue_script(

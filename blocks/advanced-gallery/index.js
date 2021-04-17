@@ -34,7 +34,7 @@ import { pickRelevantMediaFiles, pickRelevantMediaFilesCore, columnConvert } fro
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( 'kadence/advancedgallery', {
-	title: __( 'Advanced Gallery', 'kadence-blocks' ),
+	title: __( 'Advanced Galleryyyyyy', 'kadence-blocks' ),
 	description: __( 'Photo galleries, carousels, and sliders! Enable custom links, captions, and more.', 'kadence-blocks' ),
 	icon: {
 		src: icons.gallery,
